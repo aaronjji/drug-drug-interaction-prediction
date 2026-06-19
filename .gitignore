@@ -1,0 +1,10 @@
+data/
+results/*.csv
+results/*.tex
+results/run_log.txt
+figures/*.pdf
+*.pt
+*.pkl
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
