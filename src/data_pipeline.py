@@ -43,10 +43,18 @@ def _download(url: str, dest: str) -> None:
         f.write(r.content)
 
 
+NUM_INTERACTION_TYPES = 86  # drugbank.tab's Y is 1..86 inclusive, not 0-indexed
+
+
 def load_drugbank_pairs(repo_raw: str) -> pd.DataFrame:
-    """Multi-relational DDI pairs: columns ID1, ID2, Y (interaction type), X1, X2 (SMILES)."""
+    """Multi-relational DDI pairs: columns ID1, ID2, Y (interaction type, 1..86), X1, X2 (SMILES)."""
     _download(f"{repo_raw}/data/drugbank.tab", DRUGBANK_PATH)
     return pd.read_csv(DRUGBANK_PATH, sep="\t")
+
+
+def zero_indexed_label(y) -> int:
+    """drugbank.tab's Y is 1-indexed (1..86); CrossEntropyLoss needs 0..85."""
+    return int(y) - 1
 
 
 def drug_smiles_table(pairs_df: pd.DataFrame) -> pd.DataFrame:

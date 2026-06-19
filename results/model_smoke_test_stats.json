@@ -1,0 +1,104 @@
+{
+  "configs": [
+    {
+      "config": "fusion=concat (multiclass)",
+      "output_shape": [
+        16,
+        86
+      ],
+      "loss": 4.480939865112305,
+      "total_params": 143574,
+      "trainable_params": 143574,
+      "frozen_params_in_model": 0,
+      "grad_flow": {
+        "graph_encoder_received_grad": true,
+        "text_encoder_received_grad": true,
+        "head_received_grad": true
+      }
+    },
+    {
+      "config": "fusion=gated (multiclass)",
+      "output_shape": [
+        16,
+        86
+      ],
+      "loss": 4.4522223472595215,
+      "total_params": 127254,
+      "trainable_params": 127254,
+      "frozen_params_in_model": 0,
+      "grad_flow": {
+        "graph_encoder_received_grad": true,
+        "text_encoder_received_grad": true,
+        "head_received_grad": true
+      }
+    },
+    {
+      "config": "fusion=cross_attention (multiclass)",
+      "output_shape": [
+        16,
+        86
+      ],
+      "loss": 4.498725891113281,
+      "total_params": 176854,
+      "trainable_params": 176854,
+      "frozen_params_in_model": 0,
+      "grad_flow": {
+        "graph_encoder_received_grad": true,
+        "text_encoder_received_grad": true,
+        "head_received_grad": true
+      }
+    },
+    {
+      "config": "graph-only (multiclass)",
+      "output_shape": [
+        16,
+        86
+      ],
+      "loss": 4.470890998840332,
+      "total_params": 68950,
+      "trainable_params": 68950,
+      "frozen_params_in_model": 0,
+      "grad_flow": {
+        "graph_encoder_received_grad": true,
+        "head_received_grad": true
+      }
+    },
+    {
+      "config": "text-only (multiclass)",
+      "output_shape": [
+        16,
+        86
+      ],
+      "loss": 4.483087062835693,
+      "total_params": 85846,
+      "trainable_params": 85846,
+      "frozen_params_in_model": 0,
+      "grad_flow": {
+        "text_encoder_received_grad": true,
+        "head_received_grad": true
+      }
+    },
+    {
+      "config": "fusion=concat (binary, BioSNAP)",
+      "output_shape": [
+        16,
+        1
+      ],
+      "loss": 0.679427444934845,
+      "total_params": 132609,
+      "trainable_params": 132609,
+      "frozen_params_in_model": 0,
+      "grad_flow": {
+        "graph_encoder_received_grad": true,
+        "text_encoder_received_grad": true,
+        "head_received_grad": true
+      }
+    }
+  ],
+  "frozen_lm_check": {
+    "lm_total_params": 109482240,
+    "lm_trainable_params": 0,
+    "lm_params_with_requires_grad_true": 0,
+    "lm_params_overlapping_with_ddimodel_optimizer": 0
+  }
+}
