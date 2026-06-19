@@ -1,0 +1,5 @@
+epochs: 25
+batch_size: 128
+lr: 0.001
+patience: 5
+seed: 0

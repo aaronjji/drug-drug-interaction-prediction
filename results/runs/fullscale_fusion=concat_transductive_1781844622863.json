@@ -1,0 +1,44 @@
+{
+  "config": {
+    "name": "fusion=concat",
+    "split_type": "transductive",
+    "scale": "full",
+    "seed": 0
+  },
+  "result": {
+    "run_name": "fullscale_fusion=concat_transductive",
+    "best_val_score": 0.790304246749231,
+    "used_loss_fallback": false,
+    "wall_clock_sec": 75.76738595962524,
+    "epochs_run": 2,
+    "stopped_early": false,
+    "hit_epoch_cap": true,
+    "peak_gpu_mem_mb": 43.127296,
+    "trainable_params": 143574,
+    "history": [
+      {
+        "epoch": 0,
+        "train_loss": 1.4289329373575144,
+        "val_score": 0.6401638386019494,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.7300316772651854,
+        "val_score": 0.790304246749231,
+        "using_loss_fallback": false
+      }
+    ],
+    "metrics_by_split": {
+      "test": {
+        "auroc": 0.9921264691160205,
+        "auprc": 0.7635389925505237,
+        "f1": 0.6549864222721046,
+        "accuracy": 0.5930354008649266,
+        "n_evaluable_classes_used": 63,
+        "n_evaluable_classes_skipped": 0
+      }
+    },
+    "checkpoint": "C:\\Users\\aaron\\Downloads\\Drug\u2013Drug Interaction Prediction\\ddi\\results\\checkpoints\\fullscale_fusion=concat_transductive.pt"
+  }
+}

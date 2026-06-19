@@ -1,0 +1,52 @@
+{
+  "config": {
+    "name": "fusion=concat",
+    "split_type": "inductive",
+    "scale": "full",
+    "seed": 0
+  },
+  "result": {
+    "run_name": "fullscale_fusion=concat_inductive",
+    "best_val_score": 0.5888300671807424,
+    "used_loss_fallback": false,
+    "wall_clock_sec": 57.677480936050415,
+    "epochs_run": 2,
+    "stopped_early": false,
+    "hit_epoch_cap": true,
+    "peak_gpu_mem_mb": 44.548608,
+    "trainable_params": 143574,
+    "history": [
+      {
+        "epoch": 0,
+        "train_loss": 1.4688400472760048,
+        "val_score": 0.44861566628088667,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.7187127614803757,
+        "val_score": 0.5888300671807424,
+        "using_loss_fallback": false
+      }
+    ],
+    "metrics_by_split": {
+      "s1": {
+        "auroc": 0.9565889741496961,
+        "auprc": 0.5401345376405063,
+        "f1": 0.4666566188537831,
+        "accuracy": 0.4298216134341222,
+        "n_evaluable_classes_used": 62,
+        "n_evaluable_classes_skipped": 0
+      },
+      "s2": {
+        "auroc": 0.8828456738575013,
+        "auprc": 0.3784646873902404,
+        "f1": 0.3281988185315217,
+        "accuracy": 0.30233429533137846,
+        "n_evaluable_classes_used": 28,
+        "n_evaluable_classes_skipped": 0
+      }
+    },
+    "checkpoint": "C:\\Users\\aaron\\Downloads\\Drug\u2013Drug Interaction Prediction\\ddi\\results\\checkpoints\\fullscale_fusion=concat_inductive.pt"
+  }
+}

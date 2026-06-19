@@ -1,0 +1,194 @@
+{
+  "full_dataset": {
+    "drugs": 1706,
+    "pairs": 191808,
+    "interaction_types": 86
+  },
+  "graphs_parsed": 1706,
+  "fingerprints_built": 1706,
+  "text_coverage": {
+    "with_text": 1501,
+    "total": 1706,
+    "fraction": 0.8798358733880423
+  },
+  "text_embeddings": {
+    "n": 1501,
+    "dim": 768
+  },
+  "transductive_split": {
+    "train": 134264,
+    "val": 19178,
+    "test": 38366
+  },
+  "inductive_drug_split": {
+    "train": 1194,
+    "val": 170,
+    "test": 342
+  },
+  "inductive_pairs": {
+    "train": 99372,
+    "val": 28027,
+    "s1": 57792,
+    "s2": 6617
+  },
+  "text_coverage_rebalancing": {
+    "before_rebalance_coverage": {
+      "train": 0.8785594639865997,
+      "val": 0.888235294117647,
+      "test": 0.8801169590643275
+    },
+    "after_rebalance_coverage": {
+      "train": 0.8802345058626466,
+      "val": 0.8764705882352941,
+      "test": 0.8801169590643275
+    },
+    "stratified": true
+  },
+  "train_vs_test_drug_text_coverage": {
+    "train": 0.8802345058626466,
+    "test": 0.8801169590643275
+  },
+  "evaluable_classes": {
+    "transductive_val": {
+      "n_total_classes": 86,
+      "n_evaluable": 53,
+      "n_excluded": 33,
+      "excluded_classes": [
+        21,
+        35,
+        16,
+        17,
+        50,
+        34,
+        47,
+        83,
+        79,
+        22,
+        12,
+        58,
+        62,
+        37,
+        44,
+        55,
+        64,
+        77,
+        78,
+        85
+      ],
+      "min_k": 10
+    },
+    "transductive_test": {
+      "n_total_classes": 86,
+      "n_evaluable": 63,
+      "n_excluded": 23,
+      "excluded_classes": [
+        12,
+        58,
+        62,
+        37,
+        44,
+        55,
+        64,
+        77,
+        78,
+        85,
+        45,
+        49,
+        6,
+        30,
+        40,
+        43,
+        0,
+        27,
+        42,
+        61
+      ],
+      "min_k": 10
+    },
+    "inductive_val": {
+      "n_total_classes": 82,
+      "n_evaluable": 57,
+      "n_excluded": 25,
+      "excluded_classes": [
+        80,
+        47,
+        16,
+        34,
+        50,
+        83,
+        12,
+        62,
+        64,
+        45,
+        44,
+        77,
+        78,
+        49,
+        40,
+        6,
+        43,
+        27,
+        41,
+        42
+      ],
+      "min_k": 10
+    },
+    "inductive_s1": {
+      "n_total_classes": 86,
+      "n_evaluable": 62,
+      "n_excluded": 24,
+      "excluded_classes": [
+        34,
+        12,
+        62,
+        64,
+        45,
+        44,
+        77,
+        78,
+        49,
+        40,
+        6,
+        43,
+        27,
+        41,
+        42,
+        51,
+        25,
+        0,
+        14,
+        30
+      ],
+      "min_k": 10
+    },
+    "inductive_s2": {
+      "n_total_classes": 83,
+      "n_evaluable": 28,
+      "n_excluded": 55,
+      "excluded_classes": [
+        31,
+        57,
+        63,
+        2,
+        75,
+        32,
+        60,
+        33,
+        1,
+        73,
+        28,
+        81,
+        13,
+        4,
+        10,
+        7,
+        67,
+        68,
+        23,
+        65
+      ],
+      "min_k": 10
+    }
+  },
+  "splits_saved_to": "C:\\Users\\aaron\\Downloads\\Drug\u2013Drug Interaction Prediction\\ddi\\data\\splits\\drugbank_seed0"
+}

@@ -126,3 +126,58 @@ config: {"name": "fusion=concat", "split_type": "binary_biosnap"}
   test: {"auroc": 0.8684000000000001, "auprc": 0.8844482289692115, "f1": 0.8080808080808081, "accuracy": 0.81}
 wall_clock_sec=9.6 epochs_run=15 stopped_early=False peak_gpu_mem_mb=31.05024
 
+=== fullscale_fusion=concat_transductive_1781844622863 ===
+config: {"name": "fusion=concat", "split_type": "transductive", "scale": "full", "seed": 0}
+  test: {"auroc": 0.9921264691160205, "auprc": 0.7635389925505237, "f1": 0.6549864222721046, "accuracy": 0.5930354008649266, "n_evaluable_classes_used": 63, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=75.8 epochs_run=2 stopped_early=False peak_gpu_mem_mb=43.127296
+
+=== fullscale_fusion=concat_inductive_1781844691532 ===
+config: {"name": "fusion=concat", "split_type": "inductive", "scale": "full", "seed": 0}
+  s1: {"auroc": 0.9565889741496961, "auprc": 0.5401345376405063, "f1": 0.4666566188537831, "accuracy": 0.4298216134341222, "n_evaluable_classes_used": 62, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.8828456738575013, "auprc": 0.3784646873902404, "f1": 0.3281988185315217, "accuracy": 0.30233429533137846, "n_evaluable_classes_used": 28, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=57.7 epochs_run=2 stopped_early=False peak_gpu_mem_mb=44.548608
+
+=== fullscale_fusion=concat_transductive_1781878222680 ===
+config: {"name": "fusion=concat", "split_type": "transductive", "scale": "full", "seed": 0}
+  test: {"auroc": 0.9978809235019174, "auprc": 0.9518869510092347, "f1": 0.9029844970491154, "accuracy": 0.8826815603501533, "n_evaluable_classes_used": 63, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=3793.4 epochs_run=25 stopped_early=False peak_gpu_mem_mb=44.260352
+
+=== fullscale_fusion=concat_inductive_1781880250824 ===
+config: {"name": "fusion=concat", "split_type": "inductive", "scale": "full", "seed": 0}
+  s1: {"auroc": 0.9568098805426233, "auprc": 0.6133647692343063, "f1": 0.5866342822479167, "accuracy": 0.5611579891721484, "n_evaluable_classes_used": 62, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.8658612400972104, "auprc": 0.37057731770123076, "f1": 0.3292925418138513, "accuracy": 0.30057338043867954, "n_evaluable_classes_used": 28, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=1975.6 epochs_run=17 stopped_early=True peak_gpu_mem_mb=44.473856
+
+=== fullscale_graph-only_transductive_1781883238461 ===
+config: {"name": "graph-only", "split_type": "transductive", "scale": "full", "seed": 0}
+  test: {"auroc": 0.9975523480500185, "auprc": 0.9405398061700025, "f1": 0.8851882494197904, "accuracy": 0.8778349991005104, "n_evaluable_classes_used": 63, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=2960.9 epochs_run=25 stopped_early=False peak_gpu_mem_mb=42.233856
+
+=== fullscale_graph-only_inductive_1781884328125 ===
+config: {"name": "graph-only", "split_type": "inductive", "scale": "full", "seed": 0}
+  s1: {"auroc": 0.9308789669775174, "auprc": 0.5638238583158087, "f1": 0.5418560870432174, "accuracy": 0.5151054843910786, "n_evaluable_classes_used": 62, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.8323368910713869, "auprc": 0.32048920041164525, "f1": 0.30604890993621275, "accuracy": 0.2836356052076848, "n_evaluable_classes_used": 28, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=1057.6 epochs_run=13 stopped_early=True peak_gpu_mem_mb=43.10528
+
+=== fullscale_text-only_transductive_1781885055009 ===
+config: {"name": "text-only", "split_type": "transductive", "scale": "full", "seed": 0}
+  test: {"auroc": 0.9961905530713269, "auprc": 0.8811790971326006, "f1": 0.8160769171236748, "accuracy": 0.7794821824641355, "n_evaluable_classes_used": 63, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=720.5 epochs_run=25 stopped_early=False peak_gpu_mem_mb=26.43968
+
+=== fullscale_text-only_inductive_1781885390722 ===
+config: {"name": "text-only", "split_type": "inductive", "scale": "full", "seed": 0}
+  s1: {"auroc": 0.9473343388755309, "auprc": 0.4877077448508593, "f1": 0.4661481413565321, "accuracy": 0.4493576651439113, "n_evaluable_classes_used": 62, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.8279576677069146, "auprc": 0.23961862406586718, "f1": 0.2174924586259066, "accuracy": 0.2125664185090049, "n_evaluable_classes_used": 28, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=325.1 epochs_run=15 stopped_early=True peak_gpu_mem_mb=25.801216
+
+=== fullscale_fingerprint-mlp_transductive_1781885661857 ===
+config: {"name": "fingerprint-mlp", "split_type": "transductive", "scale": "full", "seed": 0}
+  test: {"auroc": 0.9990153758844863, "auprc": 0.9707016308038161, "f1": 0.9322245625551767, "accuracy": 0.9203234486352755, "n_evaluable_classes_used": 63, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=269.0 epochs_run=25 stopped_early=False peak_gpu_mem_mb=22.196224
+
+=== fullscale_fingerprint-mlp_inductive_1781885823614 ===
+config: {"name": "fingerprint-mlp", "split_type": "inductive", "scale": "full", "seed": 0}
+  s1: {"auroc": 0.9533613367697373, "auprc": 0.5477705713838319, "f1": 0.5321293826733882, "accuracy": 0.5051936238387638, "n_evaluable_classes_used": 62, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.8442989200427661, "auprc": 0.3053184280140654, "f1": 0.28038711483394513, "accuracy": 0.2549083616257903, "n_evaluable_classes_used": 28, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=158.0 epochs_run=18 stopped_early=True peak_gpu_mem_mb=21.559808
+
