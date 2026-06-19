@@ -1,7 +1,9 @@
 """End-to-end train+eval smoke test on the 150-drug subset: full fusion
-(concat), graph-only, text-only -- each trained transductively and
-inductively -- plus the binary head on BioSNAP, once. Gate before the full
-sweep: proves train.py/evaluate.py are correct, not the scientific result.
+(concat), graph-only, text-only, fingerprint-MLP baseline -- each trained
+transductively and inductively -- plus the binary head on BioSNAP, once.
+Gate before the full sweep: proves train.py/evaluate.py/baselines.py are
+correct (including after the model-agnostic refactor), not the scientific
+result.
 """
 import json
 import logging
@@ -15,10 +17,13 @@ import yaml
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src"))
 
+import baselines
 import data_pipeline as dp
 import evaluate as ev
+import experiment_utils as eu
 import splits as sp
 import train as tr
+from baselines import FingerprintCache
 from models import NegativeSampler
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -90,6 +95,11 @@ def main():
     evaluable = sp.load_evaluable_classes(splits_dir)
     log.info(f"loaded evaluable-class sets from disk: { {k: len(v) for k, v in evaluable.items()} }")
 
+    smiles_map_full = dp.drug_smiles_table(dp.load_drugbank_pairs(data_cfg["drugbank_repo_raw"]))
+    smiles_map_subset = smiles_map_full[smiles_map_full["id"].isin(graphs.keys())]
+    fp_cache_obj = FingerprintCache(cache_path=os.path.join(ROOT, "data", "fingerprint_cache_smoke.pt"))
+    fp_cache = fp_cache_obj.build_or_load(smiles_map_subset)
+
     common = dict(atom_dim=dp.ATOM_FEATURE_DIM, edge_dim=dp.BOND_FEATURE_DIM, lm_dim=lm_dim,
                   hidden_dim=model_cfg["hidden_dim"], graph_layers=model_cfg["graph_layers"],
                   graph_conv=model_cfg["graph_conv"], graph_readout=model_cfg["graph_readout"],
@@ -101,45 +111,43 @@ def main():
     trans_val = transductive[transductive["split"] == "val"]
     trans_test = transductive[transductive["split"] == "test"]
 
-    multiclass_configs = [
-        ("fusion=concat", dict(fusion_type="concat", use_graph=True, use_text=True)),
-        ("graph-only", dict(fusion_type="concat", use_graph=True, use_text=False)),
-        ("text-only", dict(fusion_type="concat", use_graph=False, use_text=True)),
-    ]
+    architectures = ["fusion=concat", "graph-only", "text-only", "fingerprint-mlp"]
+
+    def components_for(name):
+        if name == "fingerprint-mlp":
+            return eu.make_fingerprint_components(
+                fp_cache, fp_dim=baselines.FINGERPRINT_BITS,
+                hidden_dim=model_cfg["hidden_dim"], head_hidden=model_cfg["head_hidden"],
+                dropout=model_cfg["dropout"], num_classes=dp.NUM_INTERACTION_TYPES, binary=False)
+        return eu.make_ddi_components(name, common, dp.NUM_INTERACTION_TYPES, False,
+                                       graphs, text_emb_cache, has_text, lm_dim, device)
 
     gap_by_model = {}
-    for name, flags in multiclass_configs:
-        model_kwargs = {**common, **flags}
-
+    for name in architectures:
         log.info(f"=== TRANSDUCTIVE: {name} ===")
+        model_factory, batch_fn = components_for(name)
         result_t = tr.train_one_run(
-            run_name=f"{name}_transductive", model_kwargs=model_kwargs,
+            run_name=f"{name}_transductive", model_factory=model_factory, batch_fn=batch_fn,
             pairs_splits={"train": trans_train, "val": trans_val, "test": trans_test},
-            id1_col="ID1", id2_col="ID2", label_col="Y", binary=False,
-            graphs=graphs, text_emb_cache=text_emb_cache, has_text=has_text, lm_dim=lm_dim,
-            train_cfg=train_cfg,
+            id1_col="ID1", id2_col="ID2", label_col="Y", binary=False, train_cfg=train_cfg,
             evaluable_classes_by_split={"val": evaluable["transductive_val"], "test": evaluable["transductive_test"]},
-            device=device, num_classes=dp.NUM_INTERACTION_TYPES)
-        tr.log_run(result_t, {"name": name, "split_type": "transductive", **flags})
+            device=device)
+        tr.log_run(result_t, {"name": name, "split_type": "transductive"})
         all_results.append(("transductive", name, result_t))
 
         log.info(f"=== INDUCTIVE: {name} ===")
+        model_factory, batch_fn = components_for(name)
         result_i = tr.train_one_run(
-            run_name=f"{name}_inductive", model_kwargs=model_kwargs,
+            run_name=f"{name}_inductive", model_factory=model_factory, batch_fn=batch_fn,
             pairs_splits={"train": inductive["train"], "val": inductive["val"],
                           "s1": inductive["s1"], "s2": inductive["s2"]},
-            id1_col="ID1", id2_col="ID2", label_col="Y", binary=False,
-            graphs=graphs, text_emb_cache=text_emb_cache, has_text=has_text, lm_dim=lm_dim,
-            train_cfg=train_cfg,
+            id1_col="ID1", id2_col="ID2", label_col="Y", binary=False, train_cfg=train_cfg,
             evaluable_classes_by_split={"val": evaluable["inductive_val"], "s1": evaluable["inductive_s1"],
                                         "s2": evaluable["inductive_s2"]},
-            device=device, num_classes=dp.NUM_INTERACTION_TYPES)
-        tr.log_run(result_i, {"name": name, "split_type": "inductive", **flags})
+            device=device)
+        tr.log_run(result_i, {"name": name, "split_type": "inductive"})
         all_results.append(("inductive", name, result_i))
 
-        # transductive and inductive are separate trained models (different
-        # train sets), so the headline gap is computed here, once both exist,
-        # by combining each run's own metrics_by_split into one lookup.
         combined = {"transductive": result_t["metrics_by_split"]["test"],
                     "s1": result_i["metrics_by_split"]["s1"], "s2": result_i["metrics_by_split"]["s2"]}
         gap_by_model[name] = ev.transductive_inductive_gap(combined)
@@ -147,12 +155,12 @@ def main():
 
     log.info("=== BINARY: fusion=concat on BioSNAP ChCh-Miner ===")
     binary_splits = build_binary_splits(data_cfg, train_cfg, graphs, model_cfg["seed"])
+    model_factory, batch_fn = eu.make_ddi_components("fusion=concat", common, None, True,
+                                                        graphs, text_emb_cache, has_text, lm_dim, device)
     result_b = tr.train_one_run(
-        run_name="fusion=concat_binary_biosnap",
-        model_kwargs={**common, "fusion_type": "concat", "use_graph": True, "use_text": True},
+        run_name="fusion=concat_binary_biosnap", model_factory=model_factory, batch_fn=batch_fn,
         pairs_splits={"train": binary_splits["train"], "val": binary_splits["val"], "test": binary_splits["test"]},
         id1_col="d1", id2_col="d2", label_col="label", binary=True,
-        graphs=graphs, text_emb_cache=text_emb_cache, has_text=has_text, lm_dim=lm_dim,
         train_cfg=train_cfg, evaluable_classes_by_split={}, device=device)
     tr.log_run(result_b, {"name": "fusion=concat", "split_type": "binary_biosnap"})
     all_results.append(("binary_biosnap", "fusion=concat", result_b))
@@ -164,7 +172,8 @@ def main():
             row = {"regime": regime, "model": name, "eval_split": split_name,
                    "auroc": m["auroc"], "auprc": m["auprc"], "f1": m["f1"], "accuracy": m["accuracy"],
                    "n_evaluable_classes_used": m.get("n_evaluable_classes_used"),
-                   "wall_clock_sec": result["wall_clock_sec"], "epochs_run": result["epochs_run"]}
+                   "wall_clock_sec": result["wall_clock_sec"], "epochs_run": result["epochs_run"],
+                   "stopped_early": result["stopped_early"], "peak_gpu_mem_mb": result["peak_gpu_mem_mb"]}
             rows.append(row)
     summary_df = pd.DataFrame(rows)
 

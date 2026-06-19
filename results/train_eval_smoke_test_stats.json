@@ -10,171 +10,249 @@
       "regime": "transductive",
       "model": "fusion=concat",
       "eval_split": "test",
-      "auroc": 0.9469817597489111,
-      "auprc": 0.7872782870073104,
-      "f1": 0.7347971347363147,
-      "accuracy": 0.7267410810478037,
+      "auroc": 0.9526236665711469,
+      "auprc": 0.7844615443140833,
+      "f1": 0.701805304242279,
+      "accuracy": 0.691453714352874,
       "n_evaluable_classes_used": 7.0,
-      "wall_clock_sec": 37.23606586456299,
-      "epochs_run": 15
+      "wall_clock_sec": 17.270387172698975,
+      "epochs_run": 14,
+      "stopped_early": true,
+      "peak_gpu_mem_mb": 25.907712
     },
     {
       "regime": "inductive",
       "model": "fusion=concat",
       "eval_split": "s1",
-      "auroc": 0.7674003784536559,
-      "auprc": 0.39649539112523235,
-      "f1": 0.3770352075481995,
-      "accuracy": 0.38067298295005303,
+      "auroc": 0.8128431273176889,
+      "auprc": 0.4400171690323672,
+      "f1": 0.36992941456519074,
+      "accuracy": 0.40420852354769554,
       "n_evaluable_classes_used": 8.0,
-      "wall_clock_sec": 27.35486888885498,
-      "epochs_run": 14
+      "wall_clock_sec": 13.01688838005066,
+      "epochs_run": 15,
+      "stopped_early": false,
+      "peak_gpu_mem_mb": 28.07296
     },
     {
       "regime": "inductive",
       "model": "fusion=concat",
       "eval_split": "s2",
-      "auroc": 0.613604681469514,
-      "auprc": 0.28445085288504834,
-      "f1": 0.2683826683826684,
-      "accuracy": 0.3372727272727273,
+      "auroc": 0.6572005556245987,
+      "auprc": 0.35434836529380703,
+      "f1": 0.2261385523454489,
+      "accuracy": 0.2706818181818182,
       "n_evaluable_classes_used": 4.0,
-      "wall_clock_sec": 27.35486888885498,
-      "epochs_run": 14
+      "wall_clock_sec": 13.01688838005066,
+      "epochs_run": 15,
+      "stopped_early": false,
+      "peak_gpu_mem_mb": 28.07296
     },
     {
       "regime": "transductive",
       "model": "graph-only",
       "eval_split": "test",
-      "auroc": 0.915403332745135,
-      "auprc": 0.6513434698489692,
-      "f1": 0.5564500597167764,
-      "accuracy": 0.5834057049393184,
+      "auroc": 0.9300465890507266,
+      "auprc": 0.6613070481627377,
+      "f1": 0.5905404657281702,
+      "accuracy": 0.6202204308296746,
       "n_evaluable_classes_used": 7.0,
-      "wall_clock_sec": 29.615342140197754,
-      "epochs_run": 14
+      "wall_clock_sec": 15.4362952709198,
+      "epochs_run": 14,
+      "stopped_early": true,
+      "peak_gpu_mem_mb": 28.20608
     },
     {
       "regime": "inductive",
       "model": "graph-only",
       "eval_split": "s1",
-      "auroc": 0.8029361388372895,
-      "auprc": 0.38733124657756773,
-      "f1": 0.31911908525349547,
-      "accuracy": 0.340429242849625,
+      "auroc": 0.7931095752375508,
+      "auprc": 0.3711656307248739,
+      "f1": 0.34639242336610754,
+      "accuracy": 0.37245308477792555,
       "n_evaluable_classes_used": 8.0,
-      "wall_clock_sec": 20.628373622894287,
-      "epochs_run": 11
+      "wall_clock_sec": 8.882014989852905,
+      "epochs_run": 11,
+      "stopped_early": true,
+      "peak_gpu_mem_mb": 29.059072
     },
     {
       "regime": "inductive",
       "model": "graph-only",
       "eval_split": "s2",
-      "auroc": 0.7280125762063561,
-      "auprc": 0.4757384518680432,
-      "f1": 0.32263856148237485,
-      "accuracy": 0.3478030303030303,
+      "auroc": 0.7077519815378667,
+      "auprc": 0.4395271436201815,
+      "f1": 0.3299486461251167,
+      "accuracy": 0.3881060606060606,
       "n_evaluable_classes_used": 4.0,
-      "wall_clock_sec": 20.628373622894287,
-      "epochs_run": 11
+      "wall_clock_sec": 8.882014989852905,
+      "epochs_run": 11,
+      "stopped_early": true,
+      "peak_gpu_mem_mb": 29.059072
     },
     {
       "regime": "transductive",
       "model": "text-only",
       "eval_split": "test",
-      "auroc": 0.9579530110818081,
-      "auprc": 0.7524661747721398,
-      "f1": 0.6988864617006978,
-      "accuracy": 0.7185690709850373,
+      "auroc": 0.9572770617297744,
+      "auprc": 0.7684275779297307,
+      "f1": 0.6846282501906594,
+      "accuracy": 0.7005141567116357,
       "n_evaluable_classes_used": 7.0,
-      "wall_clock_sec": 18.689767599105835,
-      "epochs_run": 15
+      "wall_clock_sec": 8.957528352737427,
+      "epochs_run": 15,
+      "stopped_early": false,
+      "peak_gpu_mem_mb": 25.73824
     },
     {
       "regime": "inductive",
       "model": "text-only",
       "eval_split": "s1",
-      "auroc": 0.7736315798091726,
-      "auprc": 0.42070277260863165,
-      "f1": 0.43185250949235965,
-      "accuracy": 0.42518066475869026,
+      "auroc": 0.7878305555140199,
+      "auprc": 0.4431877288635593,
+      "f1": 0.41374966887682707,
+      "accuracy": 0.40712195300571097,
       "n_evaluable_classes_used": 8.0,
-      "wall_clock_sec": 14.588864088058472,
-      "epochs_run": 15
+      "wall_clock_sec": 6.901220321655273,
+      "epochs_run": 15,
+      "stopped_early": false,
+      "peak_gpu_mem_mb": 26.783744
     },
     {
       "regime": "inductive",
       "model": "text-only",
       "eval_split": "s2",
-      "auroc": 0.5674737592949316,
-      "auprc": 0.3000107878044071,
-      "f1": 0.320985204920356,
-      "accuracy": 0.40893939393939394,
+      "auroc": 0.6165200147407086,
+      "auprc": 0.3228336735677495,
+      "f1": 0.26783216783216784,
+      "accuracy": 0.34757575757575754,
       "n_evaluable_classes_used": 4.0,
-      "wall_clock_sec": 14.588864088058472,
-      "epochs_run": 15
+      "wall_clock_sec": 6.901220321655273,
+      "epochs_run": 15,
+      "stopped_early": false,
+      "peak_gpu_mem_mb": 26.783744
+    },
+    {
+      "regime": "transductive",
+      "model": "fingerprint-mlp",
+      "eval_split": "test",
+      "auroc": 0.9730612557749583,
+      "auprc": 0.8790193334191553,
+      "f1": 0.8057214379823076,
+      "accuracy": 0.8145742912549635,
+      "n_evaluable_classes_used": 7.0,
+      "wall_clock_sec": 5.204174757003784,
+      "epochs_run": 15,
+      "stopped_early": false,
+      "peak_gpu_mem_mb": 26.4448
+    },
+    {
+      "regime": "inductive",
+      "model": "fingerprint-mlp",
+      "eval_split": "s1",
+      "auroc": 0.8215926139398828,
+      "auprc": 0.45232336892105235,
+      "f1": 0.3906647734087439,
+      "accuracy": 0.39391170489100424,
+      "n_evaluable_classes_used": 8.0,
+      "wall_clock_sec": 3.6317312717437744,
+      "epochs_run": 15,
+      "stopped_early": false,
+      "peak_gpu_mem_mb": 26.723328
+    },
+    {
+      "regime": "inductive",
+      "model": "fingerprint-mlp",
+      "eval_split": "s2",
+      "auroc": 0.5995785477812989,
+      "auprc": 0.3257576601435005,
+      "f1": 0.1744030648610121,
+      "accuracy": 0.2671969696969697,
+      "n_evaluable_classes_used": 4.0,
+      "wall_clock_sec": 3.6317312717437744,
+      "epochs_run": 15,
+      "stopped_early": false,
+      "peak_gpu_mem_mb": 26.723328
     },
     {
       "regime": "binary_biosnap",
       "model": "fusion=concat",
       "eval_split": "test",
-      "auroc": 0.8673,
-      "auprc": 0.8757513806854256,
-      "f1": 0.8169014084507042,
-      "accuracy": 0.805,
+      "auroc": 0.8684000000000001,
+      "auprc": 0.8844482289692115,
+      "f1": 0.8080808080808081,
+      "accuracy": 0.81,
       "n_evaluable_classes_used": NaN,
-      "wall_clock_sec": 20.334493398666382,
-      "epochs_run": 15
+      "wall_clock_sec": 9.551172971725464,
+      "epochs_run": 15,
+      "stopped_early": false,
+      "peak_gpu_mem_mb": 31.05024
     }
   ],
   "transductive_inductive_gap": [
     {
       "model": "fusion=concat",
       "gap": "transductive_minus_s1",
-      "auroc": 0.17958138129525514,
-      "auprc": 0.39078289588207804,
-      "f1": 0.35776192718811517,
-      "accuracy": 0.34606809809775063
+      "auroc": 0.139780539253458,
+      "auprc": 0.3444443752817161,
+      "f1": 0.3318758896770883,
+      "accuracy": 0.2872451908051784
     },
     {
       "model": "fusion=concat",
       "gap": "transductive_minus_s2",
-      "auroc": 0.3333770782793971,
-      "auprc": 0.502827434122262,
-      "f1": 0.4664144663536463,
-      "accuracy": 0.3894683537750764
+      "auroc": 0.2954231109465483,
+      "auprc": 0.4301131790202763,
+      "f1": 0.47566675189683016,
+      "accuracy": 0.42077189617105576
     },
     {
       "model": "graph-only",
       "gap": "transductive_minus_s1",
-      "auroc": 0.11246719390784543,
-      "auprc": 0.26401222327140145,
-      "f1": 0.23733097446328094,
-      "accuracy": 0.24297646208969342
+      "auroc": 0.1369370138131758,
+      "auprc": 0.29014141743786376,
+      "f1": 0.24414804236206267,
+      "accuracy": 0.24776734605174905
     },
     {
       "model": "graph-only",
       "gap": "transductive_minus_s2",
-      "auroc": 0.1873907565387789,
-      "auprc": 0.17560501798092598,
-      "f1": 0.23381149823440156,
-      "accuracy": 0.23560267463628815
+      "auroc": 0.2222946075128599,
+      "auprc": 0.22177990454255614,
+      "f1": 0.2605918196030535,
+      "accuracy": 0.23211437022361397
     },
     {
       "model": "text-only",
       "gap": "transductive_minus_s1",
-      "auroc": 0.18432143127263545,
-      "auprc": 0.3317634021635082,
-      "f1": 0.26703395220833814,
-      "accuracy": 0.29338840622634704
+      "auroc": 0.16944650621575452,
+      "auprc": 0.3252398490661714,
+      "f1": 0.27087858131383236,
+      "accuracy": 0.2933922037059248
     },
     {
       "model": "text-only",
       "gap": "transductive_minus_s2",
-      "auroc": 0.3904792517868765,
-      "auprc": 0.45245538696773274,
-      "f1": 0.3779012567803418,
-      "accuracy": 0.30962967704564337
+      "auroc": 0.34075704698906584,
+      "auprc": 0.4455939043619812,
+      "f1": 0.4167960823584916,
+      "accuracy": 0.3529383991358782
+    },
+    {
+      "model": "fingerprint-mlp",
+      "gap": "transductive_minus_s1",
+      "auroc": 0.15146864183507547,
+      "auprc": 0.42669596449810293,
+      "f1": 0.41505666457356366,
+      "accuracy": 0.42066258636395926
+    },
+    {
+      "model": "fingerprint-mlp",
+      "gap": "transductive_minus_s2",
+      "auroc": 0.37348270799365935,
+      "auprc": 0.5532616732756548,
+      "f1": 0.6313183731212955,
+      "accuracy": 0.5473773215579938
     }
   ],
   "evaluable_class_consistency_check": {
@@ -188,6 +266,6 @@
       "n_classes_on_disk": 4
     }
   },
-  "total_wall_clock_sec": 168.4477756023407,
-  "n_runs": 7
+  "total_wall_clock_sec": 88.85141348838806,
+  "n_runs": 9
 }

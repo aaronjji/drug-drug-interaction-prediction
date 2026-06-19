@@ -77,3 +77,52 @@ config: {"name": "fusion=concat", "split_type": "binary_biosnap"}
   test: {"auroc": 0.8673, "auprc": 0.8757513806854256, "f1": 0.8169014084507042, "accuracy": 0.805}
 wall_clock_sec=20.3 epochs_run=15
 
+=== fusion=concat_transductive_1781841883474 ===
+config: {"name": "fusion=concat", "split_type": "transductive"}
+  test: {"auroc": 0.9526236665711469, "auprc": 0.7844615443140833, "f1": 0.701805304242279, "accuracy": 0.691453714352874, "n_evaluable_classes_used": 7, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=17.3 epochs_run=14 stopped_early=True peak_gpu_mem_mb=25.907712
+
+=== fusion=concat_inductive_1781841896841 ===
+config: {"name": "fusion=concat", "split_type": "inductive"}
+  s1: {"auroc": 0.8128431273176889, "auprc": 0.4400171690323672, "f1": 0.36992941456519074, "accuracy": 0.40420852354769554, "n_evaluable_classes_used": 8, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.6572005556245987, "auprc": 0.35434836529380703, "f1": 0.2261385523454489, "accuracy": 0.2706818181818182, "n_evaluable_classes_used": 4, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=13.0 epochs_run=15 stopped_early=False peak_gpu_mem_mb=28.07296
+
+=== graph-only_transductive_1781841912446 ===
+config: {"name": "graph-only", "split_type": "transductive"}
+  test: {"auroc": 0.9300465890507266, "auprc": 0.6613070481627377, "f1": 0.5905404657281702, "accuracy": 0.6202204308296746, "n_evaluable_classes_used": 7, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=15.4 epochs_run=14 stopped_early=True peak_gpu_mem_mb=28.20608
+
+=== graph-only_inductive_1781841921613 ===
+config: {"name": "graph-only", "split_type": "inductive"}
+  s1: {"auroc": 0.7931095752375508, "auprc": 0.3711656307248739, "f1": 0.34639242336610754, "accuracy": 0.37245308477792555, "n_evaluable_classes_used": 8, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.7077519815378667, "auprc": 0.4395271436201815, "f1": 0.3299486461251167, "accuracy": 0.3881060606060606, "n_evaluable_classes_used": 4, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=8.9 epochs_run=11 stopped_early=True peak_gpu_mem_mb=29.059072
+
+=== text-only_transductive_1781841930679 ===
+config: {"name": "text-only", "split_type": "transductive"}
+  test: {"auroc": 0.9572770617297744, "auprc": 0.7684275779297307, "f1": 0.6846282501906594, "accuracy": 0.7005141567116357, "n_evaluable_classes_used": 7, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=9.0 epochs_run=15 stopped_early=False peak_gpu_mem_mb=25.73824
+
+=== text-only_inductive_1781841937779 ===
+config: {"name": "text-only", "split_type": "inductive"}
+  s1: {"auroc": 0.7878305555140199, "auprc": 0.4431877288635593, "f1": 0.41374966887682707, "accuracy": 0.40712195300571097, "n_evaluable_classes_used": 8, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.6165200147407086, "auprc": 0.3228336735677495, "f1": 0.26783216783216784, "accuracy": 0.34757575757575754, "n_evaluable_classes_used": 4, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=6.9 epochs_run=15 stopped_early=False peak_gpu_mem_mb=26.783744
+
+=== fingerprint-mlp_transductive_1781841943040 ===
+config: {"name": "fingerprint-mlp", "split_type": "transductive"}
+  test: {"auroc": 0.9730612557749583, "auprc": 0.8790193334191553, "f1": 0.8057214379823076, "accuracy": 0.8145742912549635, "n_evaluable_classes_used": 7, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=5.2 epochs_run=15 stopped_early=False peak_gpu_mem_mb=26.4448
+
+=== fingerprint-mlp_inductive_1781841946764 ===
+config: {"name": "fingerprint-mlp", "split_type": "inductive"}
+  s1: {"auroc": 0.8215926139398828, "auprc": 0.45232336892105235, "f1": 0.3906647734087439, "accuracy": 0.39391170489100424, "n_evaluable_classes_used": 8, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.5995785477812989, "auprc": 0.3257576601435005, "f1": 0.1744030648610121, "accuracy": 0.2671969696969697, "n_evaluable_classes_used": 4, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=3.6 epochs_run=15 stopped_early=False peak_gpu_mem_mb=26.723328
+
+=== fusion=concat_binary_biosnap_1781841956749 ===
+config: {"name": "fusion=concat", "split_type": "binary_biosnap"}
+  test: {"auroc": 0.8684000000000001, "auprc": 0.8844482289692115, "f1": 0.8080808080808081, "accuracy": 0.81}
+wall_clock_sec=9.6 epochs_run=15 stopped_early=False peak_gpu_mem_mb=31.05024
+
