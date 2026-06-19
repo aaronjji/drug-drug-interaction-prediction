@@ -1,0 +1,16 @@
+drugbank_repo_raw: "https://raw.githubusercontent.com/kanz76/GMPNN-CS/master"
+chch_miner_url: "http://snap.stanford.edu/biodata/datasets/10001/files/ChCh-Miner_durgbank-chem-chem.tsv.gz"
+text_model_name: "microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract"
+text_embedding_dim: 768
+pubchem_rate_limit_sec: 0.3
+pubchem_max_retries: 3
+evaluable_class_min_k: 10
+seed: 0
+transductive_val_frac: 0.1
+transductive_test_frac: 0.2
+transductive_min_stratify_count: 3
+inductive_train_frac: 0.7
+inductive_val_frac: 0.1
+inductive_test_frac: 0.2
+smoke_test_n_drugs: 150
+

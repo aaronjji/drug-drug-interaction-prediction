@@ -1,0 +1,146 @@
+{
+  "full_dataset": {
+    "drugs": 1706,
+    "pairs": 191808,
+    "interaction_types": 86
+  },
+  "smoke_subset": {
+    "n_sample_drugs": 150,
+    "drugs": 150,
+    "pairs": 1928,
+    "interaction_types_present": 44,
+    "graphs_parsed": 150,
+    "atom_feature_dim": 35,
+    "bond_feature_dim": 6
+  },
+  "text": {
+    "subset_coverage": 0.9066666666666666,
+    "embeddings_built": 136,
+    "embedding_dim": 768
+  },
+  "transductive_split": {
+    "train_pairs": 1355,
+    "val_pairs": 191,
+    "test_pairs": 382,
+    "evaluable_classes_vs_test": {
+      "n_total_classes": 44,
+      "n_evaluable": 7,
+      "n_excluded": 37,
+      "excluded_classes": [
+        60,
+        6,
+        70,
+        32,
+        37,
+        58,
+        61,
+        54,
+        2,
+        21,
+        29,
+        57,
+        36,
+        83,
+        85,
+        9,
+        13,
+        17,
+        22,
+        71
+      ],
+      "min_k": 10
+    }
+  },
+  "inductive_drug_split": {
+    "n_train_drugs": 104,
+    "n_val_drugs": 15,
+    "n_test_drugs": 31,
+    "text_coverage_rebalancing": {
+      "before_rebalance_coverage": {
+        "train": 0.8942307692307693,
+        "val": 0.9333333333333333,
+        "test": 0.9354838709677419
+      },
+      "after_rebalance_coverage": {
+        "train": 0.9038461538461539,
+        "val": 0.9333333333333333,
+        "test": 0.9032258064516129
+      },
+      "stratified": true
+    },
+    "train_drugs_text_coverage": 0.9038461538461539,
+    "test_drugs_text_coverage": 0.9032258064516129
+  },
+  "inductive_pairs": {
+    "train": 880,
+    "val": 309,
+    "s1": 651,
+    "s2": 88,
+    "s1_evaluable_classes": {
+      "n_total_classes": 41,
+      "n_evaluable": 8,
+      "n_excluded": 33,
+      "excluded_classes": [
+        70,
+        32,
+        6,
+        58,
+        21,
+        2,
+        29,
+        36,
+        85,
+        17,
+        82,
+        83,
+        9,
+        22,
+        54,
+        71,
+        5,
+        13,
+        37,
+        12
+      ],
+      "min_k": 10
+    },
+    "s2_evaluable_classes": {
+      "n_total_classes": 36,
+      "n_evaluable": 4,
+      "n_excluded": 32,
+      "excluded_classes": [
+        16,
+        20,
+        75,
+        70,
+        32,
+        6,
+        60,
+        58,
+        21,
+        2,
+        29,
+        36,
+        85,
+        17,
+        82,
+        83,
+        9,
+        22,
+        54,
+        71
+      ],
+      "min_k": 10
+    }
+  },
+  "binary_dataset_decision": {
+    "twosides_unique_Y": 963,
+    "twosides_unique_pairs": 63472,
+    "twosides_total_rows": 4576287,
+    "twosides_pairs_with_multiple_labels": 63398,
+    "conclusion": "TWOSIDES is positives-only multi-relational (avg 72 labels/pair); switched binary robustness dataset to BioSNAP ChCh-Miner.",
+    "chch_miner_total_pairs": 39474,
+    "chch_miner_drugs": 1268
+  },
+  "splits_saved_to": "C:\\Users\\aaron\\Downloads\\Drug\u2013Drug Interaction Prediction\\ddi\\data\\splits\\smoke_drugbank_seed0"
+}
