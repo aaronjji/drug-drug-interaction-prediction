@@ -1,0 +1,92 @@
+{
+  "config": {
+    "name": "graph-only",
+    "split_type": "inductive",
+    "fusion_type": "concat",
+    "use_graph": true,
+    "use_text": false
+  },
+  "result": {
+    "run_name": "graph-only_inductive",
+    "best_val_score": 0.43170957570819957,
+    "used_loss_fallback": false,
+    "wall_clock_sec": 6.058492183685303,
+    "epochs_run": 9,
+    "history": [
+      {
+        "epoch": 0,
+        "train_loss": 3.3554283337933675,
+        "val_score": 0.2822095350755654,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 1,
+        "train_loss": 2.1844765756811415,
+        "val_score": 0.3597098840411033,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 2,
+        "train_loss": 1.9617271380765098,
+        "val_score": 0.36275383734145106,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 3,
+        "train_loss": 1.8488344933305467,
+        "val_score": 0.3735857148334066,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 4,
+        "train_loss": 1.6810056524617332,
+        "val_score": 0.43170957570819957,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 5,
+        "train_loss": 1.5373707924570357,
+        "val_score": 0.4177284332975256,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 6,
+        "train_loss": 1.374912949545043,
+        "val_score": 0.40911263749677085,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 7,
+        "train_loss": 1.2907996220248086,
+        "val_score": 0.4112148464617214,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 8,
+        "train_loss": 1.1778100750276022,
+        "val_score": 0.41541313917690476,
+        "using_loss_fallback": false
+      }
+    ],
+    "metrics_by_split": {
+      "s1": {
+        "auroc": 0.749167256903801,
+        "auprc": 0.3334356671113878,
+        "f1": 0.20770266777732338,
+        "accuracy": 0.23327890675024432,
+        "n_evaluable_classes_used": 8,
+        "n_evaluable_classes_skipped": 0
+      },
+      "s2": {
+        "auroc": 0.6453054036606668,
+        "auprc": 0.40407014021700854,
+        "f1": 0.2594609206054989,
+        "accuracy": 0.30068181818181816,
+        "n_evaluable_classes_used": 4,
+        "n_evaluable_classes_skipped": 0
+      }
+    },
+    "checkpoint": "C:\\Users\\aaron\\Downloads\\Drug\u2013Drug Interaction Prediction\\ddi\\results\\checkpoints\\graph-only_inductive.pt",
+    "transductive_inductive_gap": {}
+  }
+}

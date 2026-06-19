@@ -1,0 +1,79 @@
+=== fusion=concat_transductive_1781840381968 ===
+config: {"name": "fusion=concat", "split_type": "transductive", "fusion_type": "concat", "use_graph": true, "use_text": true}
+  test: {"auroc": 0.953565042093951, "auprc": 0.7864764149338404, "f1": 0.7188190685545893, "accuracy": 0.7167401576015022, "n_evaluable_classes_used": 7, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=15.0 epochs_run=15
+
+=== fusion=concat_inductive_1781840392089 ===
+config: {"name": "fusion=concat", "split_type": "inductive", "fusion_type": "concat", "use_graph": true, "use_text": true}
+  s1: {"auroc": 0.7732818804496012, "auprc": 0.4095346166964112, "f1": 0.3703488366743742, "accuracy": 0.378395112495431, "n_evaluable_classes_used": 8, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.6170388350352466, "auprc": 0.28431212250884225, "f1": 0.2256125415282392, "accuracy": 0.27340909090909093, "n_evaluable_classes_used": 4, "n_evaluable_classes_skipped": 0}
+  gap: {}
+wall_clock_sec=9.8 epochs_run=14
+
+=== graph-only_transductive_1781840404728 ===
+config: {"name": "graph-only", "split_type": "transductive", "fusion_type": "concat", "use_graph": true, "use_text": false}
+  test: {"auroc": 0.9162394195250794, "auprc": 0.6518741582553894, "f1": 0.5547842969908815, "accuracy": 0.5782187350464661, "n_evaluable_classes_used": 7, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=12.5 epochs_run=14
+
+=== graph-only_inductive_1781840411060 ===
+config: {"name": "graph-only", "split_type": "inductive", "fusion_type": "concat", "use_graph": true, "use_text": false}
+  s1: {"auroc": 0.749167256903801, "auprc": 0.3334356671113878, "f1": 0.20770266777732338, "accuracy": 0.23327890675024432, "n_evaluable_classes_used": 8, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.6453054036606668, "auprc": 0.40407014021700854, "f1": 0.2594609206054989, "accuracy": 0.30068181818181816, "n_evaluable_classes_used": 4, "n_evaluable_classes_skipped": 0}
+  gap: {}
+wall_clock_sec=6.1 epochs_run=9
+
+=== text-only_transductive_1781840418984 ===
+config: {"name": "text-only", "split_type": "transductive", "fusion_type": "concat", "use_graph": false, "use_text": true}
+  test: {"auroc": 0.9579530110818081, "auprc": 0.7524661747721398, "f1": 0.6988864617006978, "accuracy": 0.7185690709850373, "n_evaluable_classes_used": 7, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=7.8 epochs_run=15
+
+=== text-only_inductive_1781840425266 ===
+config: {"name": "text-only", "split_type": "inductive", "fusion_type": "concat", "use_graph": false, "use_text": true}
+  s1: {"auroc": 0.7736315798091726, "auprc": 0.42070277260863165, "f1": 0.43185250949235965, "accuracy": 0.42518066475869026, "n_evaluable_classes_used": 8, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.5674737592949316, "auprc": 0.3000107878044071, "f1": 0.320985204920356, "accuracy": 0.40893939393939394, "n_evaluable_classes_used": 4, "n_evaluable_classes_skipped": 0}
+  gap: {}
+wall_clock_sec=6.1 epochs_run=15
+
+=== fusion=concat_binary_biosnap_1781840433728 ===
+config: {"name": "fusion=concat", "split_type": "binary_biosnap"}
+  test: {"auroc": 0.8537999999999999, "auprc": 0.8595850082879488, "f1": 0.8, "accuracy": 0.8}
+wall_clock_sec=8.0 epochs_run=15
+
+=== fusion=concat_transductive_1781840645911 ===
+config: {"name": "fusion=concat", "split_type": "transductive", "fusion_type": "concat", "use_graph": true, "use_text": true}
+  test: {"auroc": 0.9469817597489111, "auprc": 0.7872782870073104, "f1": 0.7347971347363147, "accuracy": 0.7267410810478037, "n_evaluable_classes_used": 7, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=37.2 epochs_run=15
+
+=== fusion=concat_inductive_1781840674067 ===
+config: {"name": "fusion=concat", "split_type": "inductive", "fusion_type": "concat", "use_graph": true, "use_text": true}
+  s1: {"auroc": 0.7674003784536559, "auprc": 0.39649539112523235, "f1": 0.3770352075481995, "accuracy": 0.38067298295005303, "n_evaluable_classes_used": 8, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.613604681469514, "auprc": 0.28445085288504834, "f1": 0.2683826683826684, "accuracy": 0.3372727272727273, "n_evaluable_classes_used": 4, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=27.4 epochs_run=14
+
+=== graph-only_transductive_1781840704107 ===
+config: {"name": "graph-only", "split_type": "transductive", "fusion_type": "concat", "use_graph": true, "use_text": false}
+  test: {"auroc": 0.915403332745135, "auprc": 0.6513434698489692, "f1": 0.5564500597167764, "accuracy": 0.5834057049393184, "n_evaluable_classes_used": 7, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=29.6 epochs_run=14
+
+=== graph-only_inductive_1781840725574 ===
+config: {"name": "graph-only", "split_type": "inductive", "fusion_type": "concat", "use_graph": true, "use_text": false}
+  s1: {"auroc": 0.8029361388372895, "auprc": 0.38733124657756773, "f1": 0.31911908525349547, "accuracy": 0.340429242849625, "n_evaluable_classes_used": 8, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.7280125762063561, "auprc": 0.4757384518680432, "f1": 0.32263856148237485, "accuracy": 0.3478030303030303, "n_evaluable_classes_used": 4, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=20.6 epochs_run=11
+
+=== text-only_transductive_1781840744524 ===
+config: {"name": "text-only", "split_type": "transductive", "fusion_type": "concat", "use_graph": false, "use_text": true}
+  test: {"auroc": 0.9579530110818081, "auprc": 0.7524661747721398, "f1": 0.6988864617006978, "accuracy": 0.7185690709850373, "n_evaluable_classes_used": 7, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=18.7 epochs_run=15
+
+=== text-only_inductive_1781840759586 ===
+config: {"name": "text-only", "split_type": "inductive", "fusion_type": "concat", "use_graph": false, "use_text": true}
+  s1: {"auroc": 0.7736315798091726, "auprc": 0.42070277260863165, "f1": 0.43185250949235965, "accuracy": 0.42518066475869026, "n_evaluable_classes_used": 8, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.5674737592949316, "auprc": 0.3000107878044071, "f1": 0.320985204920356, "accuracy": 0.40893939393939394, "n_evaluable_classes_used": 4, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=14.6 epochs_run=15
+
+=== fusion=concat_binary_biosnap_1781840780918 ===
+config: {"name": "fusion=concat", "split_type": "binary_biosnap"}
+  test: {"auroc": 0.8673, "auprc": 0.8757513806854256, "f1": 0.8169014084507042, "accuracy": 0.805}
+wall_clock_sec=20.3 epochs_run=15
+

@@ -1,7 +1,6 @@
 data/
 results/*.csv
 results/*.tex
-results/run_log.txt
 figures/*.pdf
 *.pt
 *.pkl

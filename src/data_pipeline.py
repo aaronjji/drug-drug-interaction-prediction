@@ -15,7 +15,7 @@ import numpy as np
 import pandas as pd
 import requests
 import torch
-from torch_geometric.data import Data
+from torch_geometric.data import Batch, Data
 
 log = logging.getLogger("data_pipeline")
 
@@ -43,18 +43,19 @@ def _download(url: str, dest: str) -> None:
         f.write(r.content)
 
 
-NUM_INTERACTION_TYPES = 86  # drugbank.tab's Y is 1..86 inclusive, not 0-indexed
+NUM_INTERACTION_TYPES = 86  # Y is zero-indexed 0..85 from this loader onward
 
 
 def load_drugbank_pairs(repo_raw: str) -> pd.DataFrame:
-    """Multi-relational DDI pairs: columns ID1, ID2, Y (interaction type, 1..86), X1, X2 (SMILES)."""
+    """Multi-relational DDI pairs: columns ID1, ID2, Y (interaction type, 0..85), X1, X2 (SMILES).
+    drugbank.tab itself ships Y as 1..86; shifted to 0-indexed here, once, at the
+    source, so every downstream consumer (splits, evaluable-class sets, training
+    targets) agrees -- a prior version converted ad hoc at each call site and
+    that mismatch silently broke evaluable-class lookups."""
     _download(f"{repo_raw}/data/drugbank.tab", DRUGBANK_PATH)
-    return pd.read_csv(DRUGBANK_PATH, sep="\t")
-
-
-def zero_indexed_label(y) -> int:
-    """drugbank.tab's Y is 1-indexed (1..86); CrossEntropyLoss needs 0..85."""
-    return int(y) - 1
+    df = pd.read_csv(DRUGBANK_PATH, sep="\t")
+    df["Y"] = df["Y"] - 1
+    return df
 
 
 def drug_smiles_table(pairs_df: pd.DataFrame) -> pd.DataFrame:
@@ -336,3 +337,33 @@ def build_or_load_text_embeddings(text_cache: Dict[str, Optional[str]], model_na
         torch.save({"embeddings": cached, "dim": dim}, cache_path)
         log.info(f"embedded {len(missing_ids)} new drug descriptions (dim={dim})")
     return cached, dim
+
+
+# ---------------------------------------------------------------------------
+# Batch assembly (shared by model smoke tests and train.py)
+# ---------------------------------------------------------------------------
+
+def build_pair_batch(pairs: List[Tuple[str, str]], graphs: Dict[str, Data],
+                      text_emb_cache: Dict[str, np.ndarray], has_text: Dict[str, bool],
+                      lm_dim: int, device: str):
+    """pairs: list of (id_a, id_b). Returns the two graph batches and the two
+    (text_embedding, has_text) tensor pairs, aligned by position. Missing-text
+    drugs get a zero placeholder here -- TextEncoder substitutes its learned
+    missing-token using the has_text flag, so the placeholder's value is inert."""
+    data_a = [graphs[a] for a, _ in pairs]
+    data_b = [graphs[b] for _, b in pairs]
+    batch_a = Batch.from_data_list(data_a).to(device)
+    batch_b = Batch.from_data_list(data_b).to(device)
+
+    def text_tensors(ids):
+        emb = torch.stack([
+            torch.tensor(text_emb_cache[i], dtype=torch.float) if has_text.get(i, False)
+            else torch.zeros(lm_dim, dtype=torch.float)
+            for i in ids
+        ]).to(device)
+        flags = torch.tensor([1.0 if has_text.get(i, False) else 0.0 for i in ids], device=device)
+        return emb, flags
+
+    text_a, ht_a = text_tensors([a for a, _ in pairs])
+    text_b, ht_b = text_tensors([b for _, b in pairs])
+    return batch_a, text_a, ht_a, batch_b, text_b, ht_b

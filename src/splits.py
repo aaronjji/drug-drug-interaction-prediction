@@ -186,6 +186,38 @@ def evaluable_classes(train_labels: pd.Series, eval_labels: pd.Series, k: int = 
     return evaluable, info
 
 
+def compute_evaluable_classes_for_splits(transductive_df: pd.DataFrame, inductive: Dict[str, pd.DataFrame],
+                                          label_col: str, k: int) -> Dict[str, dict]:
+    """Computes the evaluable-class set for every non-train eval bucket against
+    its own training labels, exactly once. This must be saved (save_evaluable_classes)
+    and reused verbatim at eval time -- never recomputed ad hoc per call site,
+    or different code paths could silently disagree on which classes count."""
+    out = {}
+    train_labels_trans = transductive_df.loc[transductive_df["split"] == "train", label_col]
+    for name in ("val", "test"):
+        eval_labels = transductive_df.loc[transductive_df["split"] == name, label_col]
+        classes, info = evaluable_classes(train_labels_trans, eval_labels, k=k)
+        out[f"transductive_{name}"] = {"classes": sorted(classes), "info": info}
+
+    train_labels_ind = inductive["train"][label_col]
+    for name in ("val", "s1", "s2"):
+        classes, info = evaluable_classes(train_labels_ind, inductive[name][label_col], k=k)
+        out[f"inductive_{name}"] = {"classes": sorted(classes), "info": info}
+    return out
+
+
+def save_evaluable_classes(out_dir: str, evaluable: Dict[str, dict]) -> None:
+    with open(os.path.join(out_dir, "evaluable_classes.json"), "w") as f:
+        json.dump(evaluable, f, indent=2)
+    log.info(f"saved evaluable-class sets to {out_dir}/evaluable_classes.json")
+
+
+def load_evaluable_classes(out_dir: str) -> Dict[str, Set]:
+    with open(os.path.join(out_dir, "evaluable_classes.json")) as f:
+        raw = json.load(f)
+    return {k: set(v["classes"]) for k, v in raw.items()}
+
+
 # ---------------------------------------------------------------------------
 # Persistence
 # ---------------------------------------------------------------------------

@@ -1,0 +1,114 @@
+{
+  "config": {
+    "name": "fusion=concat",
+    "split_type": "binary_biosnap"
+  },
+  "result": {
+    "run_name": "fusion=concat_binary_biosnap",
+    "best_val_score": 0.8268939717833095,
+    "used_loss_fallback": false,
+    "wall_clock_sec": 20.334493398666382,
+    "epochs_run": 15,
+    "history": [
+      {
+        "epoch": 0,
+        "train_loss": 0.6645687953992323,
+        "val_score": 0.7039217430323093,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.5582772588187997,
+        "val_score": 0.7214529673991326,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.4828478856520219,
+        "val_score": 0.7783703338513988,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.4431512396443974,
+        "val_score": 0.7644478335059218,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.38810750571164215,
+        "val_score": 0.8005466960803094,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.3568048334934495,
+        "val_score": 0.7899305781785013,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.31945568255402823,
+        "val_score": 0.8081088604096227,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.3642206510359591,
+        "val_score": 0.7889160358380622,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.29945012114264746,
+        "val_score": 0.8197130359383654,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.2903266088529067,
+        "val_score": 0.7861959937850826,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.2715269835157828,
+        "val_score": 0.8145460350900644,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.22300035404888066,
+        "val_score": 0.8227351081432484,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.20824351635846225,
+        "val_score": 0.8187928438135781,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 13,
+        "train_loss": 0.2089485085823319,
+        "val_score": 0.8268939717833095,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 14,
+        "train_loss": 0.21030855212699284,
+        "val_score": 0.8180475008999106,
+        "using_loss_fallback": false
+      }
+    ],
+    "metrics_by_split": {
+      "test": {
+        "auroc": 0.8673,
+        "auprc": 0.8757513806854256,
+        "f1": 0.8169014084507042,
+        "accuracy": 0.805
+      }
+    },
+    "checkpoint": "C:\\Users\\aaron\\Downloads\\Drug\u2013Drug Interaction Prediction\\ddi\\results\\checkpoints\\fusion=concat_binary_biosnap.pt"
+  }
+}

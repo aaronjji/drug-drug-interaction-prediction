@@ -38,7 +38,7 @@
         16,
         86
       ],
-      "loss": 4.498725891113281,
+      "loss": 4.498725414276123,
       "total_params": 176854,
       "trainable_params": 176854,
       "frozen_params_in_model": 0,
@@ -84,7 +84,7 @@
         16,
         1
       ],
-      "loss": 0.679427444934845,
+      "loss": 0.6794273853302002,
       "total_params": 132609,
       "trainable_params": 132609,
       "frozen_params_in_model": 0,

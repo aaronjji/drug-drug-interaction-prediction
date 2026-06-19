@@ -69,10 +69,6 @@ def main():
         pairs, label_col="Y", val_frac=cfg["transductive_val_frac"],
         test_frac=cfg["transductive_test_frac"], seed=cfg["seed"],
         min_stratify_count=cfg["transductive_min_stratify_count"])
-    trans_evaluable, trans_info = sp.evaluable_classes(
-        transductive.loc[transductive["split"] == "train", "Y"],
-        transductive.loc[transductive["split"] == "test", "Y"],
-        k=cfg["evaluable_class_min_k"])
 
     log.info("=== inductive drug split (cold start) ===")
     drug_split, coverage_report = sp.build_inductive_drug_split(
@@ -81,10 +77,11 @@ def main():
         test_frac=cfg["inductive_test_frac"], seed=cfg["seed"], stratify_by_text=True)
     inductive = sp.derive_inductive_pairs(pairs, "ID1", "ID2", drug_split)
 
-    s1_evaluable, s1_info = sp.evaluable_classes(
-        inductive["train"]["Y"], inductive["s1"]["Y"], k=cfg["evaluable_class_min_k"])
-    s2_evaluable, s2_info = sp.evaluable_classes(
-        inductive["train"]["Y"], inductive["s2"]["Y"], k=cfg["evaluable_class_min_k"])
+    log.info("=== evaluable-class policy (computed once, persisted, reused at eval time) ===")
+    evaluable_all = sp.compute_evaluable_classes_for_splits(transductive, inductive, "Y", k=cfg["evaluable_class_min_k"])
+    trans_info = evaluable_all["transductive_test"]["info"]
+    s1_info = evaluable_all["inductive_s1"]["info"]
+    s2_info = evaluable_all["inductive_s2"]["info"]
 
     log.info("=== text coverage: train drugs vs inductive-test drugs (S1/S2 pool) ===")
     train_drug_cov = float(np.mean([has_text.get(i, False) for i in drug_split["train"]])) if drug_split["train"] else float("nan")
@@ -93,6 +90,7 @@ def main():
     log.info(f"test (S1/S2) drugs text coverage: {test_drug_cov:.3f} ({len(drug_split['test'])} drugs)")
 
     out_dir = sp.save_splits(cfg["seed"], transductive, drug_split, inductive, tag="smoke_drugbank")
+    sp.save_evaluable_classes(out_dir, evaluable_all)
 
     log.info("=== ChCh-Miner binary dataset (already resolved decision, re-verified) ===")
     chch = dp.load_chch_miner_binary(cfg["chch_miner_url"], smiles_map_full)

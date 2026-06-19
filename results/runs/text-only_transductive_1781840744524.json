@@ -1,0 +1,119 @@
+{
+  "config": {
+    "name": "text-only",
+    "split_type": "transductive",
+    "fusion_type": "concat",
+    "use_graph": false,
+    "use_text": true
+  },
+  "result": {
+    "run_name": "text-only_transductive",
+    "best_val_score": 0.861060129186881,
+    "used_loss_fallback": false,
+    "wall_clock_sec": 18.689767599105835,
+    "epochs_run": 15,
+    "history": [
+      {
+        "epoch": 0,
+        "train_loss": 2.77311602581379,
+        "val_score": 0.5270829131105391,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 1,
+        "train_loss": 2.064780407173689,
+        "val_score": 0.657974330582404,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 2,
+        "train_loss": 1.694390199905218,
+        "val_score": 0.7432016098430805,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 3,
+        "train_loss": 1.4789179979368698,
+        "val_score": 0.7767943262065798,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 4,
+        "train_loss": 1.3691270573194636,
+        "val_score": 0.7820720964569888,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 5,
+        "train_loss": 1.2263031130613282,
+        "val_score": 0.8061281056041211,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 6,
+        "train_loss": 1.0898182281228,
+        "val_score": 0.8200060359024569,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.9668958589088085,
+        "val_score": 0.831124775852126,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.8555761755898942,
+        "val_score": 0.8197040931991705,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.7647613730541495,
+        "val_score": 0.8430304829011459,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.6717305315095324,
+        "val_score": 0.8481570687368506,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.5936783746231434,
+        "val_score": 0.8410903042924494,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.632979293202245,
+        "val_score": 0.8397169366519641,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 13,
+        "train_loss": 0.49425059487653333,
+        "val_score": 0.861060129186881,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 14,
+        "train_loss": 0.4556533614563387,
+        "val_score": 0.8590372928868039,
+        "using_loss_fallback": false
+      }
+    ],
+    "metrics_by_split": {
+      "test": {
+        "auroc": 0.9579530110818081,
+        "auprc": 0.7524661747721398,
+        "f1": 0.6988864617006978,
+        "accuracy": 0.7185690709850373,
+        "n_evaluable_classes_used": 7,
+        "n_evaluable_classes_skipped": 0
+      }
+    },
+    "checkpoint": "C:\\Users\\aaron\\Downloads\\Drug\u2013Drug Interaction Prediction\\ddi\\results\\checkpoints\\text-only_transductive.pt"
+  }
+}

@@ -1,0 +1,8 @@
+epochs: 15
+batch_size: 32
+lr: 0.001
+patience: 4
+seed: 0
+binary_val_frac: 0.1
+binary_test_frac: 0.2
+negative_sample_ratio: 1

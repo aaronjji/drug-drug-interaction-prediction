@@ -14,7 +14,6 @@ import pandas as pd
 import torch
 import torch.nn as nn
 import yaml
-from torch_geometric.data import Batch
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src"))
 
@@ -32,28 +31,6 @@ def param_counts(model: nn.Module):
     total = sum(p.numel() for p in model.parameters())
     trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
     return total, trainable
-
-
-def build_pair_batch(pairs, graphs, text_emb_cache, has_text, lm_dim, device):
-    """pairs: list of (id_a, id_b). Returns the two graph batches and the two
-    (text_embedding, has_text) tensor pairs, aligned by position."""
-    data_a = [graphs[a] for a, _ in pairs]
-    data_b = [graphs[b] for _, b in pairs]
-    batch_a = Batch.from_data_list(data_a).to(device)
-    batch_b = Batch.from_data_list(data_b).to(device)
-
-    def text_tensors(ids):
-        emb = torch.stack([
-            torch.tensor(text_emb_cache[i], dtype=torch.float) if has_text.get(i, False)
-            else torch.zeros(lm_dim, dtype=torch.float)
-            for i in ids
-        ]).to(device)
-        flags = torch.tensor([1.0 if has_text.get(i, False) else 0.0 for i in ids], device=device)
-        return emb, flags
-
-    text_a, ht_a = text_tensors([a for a, _ in pairs])
-    text_b, ht_b = text_tensors([b for _, b in pairs])
-    return batch_a, text_a, ht_a, batch_b, text_b, ht_b
 
 
 def check_grad_flow(model: DDIModel):
@@ -115,7 +92,7 @@ def main():
     transductive = pd.read_csv(os.path.join(ROOT, "data", "splits", "smoke_drugbank_seed0", "transductive.csv"))
     train_rows = transductive[transductive["split"] == "train"].sample(16, random_state=0)
     multiclass_pairs = list(zip(train_rows["ID1"], train_rows["ID2"]))
-    multiclass_labels = torch.tensor([dp.zero_indexed_label(y) for y in train_rows["Y"]])
+    multiclass_labels = torch.tensor(train_rows["Y"].values, dtype=torch.long)
 
     log.info("=== building binary (BioSNAP-style) smoke batch with negative sampling ===")
     chch = dp.load_chch_miner_binary(data_cfg["chch_miner_url"],
@@ -132,8 +109,8 @@ def main():
     log.info(f"binary smoke batch: {len(pos_pairs)} positives + {len(neg_pairs)} negatives "
               f"(ratio={model_cfg['negative_sample_ratio']}:1, as configured)")
 
-    mc_batch = build_pair_batch(multiclass_pairs, graphs, text_emb_cache, has_text, lm_dim, device)
-    bin_batch = build_pair_batch(binary_pairs, graphs, text_emb_cache, has_text, lm_dim, device)
+    mc_batch = dp.build_pair_batch(multiclass_pairs, graphs, text_emb_cache, has_text, lm_dim, device)
+    bin_batch = dp.build_pair_batch(binary_pairs, graphs, text_emb_cache, has_text, lm_dim, device)
     multiclass_labels, binary_labels = multiclass_labels.to(device), binary_labels.to(device)
 
     common = dict(atom_dim=dp.ATOM_FEATURE_DIM, edge_dim=dp.BOND_FEATURE_DIM, lm_dim=lm_dim,
