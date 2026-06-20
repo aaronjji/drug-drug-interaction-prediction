@@ -1,0 +1,12 @@
+{
+  "test_acc": 0.880194068393458,
+  "test_auroc": 0.943835344338355,
+  "test_auprc": 0.9323953386614017,
+  "test_f1": 0.8824056531312408,
+  "wall_clock_sec": 16760.086102247238,
+  "epochs_run": 100,
+  "stopped_early": false,
+  "peak_gpu_mem_mb": 1202.492416,
+  "n_params": 374134,
+  "repo_commit": "23e958f65f59f689edea8d68a38f944c6d18dc96"
+}
