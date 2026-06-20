@@ -313,3 +313,135 @@ config: {"name": "fingerprint-mlp", "split_type": "inductive", "scale": "full", 
   s2: {"auroc": 0.8472841267244146, "auprc": 0.3016056786003313, "f1": 0.2680596196553439, "accuracy": 0.25718590177019107, "n_evaluable_classes_used": 28, "n_evaluable_classes_skipped": 0}
 wall_clock_sec=413.2 epochs_run=18 stopped_early=True peak_gpu_mem_mb=22.828544
 
+=== binary_fusion=concat_transductive_seed0_1781933793226 ===
+config: {"name": "fusion=concat", "split_type": "transductive", "dataset": "chch_biosnap", "seed": 0}
+  test: {"auroc": 0.9398281112816611, "auprc": 0.927889703672023, "f1": 0.8770666829357574, "accuracy": 0.8723875870804306}
+wall_clock_sec=318.7 epochs_run=19 stopped_early=True peak_gpu_mem_mb=46.150144
+
+=== binary_fusion=concat_inductive_seed0_1781934025401 ===
+config: {"name": "fusion=concat", "split_type": "inductive", "dataset": "chch_biosnap", "seed": 0}
+  s1: {"auroc": 0.8358501208818911, "auprc": 0.8327243472579149, "f1": 0.7173210161662817, "accuracy": 0.7499182739457338}
+  s2: {"auroc": 0.7398440220009969, "auprc": 0.7220461600499808, "f1": 0.5682382133995038, "accuracy": 0.6549900859220092}
+wall_clock_sec=228.0 epochs_run=19 stopped_early=True peak_gpu_mem_mb=44.57216
+
+=== binary_graph-only_transductive_seed0_1781934418415 ===
+config: {"name": "graph-only", "split_type": "transductive", "dataset": "chch_biosnap", "seed": 0}
+  test: {"auroc": 0.9364159501628603, "auprc": 0.9261567731609224, "f1": 0.8706394493793752, "accuracy": 0.8607346421785941}
+wall_clock_sec=390.6 epochs_run=27 stopped_early=True peak_gpu_mem_mb=44.544512
+
+=== binary_graph-only_inductive_seed0_1781934738987 ===
+config: {"name": "graph-only", "split_type": "inductive", "dataset": "chch_biosnap", "seed": 0}
+  s1: {"auroc": 0.8110073673940669, "auprc": 0.8101566018681541, "f1": 0.7315664727429433, "accuracy": 0.7454642039882314}
+  s2: {"auroc": 0.7097217374514507, "auprc": 0.701901863402816, "f1": 0.5960214231063504, "accuracy": 0.6510244547257105}
+wall_clock_sec=316.6 epochs_run=28 stopped_early=True peak_gpu_mem_mb=43.131392
+
+=== binary_text-only_transductive_seed0_1781935115058 ===
+config: {"name": "text-only", "split_type": "transductive", "dataset": "chch_biosnap", "seed": 0}
+  test: {"auroc": 0.9225578674504389, "auprc": 0.9108693883144987, "f1": 0.8460760773410843, "accuracy": 0.8457251424952501}
+wall_clock_sec=373.7 epochs_run=34 stopped_early=True peak_gpu_mem_mb=25.407488
+
+=== binary_text-only_inductive_seed0_1781935234199 ===
+config: {"name": "text-only", "split_type": "inductive", "dataset": "chch_biosnap", "seed": 0}
+  s1: {"auroc": 0.7922259840816135, "auprc": 0.7898178904051139, "f1": 0.6909220299782057, "accuracy": 0.7160428244524354}
+  s2: {"auroc": 0.6828244223122016, "auprc": 0.6634543189571755, "f1": 0.5485164394546913, "accuracy": 0.6278916060806345}
+wall_clock_sec=115.0 epochs_run=13 stopped_early=True peak_gpu_mem_mb=25.971712
+
+=== binary_fingerprint-mlp_transductive_seed0_1781935333979 ===
+config: {"name": "fingerprint-mlp", "split_type": "transductive", "dataset": "chch_biosnap", "seed": 0}
+  test: {"auroc": 0.9666549924375542, "auprc": 0.9585194205622712, "f1": 0.9159847585733025, "accuracy": 0.9148195060164661}
+wall_clock_sec=99.2 epochs_run=23 stopped_early=True peak_gpu_mem_mb=21.67296
+
+=== binary_fingerprint-mlp_inductive_seed0_1781935386220 ===
+config: {"name": "fingerprint-mlp", "split_type": "inductive", "dataset": "chch_biosnap", "seed": 0}
+  s1: {"auroc": 0.8072202971878863, "auprc": 0.8140599224842011, "f1": 0.7098740164642744, "accuracy": 0.739334749918274}
+  s2: {"auroc": 0.6783872226122231, "auprc": 0.6842790163099419, "f1": 0.516320474777448, "accuracy": 0.6229345670852611}
+wall_clock_sec=51.2 epochs_run=15 stopped_early=True peak_gpu_mem_mb=22.32576
+
+=== binary_fusion=concat_transductive_seed1_1781935725130 ===
+config: {"name": "fusion=concat", "split_type": "transductive", "dataset": "chch_biosnap", "seed": 1}
+  test: {"auroc": 0.9375973441797243, "auprc": 0.9257360231911587, "f1": 0.8702970297029703, "accuracy": 0.8672577580747308}
+wall_clock_sec=335.2 epochs_run=22 stopped_early=True peak_gpu_mem_mb=45.50144
+
+=== binary_fusion=concat_inductive_seed1_1781936047472 ===
+config: {"name": "fusion=concat", "split_type": "inductive", "dataset": "chch_biosnap", "seed": 1}
+  s1: {"auroc": 0.8355480564160376, "auprc": 0.8293484483897637, "f1": 0.7346502936465563, "accuracy": 0.7562929061784897}
+  s2: {"auroc": 0.7422237065065971, "auprc": 0.7395132322056878, "f1": 0.5853658536585366, "accuracy": 0.6629213483146067}
+wall_clock_sec=318.3 epochs_run=27 stopped_early=True peak_gpu_mem_mb=47.450624
+
+=== binary_graph-only_transductive_seed1_1781936625524 ===
+config: {"name": "graph-only", "split_type": "transductive", "dataset": "chch_biosnap", "seed": 1}
+  test: {"auroc": 0.9467719325969691, "auprc": 0.9360104202329271, "f1": 0.8845797566849873, "accuracy": 0.8816339455351488}
+wall_clock_sec=575.8 epochs_run=40 stopped_early=False peak_gpu_mem_mb=45.656064
+
+=== binary_graph-only_inductive_seed1_1781936868621 ===
+config: {"name": "graph-only", "split_type": "inductive", "dataset": "chch_biosnap", "seed": 1}
+  s1: {"auroc": 0.8091608601716638, "auprc": 0.802466544732639, "f1": 0.7375129319263397, "accuracy": 0.7408058188950637}
+  s2: {"auroc": 0.7179967927225993, "auprc": 0.7101811231171193, "f1": 0.627015406664278, "accuracy": 0.6559814937210839}
+wall_clock_sec=239.1 epochs_run=21 stopped_early=True peak_gpu_mem_mb=45.85984
+
+=== binary_text-only_transductive_seed1_1781937175527 ===
+config: {"name": "text-only", "split_type": "transductive", "dataset": "chch_biosnap", "seed": 1}
+  test: {"auroc": 0.9170923629123698, "auprc": 0.9081353842829075, "f1": 0.8415307174479957, "accuracy": 0.8345155161494617}
+wall_clock_sec=304.6 epochs_run=28 stopped_early=True peak_gpu_mem_mb=26.975232
+
+=== binary_text-only_inductive_seed1_1781937332035 ===
+config: {"name": "text-only", "split_type": "inductive", "dataset": "chch_biosnap", "seed": 1}
+  s1: {"auroc": 0.7965177106691428, "auprc": 0.7957116470823244, "f1": 0.6871293403956721, "accuracy": 0.7175956194834914}
+  s2: {"auroc": 0.6923802917128442, "auprc": 0.6916209888261107, "f1": 0.5383668444809192, "accuracy": 0.6282220753469927}
+wall_clock_sec=152.4 epochs_run=17 stopped_early=True peak_gpu_mem_mb=25.87392
+
+=== binary_fingerprint-mlp_transductive_seed1_1781937466095 ===
+config: {"name": "fingerprint-mlp", "split_type": "transductive", "dataset": "chch_biosnap", "seed": 1}
+  test: {"auroc": 0.9710765866596932, "auprc": 0.9646961463834304, "f1": 0.9201825808043425, "accuracy": 0.9180493983533882}
+wall_clock_sec=133.5 epochs_run=31 stopped_early=True peak_gpu_mem_mb=21.67296
+
+=== binary_fingerprint-mlp_inductive_seed1_1781937524502 ===
+config: {"name": "fingerprint-mlp", "split_type": "inductive", "dataset": "chch_biosnap", "seed": 1}
+  s1: {"auroc": 0.7969543532869583, "auprc": 0.802705545170002, "f1": 0.6675660050105994, "accuracy": 0.7180451127819549}
+  s2: {"auroc": 0.6649417321307427, "auprc": 0.6656579582031761, "f1": 0.42163661581137307, "accuracy": 0.586582947785856}
+wall_clock_sec=57.4 epochs_run=17 stopped_early=True peak_gpu_mem_mb=22.32576
+
+=== binary_fusion=concat_transductive_seed2_1781937948390 ===
+config: {"name": "fusion=concat", "split_type": "transductive", "dataset": "chch_biosnap", "seed": 2}
+  test: {"auroc": 0.9391751058160844, "auprc": 0.9265437831810119, "f1": 0.8745059288537549, "accuracy": 0.8713109563014566}
+wall_clock_sec=420.2 epochs_run=28 stopped_early=True peak_gpu_mem_mb=46.193664
+
+=== binary_fusion=concat_inductive_seed2_1781938340677 ===
+config: {"name": "fusion=concat", "split_type": "inductive", "dataset": "chch_biosnap", "seed": 2}
+  s1: {"auroc": 0.8328140106562867, "auprc": 0.829696219698182, "f1": 0.7173038694466275, "accuracy": 0.7501225890813992}
+  s2: {"auroc": 0.7289992569355954, "auprc": 0.7164461752949478, "f1": 0.5403123680878008, "accuracy": 0.6401189689358889}
+wall_clock_sec=388.1 epochs_run=33 stopped_early=True peak_gpu_mem_mb=45.04576
+
+=== binary_graph-only_transductive_seed2_1781938834219 ===
+config: {"name": "graph-only", "split_type": "transductive", "dataset": "chch_biosnap", "seed": 2}
+  test: {"auroc": 0.9423258561847812, "auprc": 0.9336886752124617, "f1": 0.8769784172661871, "accuracy": 0.8700443318556048}
+wall_clock_sec=491.2 epochs_run=34 stopped_early=True peak_gpu_mem_mb=44.529152
+
+=== binary_graph-only_inductive_seed2_1781938963760 ===
+config: {"name": "graph-only", "split_type": "inductive", "dataset": "chch_biosnap", "seed": 2}
+  s1: {"auroc": 0.7584523014259927, "auprc": 0.7409028915505271, "f1": 0.7039489429597128, "accuracy": 0.6967146126185028}
+  s2: {"auroc": 0.6697211957701682, "auprc": 0.651890815710899, "f1": 0.6170798898071626, "accuracy": 0.6325181758096498}
+wall_clock_sec=125.5 epochs_run=11 stopped_early=True peak_gpu_mem_mb=43.495936
+
+=== binary_text-only_transductive_seed2_1781939169867 ===
+config: {"name": "text-only", "split_type": "transductive", "dataset": "chch_biosnap", "seed": 2}
+  test: {"auroc": 0.910659354631181, "auprc": 0.9004180767422186, "f1": 0.8195051896337882, "accuracy": 0.824889170360988}
+wall_clock_sec=203.8 epochs_run=19 stopped_early=True peak_gpu_mem_mb=25.462272
+
+=== binary_text-only_inductive_seed2_1781939335495 ===
+config: {"name": "text-only", "split_type": "inductive", "dataset": "chch_biosnap", "seed": 2}
+  s1: {"auroc": 0.792622014140344, "auprc": 0.7910248357985343, "f1": 0.6516875510106102, "accuracy": 0.7035387381497221}
+  s2: {"auroc": 0.6736558113446408, "auprc": 0.6569897591257774, "f1": 0.4393530997304582, "accuracy": 0.5875743555849307}
+wall_clock_sec=161.6 epochs_run=19 stopped_early=True peak_gpu_mem_mb=25.781248
+
+=== binary_fingerprint-mlp_transductive_seed2_1781939465024 ===
+config: {"name": "fingerprint-mlp", "split_type": "transductive", "dataset": "chch_biosnap", "seed": 2}
+  test: {"auroc": 0.969099705965047, "auprc": 0.9626291675870782, "f1": 0.9214426877470355, "accuracy": 0.9194426852438252}
+wall_clock_sec=129.0 epochs_run=30 stopped_early=True peak_gpu_mem_mb=21.67296
+
+=== binary_fingerprint-mlp_inductive_seed2_1781939553194 ===
+config: {"name": "fingerprint-mlp", "split_type": "inductive", "dataset": "chch_biosnap", "seed": 2}
+  s1: {"auroc": 0.8131703960980525, "auprc": 0.8204766012571385, "f1": 0.6725517776592133, "accuracy": 0.7241337038247794}
+  s2: {"auroc": 0.6809737507366209, "auprc": 0.6781241941477429, "f1": 0.4269033162073797, "accuracy": 0.5945142101784534}
+wall_clock_sec=87.2 epochs_run=26 stopped_early=True peak_gpu_mem_mb=22.32576
+

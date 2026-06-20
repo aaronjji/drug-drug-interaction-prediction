@@ -1,0 +1,192 @@
+{
+  "config": {
+    "name": "fingerprint-mlp",
+    "split_type": "inductive",
+    "dataset": "chch_biosnap",
+    "seed": 2
+  },
+  "result": {
+    "run_name": "binary_fingerprint-mlp_inductive_seed2",
+    "best_val_score": 0.8008975848678508,
+    "used_loss_fallback": false,
+    "wall_clock_sec": 87.18388676643372,
+    "epochs_run": 26,
+    "stopped_early": true,
+    "hit_epoch_cap": false,
+    "peak_gpu_mem_mb": 22.32576,
+    "trainable_params": 94593,
+    "history": [
+      {
+        "epoch": 0,
+        "train_loss": 0.47885315816230534,
+        "val_score": 0.74487149308699,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.36917538114102283,
+        "val_score": 0.7569327637869583,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.323512011794461,
+        "val_score": 0.761199323953543,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.28878035608877584,
+        "val_score": 0.7679114938945896,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.2660833214611095,
+        "val_score": 0.7781505468584942,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.248631684290578,
+        "val_score": 0.7806960622569753,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.23579611444734855,
+        "val_score": 0.7836772516380848,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.22733769955866762,
+        "val_score": 0.7879649091279323,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.21523038898142155,
+        "val_score": 0.7862754896051183,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.2046475441057854,
+        "val_score": 0.787090699483069,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.19778653621953857,
+        "val_score": 0.7821097306455127,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.19128985107412158,
+        "val_score": 0.7850557837976269,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.1846387883105248,
+        "val_score": 0.7920146023718246,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 13,
+        "train_loss": 0.18086949177670256,
+        "val_score": 0.7958107217765004,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 14,
+        "train_loss": 0.17508291184528493,
+        "val_score": 0.7864846628690956,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 15,
+        "train_loss": 0.1662555222273994,
+        "val_score": 0.7928757255994475,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 16,
+        "train_loss": 0.16256399206279962,
+        "val_score": 0.7967533510391883,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 17,
+        "train_loss": 0.15610534572816195,
+        "val_score": 0.7999846028514346,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 18,
+        "train_loss": 0.15532747331457825,
+        "val_score": 0.7968228806166662,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 19,
+        "train_loss": 0.15190638186042213,
+        "val_score": 0.7937759807494309,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 20,
+        "train_loss": 0.14679938428641112,
+        "val_score": 0.8008975848678508,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 21,
+        "train_loss": 0.1405426639608081,
+        "val_score": 0.798234894453438,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 22,
+        "train_loss": 0.13889610738169436,
+        "val_score": 0.7916212781994807,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 23,
+        "train_loss": 0.13501306615045824,
+        "val_score": 0.7940112383118054,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 24,
+        "train_loss": 0.13166688033452603,
+        "val_score": 0.7958733343800624,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 25,
+        "train_loss": 0.12662175434370027,
+        "val_score": 0.7957785153920419,
+        "using_loss_fallback": false
+      }
+    ],
+    "metrics_by_split": {
+      "s1": {
+        "auroc": 0.8131703960980525,
+        "auprc": 0.8204766012571385,
+        "f1": 0.6725517776592133,
+        "accuracy": 0.7241337038247794
+      },
+      "s2": {
+        "auroc": 0.6809737507366209,
+        "auprc": 0.6781241941477429,
+        "f1": 0.4269033162073797,
+        "accuracy": 0.5945142101784534
+      }
+    },
+    "checkpoint": "C:\\Users\\aaron\\Downloads\\Drug\u2013Drug Interaction Prediction\\ddi\\results\\checkpoints\\binary_fingerprint-mlp_inductive_seed2.pt"
+  }
+}

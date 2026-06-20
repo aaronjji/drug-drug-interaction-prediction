@@ -1,0 +1,162 @@
+{
+  "config": {
+    "name": "graph-only",
+    "split_type": "inductive",
+    "dataset": "chch_biosnap",
+    "seed": 1
+  },
+  "result": {
+    "run_name": "binary_graph-only_inductive_seed1",
+    "best_val_score": 0.7840523425670585,
+    "used_loss_fallback": false,
+    "wall_clock_sec": 239.13134026527405,
+    "epochs_run": 21,
+    "stopped_early": true,
+    "hit_epoch_cap": false,
+    "peak_gpu_mem_mb": 45.85984,
+    "trainable_params": 57985,
+    "history": [
+      {
+        "epoch": 0,
+        "train_loss": 0.6142615255517272,
+        "val_score": 0.6867827873127461,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.5457701903525565,
+        "val_score": 0.6794229048610905,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.5005413399407856,
+        "val_score": 0.7058541218941813,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.47233154743816413,
+        "val_score": 0.6935260469719216,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.448279591843626,
+        "val_score": 0.7273679030598788,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.42779214647496383,
+        "val_score": 0.7051508445245751,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.4104597444257766,
+        "val_score": 0.7303656656463287,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.3951334580545515,
+        "val_score": 0.7149203319009159,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.3788076570975743,
+        "val_score": 0.7399326872020107,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.3690713538458355,
+        "val_score": 0.7401443826145123,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.3574409561004011,
+        "val_score": 0.7530636926415181,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.3437720314368933,
+        "val_score": 0.7438141716950302,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.33493821551807246,
+        "val_score": 0.7497573824811693,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 13,
+        "train_loss": 0.32623081455783787,
+        "val_score": 0.7547061138457742,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 14,
+        "train_loss": 0.3205157898156247,
+        "val_score": 0.7774815017537197,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 15,
+        "train_loss": 0.3106990575696981,
+        "val_score": 0.7840523425670585,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 16,
+        "train_loss": 0.30237018113786523,
+        "val_score": 0.7768779196610136,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 17,
+        "train_loss": 0.29560882408977673,
+        "val_score": 0.7779603101190429,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 18,
+        "train_loss": 0.2907824139796828,
+        "val_score": 0.7825101908903499,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 19,
+        "train_loss": 0.2818115189624804,
+        "val_score": 0.7735332269123905,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 20,
+        "train_loss": 0.2766671716980052,
+        "val_score": 0.760161091194865,
+        "using_loss_fallback": false
+      }
+    ],
+    "metrics_by_split": {
+      "s1": {
+        "auroc": 0.8091608601716638,
+        "auprc": 0.802466544732639,
+        "f1": 0.7375129319263397,
+        "accuracy": 0.7408058188950637
+      },
+      "s2": {
+        "auroc": 0.7179967927225993,
+        "auprc": 0.7101811231171193,
+        "f1": 0.627015406664278,
+        "accuracy": 0.6559814937210839
+      }
+    },
+    "checkpoint": "C:\\Users\\aaron\\Downloads\\Drug\u2013Drug Interaction Prediction\\ddi\\results\\checkpoints\\binary_graph-only_inductive_seed1.pt"
+  }
+}

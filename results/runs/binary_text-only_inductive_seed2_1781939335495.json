@@ -1,0 +1,150 @@
+{
+  "config": {
+    "name": "text-only",
+    "split_type": "inductive",
+    "dataset": "chch_biosnap",
+    "seed": 2
+  },
+  "result": {
+    "run_name": "binary_text-only_inductive_seed2",
+    "best_val_score": 0.8136564695605002,
+    "used_loss_fallback": false,
+    "wall_clock_sec": 161.6243965625763,
+    "epochs_run": 19,
+    "stopped_early": true,
+    "hit_epoch_cap": false,
+    "peak_gpu_mem_mb": 25.781248,
+    "trainable_params": 74881,
+    "history": [
+      {
+        "epoch": 0,
+        "train_loss": 0.5981759516796722,
+        "val_score": 0.7508517808512138,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.5189966607990684,
+        "val_score": 0.7750875528732666,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.48411467746133713,
+        "val_score": 0.7799474785447968,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.4587457077256564,
+        "val_score": 0.7758443043081521,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.4355462776456133,
+        "val_score": 0.7935076765521419,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.4150640992535319,
+        "val_score": 0.7963199816947018,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.39740718401337866,
+        "val_score": 0.8004321659060665,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.38233749722612315,
+        "val_score": 0.7998329565573363,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.3680354299309859,
+        "val_score": 0.7902024303881325,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.3532571080710073,
+        "val_score": 0.8063592411948903,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.3398081691567801,
+        "val_score": 0.8093457587698366,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.3298915394327857,
+        "val_score": 0.8070932675714468,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.32473324454129676,
+        "val_score": 0.807726872130464,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 13,
+        "train_loss": 0.3065305923967152,
+        "val_score": 0.8136564695605002,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 14,
+        "train_loss": 0.3074413591698046,
+        "val_score": 0.8126681356184954,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 15,
+        "train_loss": 0.2894916392419032,
+        "val_score": 0.8008247068704886,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 16,
+        "train_loss": 0.2839253407940969,
+        "val_score": 0.7999809549794679,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 17,
+        "train_loss": 0.27550885814671233,
+        "val_score": 0.8090037276164664,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 18,
+        "train_loss": 0.2713512028552895,
+        "val_score": 0.8014219444248913,
+        "using_loss_fallback": false
+      }
+    ],
+    "metrics_by_split": {
+      "s1": {
+        "auroc": 0.792622014140344,
+        "auprc": 0.7910248357985343,
+        "f1": 0.6516875510106102,
+        "accuracy": 0.7035387381497221
+      },
+      "s2": {
+        "auroc": 0.6736558113446408,
+        "auprc": 0.6569897591257774,
+        "f1": 0.4393530997304582,
+        "accuracy": 0.5875743555849307
+      }
+    },
+    "checkpoint": "C:\\Users\\aaron\\Downloads\\Drug\u2013Drug Interaction Prediction\\ddi\\results\\checkpoints\\binary_text-only_inductive_seed2.pt"
+  }
+}
