@@ -1,0 +1,44 @@
+[
+  {
+    "model": "fusion=concat",
+    "seed": 0,
+    "tuned_threshold": 0.07213936001062393,
+    "s2_f1_at_0.5": 0.5682382133995038,
+    "s2_f1_at_tuned": 0.6911196911196911
+  },
+  {
+    "model": "fusion=concat",
+    "seed": 1,
+    "tuned_threshold": 0.07894327491521835,
+    "s2_f1_at_0.5": 0.5787781350482315,
+    "s2_f1_at_tuned": 0.6834532374100719
+  },
+  {
+    "model": "fusion=concat",
+    "seed": 2,
+    "tuned_threshold": 0.030390571802854538,
+    "s2_f1_at_0.5": 0.5389473684210526,
+    "s2_f1_at_tuned": 0.6617891586298636
+  },
+  {
+    "model": "graph-only",
+    "seed": 0,
+    "tuned_threshold": 0.21837331354618073,
+    "s2_f1_at_0.5": 0.5967062428188433,
+    "s2_f1_at_tuned": 0.6544861337683524
+  },
+  {
+    "model": "graph-only",
+    "seed": 1,
+    "tuned_threshold": 0.27211591601371765,
+    "s2_f1_at_0.5": 0.6258941344778255,
+    "s2_f1_at_tuned": 0.6729500471253534
+  },
+  {
+    "model": "graph-only",
+    "seed": 2,
+    "tuned_threshold": 0.40365907549858093,
+    "s2_f1_at_0.5": 0.6207135434707308,
+    "s2_f1_at_tuned": 0.649325626204239
+  }
+]

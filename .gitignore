@@ -1,4 +1,5 @@
 data/
+external/
 results/*.csv
 results/*.tex
 figures/*.pdf
