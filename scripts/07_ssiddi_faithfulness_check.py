@@ -31,11 +31,13 @@ CODE_FILES = ["models.py", "layers.py", "custom_loss.py", "data_preprocessing.py
 DATA_FILES = ["ddi_training.csv", "ddi_validation.csv", "ddi_test.csv", "drug_smiles.csv",
               "ddis.csv", "Interaction_information.csv"]
 
-MAX_EPOCHS = 100
-PATIENCE = 10
+MAX_EPOCHS = 300  # their published default (extended from the 100-epoch Stage A run, which was still climbing)
+PATIENCE = 25  # plateau guardrail: stop if no real improvement for this many epochs
+MIN_IMPROVEMENT = 0.001  # an epoch only counts as "improved" if it beats best by more than this
 BATCH_SIZE = 1024
 LR = 1e-2
 WEIGHT_DECAY = 5e-4
+CHECKPOINT_PATH = os.path.join(ROOT, "results", "checkpoints", "ssiddi_faithfulness_latest.pt")
 
 
 def ensure_repo_cached():
@@ -121,9 +123,21 @@ def main():
             return acc, auc_roc, auc_prc, f1
 
         best_val_auc, best_state, no_improve = -1.0, None, 0
+        history = []
+        start_epoch = 0
+        if os.path.exists(CHECKPOINT_PATH):
+            ckpt = torch.load(CHECKPOINT_PATH, weights_only=False)
+            model.load_state_dict(ckpt["model_state"])
+            optimizer.load_state_dict(ckpt["optimizer_state"])
+            scheduler.load_state_dict(ckpt["scheduler_state"])
+            best_val_auc, best_state = ckpt["best_val_auc"], ckpt["best_state"]
+            no_improve, history = ckpt["no_improve"], ckpt["history"]
+            start_epoch = ckpt["epoch"] + 1
+            log.info(f"resumed from checkpoint at epoch {start_epoch}, best_val_auc so far={best_val_auc:.4f}")
+
         t0 = time.time()
         stopped_early = False
-        for epoch in range(MAX_EPOCHS):
+        for epoch in range(start_epoch, MAX_EPOCHS):
             model.train()
             train_loss = 0.0
             for batch in train_loader:
@@ -146,19 +160,29 @@ def main():
                     val_truth.append(truth)
             val_probas, val_truth = np.concatenate(val_probas), np.concatenate(val_truth)
             val_acc, val_auc, val_auprc, val_f1 = compute_metrics(val_probas, val_truth)
+            history.append({"epoch": epoch, "train_loss": train_loss, "val_acc": val_acc,
+                             "val_auroc": val_auc, "val_auprc": val_auprc})
             log.info(f"epoch {epoch}: train_loss={train_loss:.4f} val_acc={val_acc:.4f} "
                      f"val_auroc={val_auc:.4f} val_auprc={val_auprc:.4f}")
 
-            if val_auc > best_val_auc:
+            if val_auc > best_val_auc + MIN_IMPROVEMENT:
                 best_val_auc = val_auc
                 best_state = {k: v.detach().cpu().clone() for k, v in model.state_dict().items()}
                 no_improve = 0
             else:
                 no_improve += 1
-                if no_improve >= PATIENCE:
-                    log.info(f"early stopping at epoch {epoch}")
-                    stopped_early = True
-                    break
+
+            os.makedirs(os.path.dirname(CHECKPOINT_PATH), exist_ok=True)
+            torch.save({"model_state": model.state_dict(), "optimizer_state": optimizer.state_dict(),
+                        "scheduler_state": scheduler.state_dict(), "epoch": epoch,
+                        "best_val_auc": best_val_auc, "best_state": best_state,
+                        "no_improve": no_improve, "history": history}, CHECKPOINT_PATH)
+
+            if no_improve >= PATIENCE:
+                log.info(f"plateau guardrail: no improvement > {MIN_IMPROVEMENT} for {PATIENCE} epochs, "
+                         f"stopping at epoch {epoch}")
+                stopped_early = True
+                break
 
         wall_clock = time.time() - t0
         peak_mem_mb = torch.cuda.max_memory_allocated() / 1e6 if device == "cuda" else None
@@ -174,8 +198,9 @@ def main():
         test_probas, test_truth = np.concatenate(test_probas), np.concatenate(test_truth)
         test_acc, test_auc, test_auprc, test_f1 = compute_metrics(test_probas, test_truth)
 
-        log.info(f"=== FAITHFULNESS CHECK RESULT ===")
+        log.info(f"=== FAITHFULNESS CHECK RESULT (extended run) ===")
         log.info(f"reproduced (this run):  acc={test_acc:.4f} auroc={test_auc:.4f} auprc={test_auprc:.4f} f1={test_f1:.4f}")
+        log.info(f"Stage A (100-epoch run): acc=0.8802 auroc=0.9438 auprc=0.9324 f1=0.8824")
         log.info(f"published range found via web search (unverified exact decimal, paywalled paper): "
                  f"acc ~0.94-0.96, auroc ~0.98-0.99 (multiple inconsistent sources, see report)")
         log.info(f"wall_clock_sec={wall_clock:.1f} epochs_run={epoch+1} stopped_early={stopped_early} "
@@ -184,9 +209,10 @@ def main():
         import json
         out = {"test_acc": test_acc, "test_auroc": test_auc, "test_auprc": test_auprc, "test_f1": test_f1,
                "wall_clock_sec": wall_clock, "epochs_run": epoch + 1, "stopped_early": stopped_early,
-               "peak_gpu_mem_mb": peak_mem_mb, "n_params": n_params,
+               "peak_gpu_mem_mb": peak_mem_mb, "n_params": n_params, "history": history,
+               "stage_a_100_epoch": {"test_acc": 0.8802, "test_auroc": 0.9438, "test_auprc": 0.9324, "test_f1": 0.8824},
                "repo_commit": "23e958f65f59f689edea8d68a38f944c6d18dc96"}
-        with open(os.path.join(ROOT, "results", "ssiddi_faithfulness_check.json"), "w") as fh:
+        with open(os.path.join(ROOT, "results", "ssiddi_faithfulness_check_extended.json"), "w") as fh:
             json.dump(out, fh, indent=2)
     finally:
         os.chdir(cwd)
