@@ -89,7 +89,7 @@ def main():
     trans_val = transductive[transductive["split"] == "val"]
     trans_test = transductive[transductive["split"] == "test"]
 
-    architectures = ["fusion=concat", "graph-only", "text-only", "fingerprint-mlp"]
+    architectures = ["fusion=concat", "graph-only", "text-only", "fingerprint-mlp", "ssiddi"]
     if args.only:
         architectures = [a for a in architectures if a in set(args.only.split(","))]
     log.info(f"architectures to run: {architectures}")
@@ -100,6 +100,8 @@ def main():
                 fp_cache, fp_dim=bl.FINGERPRINT_BITS, hidden_dim=model_cfg["hidden_dim"],
                 head_hidden=model_cfg["head_hidden"], dropout=model_cfg["dropout"],
                 num_classes=dp.NUM_INTERACTION_TYPES, binary=False)
+        if name == "ssiddi":
+            return eu.make_ssiddi_components(graphs, dp.ATOM_FEATURE_DIM, dp.NUM_INTERACTION_TYPES)
         return eu.make_ddi_components(name, common, dp.NUM_INTERACTION_TYPES, False,
                                        graphs, text_emb_cache, has_text, lm_dim, device)
 

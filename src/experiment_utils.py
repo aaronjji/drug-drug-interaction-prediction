@@ -8,6 +8,7 @@ import torch.nn as nn
 
 import data_pipeline as dp
 from baselines import FingerprintMLP, build_fingerprint_batch
+from literature_baselines import SSIDDIModel, build_graph_only_batch
 from models import DDIModel
 
 DDI_ARCH_FLAGS = {
@@ -43,5 +44,16 @@ def make_fingerprint_components(fp_cache: Dict, fp_dim: int, hidden_dim: int, he
 
     def batch_fn(pairs, dev):
         return build_fingerprint_batch(pairs, fp_cache, dev)
+
+    return model_factory, batch_fn
+
+
+def make_ssiddi_components(graphs: Dict, atom_dim: int, num_classes: int
+                            ) -> Tuple[Callable[[], nn.Module], Callable]:
+    def model_factory():
+        return SSIDDIModel(atom_dim=atom_dim, num_classes=num_classes)
+
+    def batch_fn(pairs, dev):
+        return build_graph_only_batch(pairs, graphs, dev)
 
     return model_factory, batch_fn
