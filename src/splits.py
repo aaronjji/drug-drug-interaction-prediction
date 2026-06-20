@@ -135,29 +135,67 @@ def build_inductive_drug_split(drug_ids: List[str], has_text: Dict[str, bool],
     return {"train": tr, "val": va, "test": te}, report
 
 
+def classify_pair_bucket(a: str, b: str, drug_split: Dict[str, Set[str]]) -> str:
+    d_train, d_val, d_test = drug_split["train"], drug_split["val"], drug_split["test"]
+    a_test, b_test = a in d_test, b in d_test
+    if a_test and b_test:
+        return "s2"
+    if a_test or b_test:
+        return "s1"
+    a_val, b_val = a in d_val, b in d_val
+    if a_val or b_val:
+        return "val"
+    return "train"
+
+
 def derive_inductive_pairs(pairs_df: pd.DataFrame, id1_col: str, id2_col: str,
                             drug_split: Dict[str, Set[str]]) -> Dict[str, pd.DataFrame]:
-    d_train, d_val, d_test = drug_split["train"], drug_split["val"], drug_split["test"]
-
-    def bucket(row):
-        a, b = row[id1_col], row[id2_col]
-        a_test, b_test = a in d_test, b in d_test
-        if a_test and b_test:
-            return "s2"
-        if a_test or b_test:
-            return "s1"
-        a_val, b_val = a in d_val, b in d_val
-        if a_val or b_val:
-            return "val"
-        return "train"
-
-    buckets = pairs_df.apply(bucket, axis=1)
+    buckets = pairs_df.apply(lambda row: classify_pair_bucket(row[id1_col], row[id2_col], drug_split), axis=1)
     out = {}
     for name in ["train", "val", "s1", "s2"]:
         out[name] = pairs_df[buckets == name].reset_index(drop=True)
     for name, df in out.items():
         log.info(f"inductive bucket '{name}': {len(df):,} pairs")
     return out
+
+
+def sample_bucket_negatives(bucket_name: str, drug_split: Dict[str, Set[str]], positive_set: Set[frozenset],
+                             n_needed: int, seed: int, ratio: int = 1) -> list:
+    """Negative pairs for one inductive bucket (train/val/s1/s2) that respect the
+    SAME drug-membership rule as the positives in that bucket -- e.g. an S1
+    negative must have exactly one endpoint in the held-out test-drug set, not
+    two train drugs that happen not to interact. Without this, cold-start
+    negatives would leak train-drug-pair information into S1/S2 evaluation.
+
+    Draws from the bucket-appropriate drug pools directly (efficient), then
+    verifies with classify_pair_bucket (the same function used for positives,
+    so the rule can never silently drift between the two)."""
+    d_train, d_val, d_test = drug_split["train"], drug_split["val"], drug_split["test"]
+    pools = {
+        "train": (list(d_train), list(d_train)),
+        "val": (list(d_val), list(d_train | d_val)),
+        "s1": (list(d_test), list(d_train | d_val)),
+        "s2": (list(d_test), list(d_test)),
+    }
+    pool_a, pool_b = pools[bucket_name]
+    rng = random.Random(seed)
+    target = n_needed * ratio
+    negatives, seen = [], set()
+    attempts, max_attempts = 0, target * 50 + 1000
+    while len(negatives) < target and attempts < max_attempts and pool_a and pool_b:
+        attempts += 1
+        a, b = rng.choice(pool_a), rng.choice(pool_b)
+        if a == b or classify_pair_bucket(a, b, drug_split) != bucket_name:
+            continue
+        key = frozenset((a, b))
+        if key in positive_set or key in seen:
+            continue
+        seen.add(key)
+        negatives.append((a, b))
+    if len(negatives) < target:
+        log.warning(f"sample_bucket_negatives('{bucket_name}'): only found {len(negatives)}/{target} "
+                    f"after {attempts} attempts")
+    return negatives
 
 
 # ---------------------------------------------------------------------------
