@@ -181,3 +181,135 @@ config: {"name": "fingerprint-mlp", "split_type": "inductive", "scale": "full", 
   s2: {"auroc": 0.8442989200427661, "auprc": 0.3053184280140654, "f1": 0.28038711483394513, "accuracy": 0.2549083616257903, "n_evaluable_classes_used": 28, "n_evaluable_classes_skipped": 0}
 wall_clock_sec=158.0 epochs_run=18 stopped_early=True peak_gpu_mem_mb=21.559808
 
+=== fullscale_fusion=concat_transductive_seed0_1781889352348 ===
+config: {"name": "fusion=concat", "split_type": "transductive", "scale": "full", "seed": 0}
+  test: {"auroc": 0.9980946916408466, "auprc": 0.9502636474457484, "f1": 0.9054020437275825, "accuracy": 0.8999954948767559, "n_evaluable_classes_used": 63, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=2562.2 epochs_run=27 stopped_early=True peak_gpu_mem_mb=43.674624
+
+=== fullscale_fusion=concat_inductive_seed0_1781890994700 ===
+config: {"name": "fusion=concat", "split_type": "inductive", "scale": "full", "seed": 0}
+  s1: {"auroc": 0.9501781849842845, "auprc": 0.6364230384884711, "f1": 0.6061659690217959, "accuracy": 0.5814729881532121, "n_evaluable_classes_used": 62, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.8676636338532997, "auprc": 0.39723593458360407, "f1": 0.3575276701636842, "accuracy": 0.34978321501079046, "n_evaluable_classes_used": 28, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=1605.9 epochs_run=20 stopped_early=True peak_gpu_mem_mb=44.548608
+
+=== fullscale_graph-only_transductive_seed0_1781895608474 ===
+config: {"name": "graph-only", "split_type": "transductive", "scale": "full", "seed": 0}
+  test: {"auroc": 0.9981778009727723, "auprc": 0.9498056738951254, "f1": 0.9109039599551415, "accuracy": 0.8972271114647667, "n_evaluable_classes_used": 63, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=4584.7 epochs_run=40 stopped_early=False peak_gpu_mem_mb=42.233856
+
+=== fullscale_graph-only_inductive_seed0_1781897111623 ===
+config: {"name": "graph-only", "split_type": "inductive", "scale": "full", "seed": 0}
+  s1: {"auroc": 0.9358849650940617, "auprc": 0.586135190156082, "f1": 0.5432195921758209, "accuracy": 0.544954061999542, "n_evaluable_classes_used": 62, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.843275021416005, "auprc": 0.3238352506416084, "f1": 0.30402392707935266, "accuracy": 0.2912727736840666, "n_evaluable_classes_used": 28, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=1467.5 epochs_run=20 stopped_early=True peak_gpu_mem_mb=43.953152
+
+=== fullscale_text-only_transductive_seed0_1781899370755 ===
+config: {"name": "text-only", "split_type": "transductive", "scale": "full", "seed": 0}
+  test: {"auroc": 0.9966997429467123, "auprc": 0.8846501572992812, "f1": 0.8194373906442867, "accuracy": 0.7820479826796685, "n_evaluable_classes_used": 63, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=2242.8 epochs_run=34 stopped_early=True peak_gpu_mem_mb=27.287552
+
+=== fullscale_text-only_inductive_seed0_1781900294918 ===
+config: {"name": "text-only", "split_type": "inductive", "scale": "full", "seed": 0}
+  s1: {"auroc": 0.9473343388755309, "auprc": 0.4877077448508593, "f1": 0.4661481413565321, "accuracy": 0.4493576651439113, "n_evaluable_classes_used": 62, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.8279576677069146, "auprc": 0.23961862406586718, "f1": 0.2174924586259066, "accuracy": 0.2125664185090049, "n_evaluable_classes_used": 28, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=896.5 epochs_run=15 stopped_early=True peak_gpu_mem_mb=26.649088
+
+=== fullscale_fingerprint-mlp_transductive_seed0_1781901162169 ===
+config: {"name": "fingerprint-mlp", "split_type": "transductive", "scale": "full", "seed": 0}
+  test: {"auroc": 0.9990153758844863, "auprc": 0.9707016308038161, "f1": 0.9322245625551767, "accuracy": 0.9203234486352755, "n_evaluable_classes_used": 63, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=860.9 epochs_run=28 stopped_early=True peak_gpu_mem_mb=22.196224
+
+=== fullscale_fingerprint-mlp_inductive_seed0_1781901618562 ===
+config: {"name": "fingerprint-mlp", "split_type": "inductive", "scale": "full", "seed": 0}
+  s1: {"auroc": 0.9533613367697373, "auprc": 0.5477705713838319, "f1": 0.5321293826733882, "accuracy": 0.5051936238387638, "n_evaluable_classes_used": 62, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.8442989200427661, "auprc": 0.3053184280140654, "f1": 0.28038711483394513, "accuracy": 0.2549083616257903, "n_evaluable_classes_used": 28, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=446.0 epochs_run=18 stopped_early=True peak_gpu_mem_mb=21.559808
+
+=== fullscale_fusion=concat_transductive_seed1_1781904283855 ===
+config: {"name": "fusion=concat", "split_type": "transductive", "scale": "full", "seed": 1}
+  test: {"auroc": 0.9978106020158081, "auprc": 0.9446258663162707, "f1": 0.9042439424037635, "accuracy": 0.8888847239702522, "n_evaluable_classes_used": 63, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=2642.6 epochs_run=25 stopped_early=True peak_gpu_mem_mb=43.674624
+
+=== fullscale_fusion=concat_inductive_seed1_1781905853112 ===
+config: {"name": "fusion=concat", "split_type": "inductive", "scale": "full", "seed": 1}
+  s1: {"auroc": 0.9553212719577746, "auprc": 0.6210172224411039, "f1": 0.5900466439034574, "accuracy": 0.5603316508500631, "n_evaluable_classes_used": 62, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.8621462401727318, "auprc": 0.34855812980144246, "f1": 0.30074571666799155, "accuracy": 0.2810418894519356, "n_evaluable_classes_used": 28, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=1532.4 epochs_run=17 stopped_early=True peak_gpu_mem_mb=43.888128
+
+=== fullscale_graph-only_transductive_seed1_1781910142456 ===
+config: {"name": "graph-only", "split_type": "transductive", "scale": "full", "seed": 1}
+  test: {"auroc": 0.9980714981497437, "auprc": 0.9481792975710732, "f1": 0.9043976495145999, "accuracy": 0.8881297490785893, "n_evaluable_classes_used": 63, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=4267.4 epochs_run=40 stopped_early=True peak_gpu_mem_mb=42.233856
+
+=== fullscale_graph-only_inductive_seed1_1781911658169 ===
+config: {"name": "graph-only", "split_type": "inductive", "scale": "full", "seed": 1}
+  s1: {"auroc": 0.9331030820493524, "auprc": 0.5716720288263979, "f1": 0.5409718665059361, "accuracy": 0.5297871396209837, "n_evaluable_classes_used": 62, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.8227870545281775, "auprc": 0.3581605857072967, "f1": 0.32245752389664795, "accuracy": 0.3156355629514409, "n_evaluable_classes_used": 28, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=1479.2 epochs_run=17 stopped_early=True peak_gpu_mem_mb=43.173888
+
+=== fullscale_text-only_transductive_seed1_1781913304380 ===
+config: {"name": "text-only", "split_type": "transductive", "scale": "full", "seed": 1}
+  test: {"auroc": 0.9958732173381537, "auprc": 0.8786636059849938, "f1": 0.8057901996511548, "accuracy": 0.7850409040758292, "n_evaluable_classes_used": 63, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=1628.2 epochs_run=22 stopped_early=True peak_gpu_mem_mb=27.236352
+
+=== fullscale_text-only_inductive_seed1_1781914531367 ===
+config: {"name": "text-only", "split_type": "inductive", "scale": "full", "seed": 1}
+  s1: {"auroc": 0.9472157104851462, "auprc": 0.511222166616759, "f1": 0.4942595494435552, "accuracy": 0.4760858508182798, "n_evaluable_classes_used": 62, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.8398088223870772, "auprc": 0.2548574009431819, "f1": 0.2556070748589579, "accuracy": 0.24186064023363357, "n_evaluable_classes_used": 28, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=1199.9 epochs_run=20 stopped_early=True peak_gpu_mem_mb=25.801216
+
+=== fullscale_fingerprint-mlp_transductive_seed1_1781915550034 ===
+config: {"name": "fingerprint-mlp", "split_type": "transductive", "scale": "full", "seed": 1}
+  test: {"auroc": 0.9988397491772292, "auprc": 0.9757270415533112, "f1": 0.9443266159602752, "accuracy": 0.9407804509347071, "n_evaluable_classes_used": 63, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=1012.2 epochs_run=33 stopped_early=True peak_gpu_mem_mb=22.196224
+
+=== fullscale_fingerprint-mlp_inductive_seed1_1781916036818 ===
+config: {"name": "fingerprint-mlp", "split_type": "inductive", "scale": "full", "seed": 1}
+  s1: {"auroc": 0.9480484380170765, "auprc": 0.5564089548157507, "f1": 0.5371144995211107, "accuracy": 0.5407328701288617, "n_evaluable_classes_used": 62, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.8244600625263984, "auprc": 0.2821991722966048, "f1": 0.2520027202329366, "accuracy": 0.2300885381174313, "n_evaluable_classes_used": 28, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=476.4 epochs_run=19 stopped_early=True peak_gpu_mem_mb=21.559808
+
+=== fullscale_fusion=concat_transductive_seed2_1781919514478 ===
+config: {"name": "fusion=concat", "split_type": "transductive", "scale": "full", "seed": 2}
+  test: {"auroc": 0.9981539639907983, "auprc": 0.9458628871444071, "f1": 0.9043778289873436, "accuracy": 0.8957339669052405, "n_evaluable_classes_used": 63, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=3467.9 epochs_run=23 stopped_early=True peak_gpu_mem_mb=43.674624
+
+=== fullscale_fusion=concat_inductive_seed2_1781920319933 ===
+config: {"name": "fusion=concat", "split_type": "inductive", "scale": "full", "seed": 2}
+  s1: {"auroc": 0.9542570392815743, "auprc": 0.6238890743263847, "f1": 0.5859648202413233, "accuracy": 0.5636940346654956, "n_evaluable_classes_used": 62, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.8675529980558249, "auprc": 0.3831005408942713, "f1": 0.35403552574735037, "accuracy": 0.3422054364051829, "n_evaluable_classes_used": 28, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=777.3 epochs_run=14 stopped_early=True peak_gpu_mem_mb=43.888128
+
+=== fullscale_graph-only_transductive_seed2_1781924312573 ===
+config: {"name": "graph-only", "split_type": "transductive", "scale": "full", "seed": 2}
+  test: {"auroc": 0.997186893027777, "auprc": 0.9524710036489421, "f1": 0.900357565952422, "accuracy": 0.8815266915943629, "n_evaluable_classes_used": 63, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=3986.2 epochs_run=40 stopped_early=False peak_gpu_mem_mb=43.978752
+
+=== fullscale_graph-only_inductive_seed2_1781925523837 ===
+config: {"name": "graph-only", "split_type": "inductive", "scale": "full", "seed": 2}
+  s1: {"auroc": 0.9427186585249724, "auprc": 0.5906191706253282, "f1": 0.5772360467288273, "accuracy": 0.568265802846406, "n_evaluable_classes_used": 62, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.84793530482494, "auprc": 0.3512306332119214, "f1": 0.32535324398638693, "accuracy": 0.2945081727952412, "n_evaluable_classes_used": 28, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=1175.7 epochs_run=28 stopped_early=True peak_gpu_mem_mb=44.070912
+
+=== fullscale_text-only_transductive_seed2_1781927799829 ===
+config: {"name": "text-only", "split_type": "transductive", "scale": "full", "seed": 2}
+  test: {"auroc": 0.9967395253629249, "auprc": 0.882900275158316, "f1": 0.8186934708478778, "accuracy": 0.7881925867691995, "n_evaluable_classes_used": 63, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=2258.8 epochs_run=31 stopped_early=True peak_gpu_mem_mb=27.287552
+
+=== fullscale_text-only_inductive_seed2_1781928519147 ===
+config: {"name": "text-only", "split_type": "inductive", "scale": "full", "seed": 2}
+  s1: {"auroc": 0.9521314225045171, "auprc": 0.4906144356541459, "f1": 0.47154239365182177, "accuracy": 0.45740714789037024, "n_evaluable_classes_used": 62, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.8485680714292558, "auprc": 0.2579606702352974, "f1": 0.2321177857291707, "accuracy": 0.2239043741898899, "n_evaluable_classes_used": 28, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=693.5 epochs_run=13 stopped_early=True peak_gpu_mem_mb=26.649088
+
+=== fullscale_fingerprint-mlp_transductive_seed2_1781929392441 ===
+config: {"name": "fingerprint-mlp", "split_type": "transductive", "scale": "full", "seed": 2}
+  test: {"auroc": 0.9992559593417147, "auprc": 0.9739959802852575, "f1": 0.9394903875676581, "accuracy": 0.9287897412821786, "n_evaluable_classes_used": 63, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=866.8 epochs_run=29 stopped_early=True peak_gpu_mem_mb=23.044096
+
+=== fullscale_fingerprint-mlp_inductive_seed2_1781929816179 ===
+config: {"name": "fingerprint-mlp", "split_type": "inductive", "scale": "full", "seed": 2}
+  s1: {"auroc": 0.9575948871474962, "auprc": 0.5687183820169028, "f1": 0.5295264195067175, "accuracy": 0.541544128444771, "n_evaluable_classes_used": 62, "n_evaluable_classes_skipped": 0}
+  s2: {"auroc": 0.8472841267244146, "auprc": 0.3016056786003313, "f1": 0.2680596196553439, "accuracy": 0.25718590177019107, "n_evaluable_classes_used": 28, "n_evaluable_classes_skipped": 0}
+wall_clock_sec=413.2 epochs_run=18 stopped_early=True peak_gpu_mem_mb=22.828544
+

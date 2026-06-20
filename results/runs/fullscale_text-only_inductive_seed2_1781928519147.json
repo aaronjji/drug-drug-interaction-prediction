@@ -1,0 +1,118 @@
+{
+  "config": {
+    "name": "text-only",
+    "split_type": "inductive",
+    "scale": "full",
+    "seed": 2
+  },
+  "result": {
+    "run_name": "fullscale_text-only_inductive_seed2",
+    "best_val_score": 0.5743444965867435,
+    "used_loss_fallback": false,
+    "wall_clock_sec": 693.4863243103027,
+    "epochs_run": 13,
+    "stopped_early": true,
+    "hit_epoch_cap": false,
+    "peak_gpu_mem_mb": 26.649088,
+    "trainable_params": 85846,
+    "history": [
+      {
+        "epoch": 0,
+        "train_loss": 1.7164193259856568,
+        "val_score": 0.3598198825307321,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 1,
+        "train_loss": 1.0147027939442963,
+        "val_score": 0.4593759440793456,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.8010612675582119,
+        "val_score": 0.507156612534882,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.685755137349341,
+        "val_score": 0.5227540038186926,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.6137798682449714,
+        "val_score": 0.5301958953213065,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.5602273169324818,
+        "val_score": 0.5532295347811368,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.5146438775912522,
+        "val_score": 0.5538748640704163,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.48858555027570194,
+        "val_score": 0.5743444965867435,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.4592637832790728,
+        "val_score": 0.5665401088945762,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.43856592650886056,
+        "val_score": 0.5687750162972438,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.42168807346695025,
+        "val_score": 0.5693478781939031,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.4057308598067923,
+        "val_score": 0.5616248286228039,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.3914942744654271,
+        "val_score": 0.5617603046048448,
+        "using_loss_fallback": false
+      }
+    ],
+    "metrics_by_split": {
+      "s1": {
+        "auroc": 0.9521314225045171,
+        "auprc": 0.4906144356541459,
+        "f1": 0.47154239365182177,
+        "accuracy": 0.45740714789037024,
+        "n_evaluable_classes_used": 62,
+        "n_evaluable_classes_skipped": 0
+      },
+      "s2": {
+        "auroc": 0.8485680714292558,
+        "auprc": 0.2579606702352974,
+        "f1": 0.2321177857291707,
+        "accuracy": 0.2239043741898899,
+        "n_evaluable_classes_used": 28,
+        "n_evaluable_classes_skipped": 0
+      }
+    },
+    "checkpoint": "C:\\Users\\aaron\\Downloads\\Drug\u2013Drug Interaction Prediction\\ddi\\results\\checkpoints\\fullscale_text-only_inductive_seed2.pt"
+  }
+}

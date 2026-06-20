@@ -1,0 +1,230 @@
+{
+  "config": {
+    "name": "fingerprint-mlp",
+    "split_type": "transductive",
+    "scale": "full",
+    "seed": 1
+  },
+  "result": {
+    "run_name": "fullscale_fingerprint-mlp_transductive_seed1",
+    "best_val_score": 0.9850193777636123,
+    "used_loss_fallback": false,
+    "wall_clock_sec": 1012.2089996337891,
+    "epochs_run": 33,
+    "stopped_early": true,
+    "hit_epoch_cap": false,
+    "peak_gpu_mem_mb": 22.196224,
+    "trainable_params": 105558,
+    "history": [
+      {
+        "epoch": 0,
+        "train_loss": 1.2501871850913313,
+        "val_score": 0.7386495960618193,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.5632403652877098,
+        "val_score": 0.8719251782242696,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.43520023613401093,
+        "val_score": 0.9180371338602404,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.3721784070716572,
+        "val_score": 0.9380777195811352,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.33143731774149676,
+        "val_score": 0.9518988966379794,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.3032211340445354,
+        "val_score": 0.9613274946146542,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.28317553563499814,
+        "val_score": 0.9626882094994342,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.26675729159517897,
+        "val_score": 0.9684194533874981,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.2508413984774975,
+        "val_score": 0.9698930046986161,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.24127460847847568,
+        "val_score": 0.9745402341480995,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.23168426866441597,
+        "val_score": 0.9737405878884446,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.22125032797697275,
+        "val_score": 0.9748749412336508,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.2144712975570085,
+        "val_score": 0.9746238970733343,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 13,
+        "train_loss": 0.20969025727478632,
+        "val_score": 0.9763902137750331,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 14,
+        "train_loss": 0.20176326627669958,
+        "val_score": 0.9773623946348061,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 15,
+        "train_loss": 0.1972866109985187,
+        "val_score": 0.979448189533514,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 16,
+        "train_loss": 0.1904921415834568,
+        "val_score": 0.9800422119687963,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 17,
+        "train_loss": 0.18896659568761848,
+        "val_score": 0.977758087782229,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 18,
+        "train_loss": 0.18576121116119185,
+        "val_score": 0.9810158758901862,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 19,
+        "train_loss": 0.18084051671683846,
+        "val_score": 0.9821313308545885,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 20,
+        "train_loss": 0.17872320517215762,
+        "val_score": 0.9811198599347343,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 21,
+        "train_loss": 0.1752550267606434,
+        "val_score": 0.983451681089022,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 22,
+        "train_loss": 0.1747377962548751,
+        "val_score": 0.9826299625818278,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 23,
+        "train_loss": 0.16928516258729764,
+        "val_score": 0.9842581612295968,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 24,
+        "train_loss": 0.16642638876167676,
+        "val_score": 0.9829774670162089,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 25,
+        "train_loss": 0.16348734696895537,
+        "val_score": 0.9834410827645022,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 26,
+        "train_loss": 0.162469390183119,
+        "val_score": 0.9842689104407727,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 27,
+        "train_loss": 0.16031388906110344,
+        "val_score": 0.9850193777636123,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 28,
+        "train_loss": 0.15878220787493813,
+        "val_score": 0.9835610823721663,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 29,
+        "train_loss": 0.15863058271438765,
+        "val_score": 0.9833967067042193,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 30,
+        "train_loss": 0.1537539956929629,
+        "val_score": 0.9847447248520154,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 31,
+        "train_loss": 0.15239227417895518,
+        "val_score": 0.982413682396441,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 32,
+        "train_loss": 0.1504275622334619,
+        "val_score": 0.9824559761582169,
+        "using_loss_fallback": false
+      }
+    ],
+    "metrics_by_split": {
+      "test": {
+        "auroc": 0.9988397491772292,
+        "auprc": 0.9757270415533112,
+        "f1": 0.9443266159602752,
+        "accuracy": 0.9407804509347071,
+        "n_evaluable_classes_used": 63,
+        "n_evaluable_classes_skipped": 0
+      }
+    },
+    "checkpoint": "C:\\Users\\aaron\\Downloads\\Drug\u2013Drug Interaction Prediction\\ddi\\results\\checkpoints\\fullscale_fingerprint-mlp_transductive_seed1.pt"
+  }
+}

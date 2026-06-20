@@ -1,0 +1,148 @@
+{
+  "config": {
+    "name": "fingerprint-mlp",
+    "split_type": "inductive",
+    "scale": "full",
+    "seed": 0
+  },
+  "result": {
+    "run_name": "fullscale_fingerprint-mlp_inductive_seed0",
+    "best_val_score": 0.6032536769753254,
+    "used_loss_fallback": false,
+    "wall_clock_sec": 446.02811574935913,
+    "epochs_run": 18,
+    "stopped_early": true,
+    "hit_epoch_cap": false,
+    "peak_gpu_mem_mb": 21.559808,
+    "trainable_params": 105558,
+    "history": [
+      {
+        "epoch": 0,
+        "train_loss": 1.356956815320706,
+        "val_score": 0.42862562990168424,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.6038641392647683,
+        "val_score": 0.5255602044805938,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.4589967586128868,
+        "val_score": 0.5741123298619527,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.382190182939306,
+        "val_score": 0.5799972291359609,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.339275839629474,
+        "val_score": 0.5864030016061439,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.303303656258178,
+        "val_score": 0.5891226617768194,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.283827473489781,
+        "val_score": 0.5874314993020111,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.2629300872273887,
+        "val_score": 0.5981011634730309,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.24805148209575828,
+        "val_score": 0.582479374738563,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.23665899188860656,
+        "val_score": 0.5973508502865895,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.22503021722863234,
+        "val_score": 0.5962694817491253,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.21638429484197072,
+        "val_score": 0.5944620851768719,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.21127894301173616,
+        "val_score": 0.6032536769753254,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 13,
+        "train_loss": 0.20133979766218513,
+        "val_score": 0.5954783327850055,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 14,
+        "train_loss": 0.19648783948353973,
+        "val_score": 0.5959821426037757,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 15,
+        "train_loss": 0.18987672042432438,
+        "val_score": 0.5950054652398076,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 16,
+        "train_loss": 0.18614758878581925,
+        "val_score": 0.597628466128767,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 17,
+        "train_loss": 0.18230469020483883,
+        "val_score": 0.5853704115545373,
+        "using_loss_fallback": false
+      }
+    ],
+    "metrics_by_split": {
+      "s1": {
+        "auroc": 0.9533613367697373,
+        "auprc": 0.5477705713838319,
+        "f1": 0.5321293826733882,
+        "accuracy": 0.5051936238387638,
+        "n_evaluable_classes_used": 62,
+        "n_evaluable_classes_skipped": 0
+      },
+      "s2": {
+        "auroc": 0.8442989200427661,
+        "auprc": 0.3053184280140654,
+        "f1": 0.28038711483394513,
+        "accuracy": 0.2549083616257903,
+        "n_evaluable_classes_used": 28,
+        "n_evaluable_classes_skipped": 0
+      }
+    },
+    "checkpoint": "C:\\Users\\aaron\\Downloads\\Drug\u2013Drug Interaction Prediction\\ddi\\results\\checkpoints\\fullscale_fingerprint-mlp_inductive_seed0.pt"
+  }
+}
