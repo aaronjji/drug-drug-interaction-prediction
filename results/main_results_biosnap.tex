@@ -1,0 +1,17 @@
+% requires \usepackage{booktabs} \usepackage{multirow}
+\begin{table}[t]
+\caption{BioSNAP ChCh-Miner (binary): mean$\pm$std over 3 seeds.}
+\label{tab:main-biosnap}
+\begin{tabular}{lllllllllllll}
+\toprule
+ & \multicolumn{4}{c}{TRANSDUCTIVE} & \multicolumn{4}{c}{S1} & \multicolumn{4}{c}{S2} \\
+ & AUROC & AUPRC & F1 & Acc. & AUROC & AUPRC & F1 & Acc. & AUROC & AUPRC & F1 & Acc. \\
+Model &  &  &  &  &  &  &  &  &  &  &  &  \\
+\midrule
+Fusion (concat) & 0.939$\pm$0.001 & 0.927$\pm$0.001 & 0.874$\pm$0.003 & 0.870$\pm$0.003 & 0.835$\pm$0.002 & 0.831$\pm$0.002 & 0.723$\pm$0.010 & 0.752$\pm$0.004 & 0.737$\pm$0.007 & 0.726$\pm$0.012 & 0.565$\pm$0.023 & 0.653$\pm$0.012 \\
+Graph-only & 0.942$\pm$0.005 & 0.932$\pm$0.005 & 0.877$\pm$0.007 & 0.871$\pm$0.010 & 0.793$\pm$0.030 & 0.785$\pm$0.038 & 0.724$\pm$0.018 & 0.728$\pm$0.027 & 0.699$\pm$0.026 & 0.688$\pm$0.032 & 0.613$\pm$0.016 & 0.647$\pm$0.012 \\
+Text-only & 0.917$\pm$0.006 & 0.906$\pm$0.005 & 0.836$\pm$0.014 & 0.835$\pm$0.010 & 0.794$\pm$0.002 & 0.792$\pm$0.003 & 0.677$\pm$0.022 & 0.712$\pm$0.008 & 0.683$\pm$0.009 & 0.671$\pm$0.018 & 0.509$\pm$0.060 & 0.615$\pm$0.023 \\
+Fingerprint-MLP & 0.969$\pm$0.002 & 0.962$\pm$0.003 & 0.919$\pm$0.003 & 0.917$\pm$0.002 & 0.806$\pm$0.008 & 0.812$\pm$0.009 & 0.683$\pm$0.023 & 0.727$\pm$0.011 & 0.675$\pm$0.009 & 0.676$\pm$0.009 & 0.455$\pm$0.053 & 0.601$\pm$0.019 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,4 @@
+BioSNAP: no evaluable-class count column (not applicable -- binary task, no macro-averaging over classes)
+Only 3 seeds run -- mean+-std with n=3 is informative but too few for a formal significance test (e.g. paired t-test); no p-values/CIs are computed.
+No per-interaction-type (per-class) breakdown is saved for DrugBank -- only the macro-averaged metric over evaluable classes. A reviewer asking 'which interaction types does fusion help most on' can't be answered from saved outputs alone.
+No statistical significance test (e.g. paired bootstrap or t-test across seeds) between fusion and the next-best cold-start model is computed or saved.

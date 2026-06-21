@@ -1,8 +1,5 @@
 data/
 external/
-results/*.csv
-results/*.tex
-figures/*.pdf
 *.pt
 *.pkl
 __pycache__/

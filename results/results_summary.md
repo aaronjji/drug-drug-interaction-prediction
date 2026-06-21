@@ -7,6 +7,12 @@ where structure-only methods degrade? All numbers below come from code that
 was actually run (`scripts/05_full_scale_calibration.py`,
 `scripts/06_full_scale_binary_sweep.py`), 3 seeds each, on the full datasets.
 
+**Generated artifacts** (via `src/report.py`, reads-only, no retraining):
+`results/main_results_drugbank.{tex,csv}`, `results/main_results_biosnap.{tex,csv}`,
+`results/gap_table.{tex,csv}`, `figures/inductive_gap.pdf`, `figures/ablation.pdf`.
+See `results/report_missing_metrics.txt` for metrics a paper table might want
+that the saved outputs don't contain (per-class breakdowns, significance tests).
+
 ## Headline finding
 
 **Fusion wins both cold-start splits (S1, S2) on AUROC and AUPRC, with the

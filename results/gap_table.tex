@@ -1,0 +1,23 @@
+% requires \usepackage{booktabs} \usepackage{multirow}
+\begin{table}[t]
+\caption{Transductive-minus-cold-start gap (AUROC, AUPRC), mean$\pm$std over 3 seeds. Smaller is better (degrades less).}
+\label{tab:gap}
+\begin{tabular}{llllll}
+\toprule
+ &  & \multicolumn{2}{c}{S1} & \multicolumn{2}{c}{S2} \\
+ &  & AUROC & AUPRC & AUROC & AUPRC \\
+Dataset & Model &  &  &  &  \\
+\midrule
+\multirow[t]{4}{*}{DrugBank} & Fusion (concat) & 0.045$\pm$0.003 & 0.320$\pm$0.005 & 0.132$\pm$0.003 & 0.571$\pm$0.023 \\
+ & Graph-only & 0.061$\pm$0.005 & 0.367$\pm$0.008 & 0.160$\pm$0.014 & 0.606$\pm$0.018 \\
+ & Text-only & 0.048$\pm$0.003 & 0.386$\pm$0.016 & 0.158$\pm$0.010 & 0.631$\pm$0.012 \\
+ & Fingerprint-MLP & 0.046$\pm$0.005 & 0.416$\pm$0.009 & 0.160$\pm$0.012 & 0.677$\pm$0.015 \\
+\cline{1-6}
+\multirow[t]{4}{*}{BioSNAP} & Fusion (concat) & 0.104$\pm$0.002 & 0.096$\pm$0.001 & 0.202$\pm$0.008 & 0.201$\pm$0.013 \\
+ & Graph-only & 0.149$\pm$0.031 & 0.147$\pm$0.040 & 0.243$\pm$0.026 & 0.244$\pm$0.033 \\
+ & Text-only & 0.123$\pm$0.006 & 0.114$\pm$0.006 & 0.234$\pm$0.008 & 0.236$\pm$0.017 \\
+ & Fingerprint-MLP & 0.163$\pm$0.010 & 0.150$\pm$0.011 & 0.294$\pm$0.010 & 0.286$\pm$0.012 \\
+\cline{1-6}
+\bottomrule
+\end{tabular}
+\end{table}
