@@ -9,6 +9,7 @@ plausible range of the published numbers?
 If this does not reproduce convincingly, the brief says STOP before running
 the inductive sweep -- a broken reimplementation makes a misleading baseline.
 """
+import argparse
 import logging
 import os
 import sys
@@ -56,6 +57,13 @@ def ensure_repo_cached():
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--max-epochs", type=int, default=MAX_EPOCHS)
+    parser.add_argument("--no-amp", action="store_true", help="disable mixed precision (matches original FP32 training exactly)")
+    parser.add_argument("--checkpoint-tag", type=str, default="latest", help="separate checkpoint file, for side-by-side diagnostic runs")
+    args = parser.parse_args()
+    checkpoint_path = os.path.join(ROOT, "results", "checkpoints", f"ssiddi_faithfulness_{args.checkpoint_tag}.pt")
+
     ensure_repo_cached()
     cwd = os.getcwd()
     os.chdir(EXT_DIR)  # their data_preprocessing.py uses relative paths ('data/...')
@@ -96,7 +104,7 @@ def main():
         loss_fn = custom_loss.SigmoidLoss()
         optimizer = optim.Adam(model.parameters(), lr=LR, weight_decay=WEIGHT_DECAY)
         scheduler = optim.lr_scheduler.LambdaLR(optimizer, lambda epoch: 0.96 ** epoch)
-        use_amp = device == "cuda"
+        use_amp = (device == "cuda") and not args.no_amp
         scaler = GradScaler(device="cuda", enabled=use_amp)
         if device == "cuda":
             torch.cuda.reset_peak_memory_stats()
@@ -125,8 +133,8 @@ def main():
         best_val_auc, best_state, no_improve = -1.0, None, 0
         history = []
         start_epoch = 0
-        if os.path.exists(CHECKPOINT_PATH):
-            ckpt = torch.load(CHECKPOINT_PATH, weights_only=False)
+        if os.path.exists(checkpoint_path):
+            ckpt = torch.load(checkpoint_path, weights_only=False)
             model.load_state_dict(ckpt["model_state"])
             optimizer.load_state_dict(ckpt["optimizer_state"])
             scheduler.load_state_dict(ckpt["scheduler_state"])
@@ -137,7 +145,7 @@ def main():
 
         t0 = time.time()
         stopped_early = False
-        for epoch in range(start_epoch, MAX_EPOCHS):
+        for epoch in range(start_epoch, args.max_epochs):
             model.train()
             train_loss = 0.0
             for batch in train_loader:
@@ -172,11 +180,11 @@ def main():
             else:
                 no_improve += 1
 
-            os.makedirs(os.path.dirname(CHECKPOINT_PATH), exist_ok=True)
+            os.makedirs(os.path.dirname(checkpoint_path), exist_ok=True)
             torch.save({"model_state": model.state_dict(), "optimizer_state": optimizer.state_dict(),
                         "scheduler_state": scheduler.state_dict(), "epoch": epoch,
                         "best_val_auc": best_val_auc, "best_state": best_state,
-                        "no_improve": no_improve, "history": history}, CHECKPOINT_PATH)
+                        "no_improve": no_improve, "history": history}, checkpoint_path)
 
             if no_improve >= PATIENCE:
                 log.info(f"plateau guardrail: no improvement > {MIN_IMPROVEMENT} for {PATIENCE} epochs, "
@@ -212,8 +220,10 @@ def main():
                "peak_gpu_mem_mb": peak_mem_mb, "n_params": n_params, "history": history,
                "stage_a_100_epoch": {"test_acc": 0.8802, "test_auroc": 0.9438, "test_auprc": 0.9324, "test_f1": 0.8824},
                "repo_commit": "23e958f65f59f689edea8d68a38f944c6d18dc96"}
-        with open(os.path.join(ROOT, "results", "ssiddi_faithfulness_check_extended.json"), "w") as fh:
+        out_name = f"ssiddi_faithfulness_check_{args.checkpoint_tag}.json"
+        with open(os.path.join(ROOT, "results", out_name), "w") as fh:
             json.dump(out, fh, indent=2)
+        log.info(f"wrote results/{out_name}")
     finally:
         os.chdir(cwd)
         sys.path.remove(EXT_DIR)
