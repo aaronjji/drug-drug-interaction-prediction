@@ -1,7 +1,6 @@
 drugbank_repo_raw: "https://raw.githubusercontent.com/kanz76/GMPNN-CS/master"
 chch_miner_url: "http://snap.stanford.edu/biodata/datasets/10001/files/ChCh-Miner_durgbank-chem-chem.tsv.gz"
 text_model_name: "microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract"
-text_embedding_dim: 768
 pubchem_rate_limit_sec: 0.3
 pubchem_max_retries: 3
 evaluable_class_min_k: 10

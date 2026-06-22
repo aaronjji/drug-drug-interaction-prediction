@@ -2,7 +2,6 @@ hidden_dim: 64
 graph_layers: 3
 graph_conv: gin       # gin | gcn
 graph_readout: mean   # mean | sum
-fusion_type: concat   # concat | gated | cross_attention
 head_hidden: 128
 dropout: 0.1
 negative_sample_ratio: 1

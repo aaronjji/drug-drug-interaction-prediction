@@ -94,7 +94,7 @@ def main():
         train_cfg_base = yaml.safe_load(f)
     device = "cuda" if torch.cuda.is_available() else "cpu"
     seeds = [0, 1, 2]
-    ratio = train_cfg_base.get("negative_sample_ratio", 1)
+    ratio = train_cfg_base["negative_sample_ratio"]
     log.info(f"device={device} train_cfg_base={train_cfg_base} seeds={seeds} negative_ratio={ratio}:1")
 
     log.info("=== evaluate.py sanity checks ===")
