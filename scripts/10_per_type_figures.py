@@ -199,8 +199,9 @@ def plot_compact(df: pd.DataFrame, out_path: str) -> dict:
                     title=title, title_fontsize=8.5, xlabel_fontsize=8.0, compact_labels=True)
 
     handles, labels = _legend_handles_labels()
-    fig.tight_layout(rect=[0, 0, 1, 0.86])
-    fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, 1.0), ncol=1, fontsize=6.3, frameon=False)
+    fig.tight_layout(rect=[0, 0, 1, 0.945])
+    fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, 1.0), ncol=1, fontsize=6.3, frameon=False,
+               labelspacing=0.3, handletextpad=0.4)
     fig.savefig(out_path, bbox_inches="tight")
     plt.close(fig)
     log.info(f"wrote {out_path}")
