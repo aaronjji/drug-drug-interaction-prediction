@@ -147,7 +147,12 @@ def _draw_panel(ax, rows: pd.DataFrame, gap_after: int, gap_text: str, label_max
             tick.set_fontsize(max(tick_fontsize - 0.5, 5.5))
     ax.set_ylim(-0.7, n_total - 0.3)
     ax.set_title(title, fontsize=title_fontsize)
-    ax.set_xlabel("Δ AUPRC (fusion=concat − graph-only), mean ± std over 3 seeds", fontsize=xlabel_fontsize)
+    # the full string ("Delta AUPRC (fusion=concat - graph-only), mean +- std
+    # over 3 seeds") is wider than a single IEEE column at >=8pt -- wrap it
+    # onto two lines there instead of letting it run off/clip the figure edge
+    xlabel = ("Δ AUPRC (fusion=concat − graph-only),\nmean ± std over 3 seeds" if compact_labels
+              else "Δ AUPRC (fusion=concat − graph-only), mean ± std over 3 seeds")
+    ax.set_xlabel(xlabel, fontsize=xlabel_fontsize)
     ax.tick_params(axis="x", labelsize=max(tick_fontsize - 0.5, 6))
 
 
