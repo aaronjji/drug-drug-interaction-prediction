@@ -1,0 +1,16 @@
+% requires \usepackage{booktabs}
+\begin{table}[t]
+\caption{BioSNAP ChCh-Miner (binary): F1, mean$\pm$std over 3 seeds.}
+\label{tab:biosnap-f1}
+\begin{tabular}{llll}
+\toprule
+ & Transductive & S1 & S2 \\
+Model &  &  &  \\
+\midrule
+Fusion (concat) & 0.874$\pm$0.003 & 0.723$\pm$0.010 & 0.565$\pm$0.023 \\
+Graph-only & 0.877$\pm$0.007 & 0.724$\pm$0.018 & 0.613$\pm$0.016 \\
+Text-only & 0.836$\pm$0.014 & 0.677$\pm$0.022 & 0.509$\pm$0.060 \\
+Fingerprint-MLP & 0.919$\pm$0.003 & 0.683$\pm$0.023 & 0.455$\pm$0.053 \\
+\bottomrule
+\end{tabular}
+\end{table}

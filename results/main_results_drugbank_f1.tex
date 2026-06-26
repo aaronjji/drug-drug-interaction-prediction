@@ -1,0 +1,16 @@
+% requires \usepackage{booktabs}
+\begin{table}[t]
+\caption{DrugBank (multi-relational, 86 types): F1, mean$\pm$std over 3 seeds.}
+\label{tab:drugbank-f1}
+\begin{tabular}{llll}
+\toprule
+ & Transductive & S1 & S2 \\
+Model &  &  &  \\
+\midrule
+Fusion (concat) & 0.905$\pm$0.001 & 0.594$\pm$0.011 & 0.337$\pm$0.032 \\
+Graph-only & 0.905$\pm$0.005 & 0.554$\pm$0.020 & 0.317$\pm$0.012 \\
+Text-only & 0.815$\pm$0.008 & 0.477$\pm$0.015 & 0.235$\pm$0.019 \\
+Fingerprint-MLP & 0.939$\pm$0.006 & 0.533$\pm$0.004 & 0.267$\pm$0.014 \\
+\bottomrule
+\end{tabular}
+\end{table}
