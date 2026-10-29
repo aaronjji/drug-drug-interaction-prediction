@@ -20,6 +20,7 @@ import sys
 
 import matplotlib
 matplotlib.use("Agg")
+matplotlib.rcParams["pdf.fonttype"] = 42  # embed TrueType, not Type 3
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -112,7 +113,7 @@ def plot_per_type_delta(final_df: pd.DataFrame, out_path: str) -> None:
         ax.set_ylim(-0.7, len(sub) - 0.3)
         ax.set_title(f"DrugBank {split_name}: per-type fusion-minus-graph-only AUPRC "
                      f"({counts[split_name]} evaluable types)", fontsize=9)
-        ax.set_xlabel("Δ AUPRC (fusion=concat − graph-only), mean ± std over 3 seeds", fontsize=8)
+        ax.set_xlabel("Δ AUPRC, Fusion (GIN+text) − Graph-only (GIN), mean ± std over 3 seeds", fontsize=8)
         ax.tick_params(axis="x", labelsize=7)
 
     handles = [plt.Rectangle((0, 0), 1, 1, color=c) for c in BUCKET_COLORS.values()]
@@ -411,4 +412,9 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if "--plot-only" in sys.argv[1:]:
+        # re-plot figures/per_type_delta.pdf from the CSV main() saved; no checkpoint loading
+        plot_per_type_delta(pd.read_csv(os.path.join(RESULTS_DIR, "per_type_drugbank.csv")),
+                            os.path.join(FIGURES_DIR, "per_type_delta.pdf"))
+    else:
+        main()

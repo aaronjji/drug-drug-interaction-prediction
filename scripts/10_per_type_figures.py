@@ -27,6 +27,7 @@ import os
 
 import matplotlib
 matplotlib.use("Agg")
+matplotlib.rcParams["pdf.fonttype"] = 42  # embed TrueType, not Type 3
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -99,7 +100,7 @@ def plot_hist(df: pd.DataFrame, out_path: str) -> dict:
         ax.set_ylabel("Number of types", fontsize=8)
         ax.tick_params(axis="both", labelsize=8)
 
-    axes[-1].set_xlabel("Δ AUPRC (fusion=concat − graph-only) per type", fontsize=8)
+    axes[-1].set_xlabel("Δ AUPRC, Fusion (GIN+text) − Graph-only (GIN), per type", fontsize=8)
     fig.tight_layout()
     fig.savefig(out_path, bbox_inches="tight")
     plt.close(fig)
@@ -128,10 +129,10 @@ def plot_scatter(df: pd.DataFrame, out_path: str) -> None:
                 color="gray", va="bottom", ha="right", style="italic")
         n = len(sub)
         ax.set_title(f"DrugBank {split_name}: per-type AUPRC (n={n})", fontsize=8.5)
-        ax.set_ylabel("fusion=concat AUPRC", fontsize=8)
+        ax.set_ylabel("Fusion (GIN+text) AUPRC", fontsize=8)
         ax.tick_params(axis="both", labelsize=8)
 
-    axes[-1].set_xlabel("graph-only AUPRC", fontsize=8)
+    axes[-1].set_xlabel("Graph-only (GIN) AUPRC", fontsize=8)
     handles, labels = _bucket_legend_handles()
     fig.tight_layout(rect=[0, 0, 1, 0.94])
     fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, 1.0), ncol=1, fontsize=6.5,
@@ -160,7 +161,7 @@ def _draw_full_panel(ax, rows: pd.DataFrame, title: str):
                         fontsize=8.5)
     ax.set_ylim(-0.7, len(rows) - 0.3)
     ax.set_title(title, fontsize=11)
-    ax.set_xlabel("Δ AUPRC (fusion=concat − graph-only), mean ± std over 3 seeds", fontsize=9.5)
+    ax.set_xlabel("Δ AUPRC, Fusion (GIN+text) − Graph-only (GIN), mean ± std over 3 seeds", fontsize=9.5)
     ax.tick_params(axis="x", labelsize=8)
 
 

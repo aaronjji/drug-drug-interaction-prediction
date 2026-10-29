@@ -3,8 +3,12 @@ on S2-F1 despite fusion winning AUROC/AUPRC): F1 at a fixed 0.5 threshold is
 sensitive to probability calibration, unlike the ranking metrics. Tunes the
 decision threshold on the inductive VAL split (never on S2 itself -- that
 would be leakage) and re-evaluates S2 F1 at that threshold, for both models,
-all 3 seeds. Reuses the exact saved checkpoints and the exact same
-deterministic negative sampling as the original sweep -- no retraining.
+all 3 seeds. Reuses the exact saved checkpoints and the same seeded,
+bucket-aware negative sampling procedure as the original sweep -- no
+retraining. Both models are scored on the same re-drawn val/S2 sets, so the
+fusion-vs-graph-only comparison is like-for-like; the draw itself is NOT the
+sweep's (see build_val_s2_negatives), which is why F1 at 0.5 here
+(0.562 vs 0.614) differs slightly from the sweep's (0.565 vs 0.613).
 """
 import json
 import logging
@@ -31,10 +35,13 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def build_val_s2_negatives(chch_df, drug_ids, drug_split, seed, ratio=1):
-    """Reconstructs the exact same val/s2 negative-augmented sets the original
-    sweep used for this seed -- sample_bucket_negatives is deterministic given
-    the same seed, so this reproduces the identical evaluation data without
-    needing to re-run training."""
+    """Rebuilds val/s2 negative-augmented sets with the original sweep's
+    procedure and seed. Not byte-identical to the sweep's sets:
+    sample_bucket_negatives draws from Python sets of drug ids, whose
+    iteration order depends on the per-process string-hash seed, so the draw is
+    reproducible only under a fixed PYTHONHASHSEED (the sweep did not fix one;
+    see scripts/14_camera_ready_reanalysis.py --biosnap-redraw for the size of
+    the effect on S1/S2 AUPRC)."""
     all_positive_pairs = list(zip(chch_df["d1"], chch_df["d2"]))
     all_positive_set = {frozenset(p) for p in all_positive_pairs}
     inductive_pos = sp.derive_inductive_pairs(chch_df, "d1", "d2", drug_split)

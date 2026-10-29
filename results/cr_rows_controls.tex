@@ -1,0 +1,16 @@
+\multicolumn{5}{l}{\emph{Reference (Table 1)}} \\
+\quad Fusion (GIN+text) & 0.627$\pm$0.008 & 0.376$\pm$0.025 & 0.953$\pm$0.003 & 0.866$\pm$0.003 \\
+\quad Graph-only (GIN) & 0.583$\pm$0.010 & 0.344$\pm$0.018 & 0.937$\pm$0.005 & 0.838$\pm$0.013 \\
+\multicolumn{5}{l}{\emph{Text-leakage control}} \\
+\quad Fusion, interaction wording removed & 0.615$\pm$0.015 & 0.380$\pm$0.020 & 0.955$\pm$0.004 & 0.863$\pm$0.008 \\
+\quad Text-only, interaction wording removed & 0.500$\pm$0.012 & 0.250$\pm$0.009 & 0.949$\pm$0.003 & 0.841$\pm$0.010 \\
+\quad Fusion, filtered text & 0.581$\pm$0.004 & 0.315$\pm$0.016 & 0.946$\pm$0.000 & 0.837$\pm$0.002 \\
+\quad Text-only, filtered text & 0.432$\pm$0.009 & 0.201$\pm$0.010 & 0.930$\pm$0.001 & 0.792$\pm$0.002 \\
+\multicolumn{5}{l}{\emph{Structure encoder}} \\
+\quad Fingerprint+text & 0.599$\pm$0.005 & 0.335$\pm$0.016 & 0.960$\pm$0.002 & 0.859$\pm$0.010 \\
+\quad Fingerprint-MLP & 0.558$\pm$0.011 & 0.296$\pm$0.012 & 0.953$\pm$0.005 & 0.839$\pm$0.012 \\
+\quad GCN fusion (GCN+text) & 0.608$\pm$0.005 & 0.363$\pm$0.030 & 0.952$\pm$0.002 & 0.861$\pm$0.011 \\
+\quad GCN graph-only & 0.582$\pm$0.009 & 0.344$\pm$0.017 & 0.929$\pm$0.006 & 0.839$\pm$0.008 \\
+\multicolumn{5}{l}{\emph{Fusion mechanism}} \\
+\quad Fusion, gated & 0.605$\pm$0.016 & 0.346$\pm$0.035 & 0.955$\pm$0.004 & 0.866$\pm$0.005 \\
+\quad Fusion, cross-attention & 0.576$\pm$0.015 & 0.337$\pm$0.006 & 0.952$\pm$0.004 & 0.866$\pm$0.010 \\

@@ -1,0 +1,92 @@
+{
+  "config": {
+    "name": "fp-text",
+    "split_type": "inductive",
+    "dataset": "biosnap",
+    "seed": 0,
+    "scale": "full",
+    "camera_ready_experiment": true
+  },
+  "result": {
+    "run_name": "cr_biosnap_fp-text_inductive_seed0",
+    "best_val_score": 0.7939795401444192,
+    "used_loss_fallback": false,
+    "wall_clock_sec": 106.24005126953125,
+    "epochs_run": 9,
+    "stopped_early": true,
+    "hit_epoch_cap": false,
+    "peak_gpu_mem_mb": 25.137152,
+    "trainable_params": 169217,
+    "history": [
+      {
+        "epoch": 0,
+        "train_loss": 0.47859163400147775,
+        "val_score": 0.7736538221347065,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.36029163549499454,
+        "val_score": 0.7842312110672428,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.32194825077318473,
+        "val_score": 0.778399910095424,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.29892800355966564,
+        "val_score": 0.7939795401444192,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.27763453551033823,
+        "val_score": 0.7893656872566497,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.2614593761374584,
+        "val_score": 0.7872777790420087,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.24818249219637306,
+        "val_score": 0.7865607567217623,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.2321281901861433,
+        "val_score": 0.7876114602835925,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.21714939653499746,
+        "val_score": 0.7936882733840351,
+        "using_loss_fallback": false
+      }
+    ],
+    "metrics_by_split": {
+      "s1": {
+        "auroc": 0.8222077174134792,
+        "auprc": 0.8153219993420231,
+        "f1": 0.7337898385324203,
+        "accuracy": 0.742644655116051
+      },
+      "s2": {
+        "auroc": 0.6972495259196678,
+        "auprc": 0.6811565233916693,
+        "f1": 0.5740388275599543,
+        "accuracy": 0.6302048909451421
+      }
+    },
+    "checkpoint": "C:\\Users\\aaron\\Downloads\\Drug\u2013Drug Interaction Prediction\\ddi\\results\\checkpoints\\cr_biosnap_fp-text_inductive_seed0.pt"
+  }
+}

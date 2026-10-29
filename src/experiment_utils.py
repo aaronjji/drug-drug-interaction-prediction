@@ -7,7 +7,8 @@ from typing import Callable, Dict, Tuple
 import torch.nn as nn
 
 import data_pipeline as dp
-from baselines import FingerprintMLP, build_fingerprint_batch
+from baselines import (FingerprintMLP, FingerprintTextModel, build_fingerprint_batch,
+                       build_fingerprint_text_batch)
 from literature_baselines import SSIDDIModel, build_graph_only_batch
 from models import DDIModel
 
@@ -44,6 +45,19 @@ def make_fingerprint_components(fp_cache: Dict, fp_dim: int, hidden_dim: int, he
 
     def batch_fn(pairs, dev):
         return build_fingerprint_batch(pairs, fp_cache, dev)
+
+    return model_factory, batch_fn
+
+
+def make_fingerprint_text_components(fp_cache: Dict, text_emb_cache, has_text, lm_dim: int, fp_dim: int,
+                                      hidden_dim: int, head_hidden: int, dropout: float, num_classes, binary: bool
+                                      ) -> Tuple[Callable[[], nn.Module], Callable]:
+    def model_factory():
+        return FingerprintTextModel(lm_dim=lm_dim, fp_dim=fp_dim, hidden_dim=hidden_dim, head_hidden=head_hidden,
+                                     num_classes=num_classes, binary=binary, dropout=dropout)
+
+    def batch_fn(pairs, dev):
+        return build_fingerprint_text_batch(pairs, fp_cache, text_emb_cache, has_text, lm_dim, dev)
 
     return model_factory, batch_fn
 

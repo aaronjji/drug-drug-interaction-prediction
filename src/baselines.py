@@ -14,7 +14,8 @@ import pandas as pd
 import torch
 import torch.nn as nn
 
-from models import Head
+import data_pipeline as dp
+from models import Head, TextEncoder
 
 log = logging.getLogger("baselines")
 
@@ -91,3 +92,42 @@ def build_fingerprint_batch(pairs, fp_cache: Dict[str, np.ndarray], device: str)
     fp_a = torch.stack([torch.tensor(fp_cache[a], dtype=torch.float) for a, _ in pairs]).to(device)
     fp_b = torch.stack([torch.tensor(fp_cache[b], dtype=torch.float) for _, b in pairs]).to(device)
     return (fp_a, fp_b)
+
+
+class FingerprintTextModel(nn.Module):
+    """Fingerprint + text fusion: FingerprintMLP's ECFP encoder takes the place
+    of the GIN graph encoder, and is concatenated with the identical
+    frozen-text branch (models.TextEncoder, incl. its missing-text token and
+    has_text flag) before the same [a, b, a*b] pair head. Isolates whether the
+    cold-start gain from text depends on which structural encoder it is paired
+    with -- fusion=concat with the structure branch swapped, nothing else."""
+
+    def __init__(self, lm_dim: int, fp_dim: int = FINGERPRINT_BITS, hidden_dim: int = 64,
+                 head_hidden: int = 128, num_classes: Optional[int] = None, binary: bool = False,
+                 dropout: float = 0.1):
+        super().__init__()
+        self.fp_encoder = nn.Sequential(
+            nn.Linear(fp_dim, hidden_dim), nn.ReLU(), nn.Dropout(dropout),
+            nn.Linear(hidden_dim, hidden_dim), nn.ReLU(),
+        )
+        self.text_encoder = TextEncoder(lm_dim, hidden_dim)
+        self.head = Head(hidden_dim * 2 * 3, hidden_dim=head_hidden, num_classes=num_classes,
+                          binary=binary, dropout=dropout)
+
+    def encode_drug(self, fp: torch.Tensor, text_emb: torch.Tensor, has_text: torch.Tensor) -> torch.Tensor:
+        return torch.cat([self.fp_encoder(fp), self.text_encoder(text_emb, has_text)], dim=-1)
+
+    def forward(self, fp_a: torch.Tensor, text_a: torch.Tensor, has_text_a: torch.Tensor,
+                fp_b: torch.Tensor, text_b: torch.Tensor, has_text_b: torch.Tensor) -> torch.Tensor:
+        ea = self.encode_drug(fp_a, text_a, has_text_a)
+        eb = self.encode_drug(fp_b, text_b, has_text_b)
+        pair = torch.cat([ea, eb, ea * eb], dim=-1)
+        return self.head(pair)
+
+
+def build_fingerprint_text_batch(pairs, fp_cache: Dict[str, np.ndarray], text_emb_cache: Dict[str, np.ndarray],
+                                  has_text: Dict[str, bool], lm_dim: int, device: str):
+    fp_a, fp_b = build_fingerprint_batch(pairs, fp_cache, device)
+    text_a, ht_a = dp.build_text_tensors([a for a, _ in pairs], text_emb_cache, has_text, lm_dim, device)
+    text_b, ht_b = dp.build_text_tensors([b for _, b in pairs], text_emb_cache, has_text, lm_dim, device)
+    return (fp_a, text_a, ht_a, fp_b, text_b, ht_b)

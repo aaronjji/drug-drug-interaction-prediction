@@ -141,3 +141,50 @@ bash run_all.sh
 
 Runs steps 0–7 in order. Expect roughly **14 hours** end to end, dominated by
 step 4 (~12h). Does not run the optional SSI-DDI commands.
+
+## Camera-ready additions (AI4DD 2026 reviews)
+
+Controls and analyses requested in review. None of these scripts touches the
+original sweep's outputs: new training runs are named `cr_*`, and the
+original `results/*_stats.json` files are only read.
+
+```
+python scripts/12_text_leakage_screen.py                 # ~3 min: screen descriptions, filter, re-embed
+python scripts/12_text_leakage_screen.py --level generic # milder filter: explicit interaction wording only
+python scripts/13_camera_ready_experiments.py --smoke --exps fp-text,gcn,fusion-variants,filtered-text
+PYTHONHASHSEED=0 python scripts/13_camera_ready_experiments.py \
+    --exps fp-text,gcn,fusion-variants,filtered-text,filtered-generic --worker 0   # start several workers to share the GPU
+python scripts/14_camera_ready_reanalysis.py             # inference only (--only "Label A|Label B" to limit): common classes, S1 partner, similarity
+PYTHONHASHSEED=0 python scripts/14_camera_ready_reanalysis.py --biosnap-redraw
+python scripts/15_camera_ready_tables.py                 # reads saved outputs only
+```
+
+- `12_text_leakage_screen.py` matches every PubChem description sentence
+  against the effect terms of all 86 DrugBank interaction types (plus
+  morphological variants and defining class names) and generic interaction
+  wording, removes matching sentences, and re-embeds the rest with the same
+  frozen PubMedBERT (`data/text_cache_filtered.json`,
+  `data/text_embeddings_filtered.pt`, `results/text_leakage_screen.{json,md}`).
+  It reuses an existing embedding file built from identical text.
+- `13_camera_ready_experiments.py` trains fingerprint+text (DrugBank and
+  BioSNAP, both regimes), GCN graph-only/fusion, gated and cross-attention
+  fusion, and fusion/text-only on filtered text (DrugBank inductive), 3 seeds
+  each, through the unchanged `train.py`. Workers claim jobs via lock files in
+  `results/cr_queue/`, so several can run at once (peak GPU memory per run is
+  tens of MB); delete a `.claim` file to retry an interrupted job (it resumes
+  from its `_latest.pt` checkpoint).
+- `PYTHONHASHSEED=0` matters for BioSNAP only: the bucket-aware negative
+  sampler (`splits.sample_bucket_negatives`, used by script 06) iterates
+  Python sets of drug ids, whose order depends on the per-process hash seed.
+  The original sweep did not fix it, so its exact inductive negatives cannot
+  be recreated; `14 ... --biosnap-redraw` re-scores the original BioSNAP
+  checkpoints on the `PYTHONHASHSEED=0` draw (max per-seed AUPRC shift 0.021,
+  rankings unchanged). Script 08's threshold check likewise uses its own
+  re-draw for both models.
+- `14_camera_ready_reanalysis.py` re-scores saved DrugBank checkpoints on the
+  28 types evaluable in T, S1 and S2, on S1 split by partner (training vs.
+  validation drug), and on structural-similarity strata. It asserts that the
+  recomputed official metrics match the stored ones (max diff 3e-5).
+- Wall clock: the 36 camera-ready training runs (12 configurations x 3 seeds)
+  sum to 10.3 GPU-run hours; with six to eight workers sharing the 4GB T550
+  they finished in about 2.2 hours.

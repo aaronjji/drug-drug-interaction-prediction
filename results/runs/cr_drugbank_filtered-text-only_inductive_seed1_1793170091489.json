@@ -1,0 +1,150 @@
+{
+  "config": {
+    "name": "filtered-text-only",
+    "split_type": "inductive",
+    "dataset": "drugbank",
+    "seed": 1,
+    "scale": "full",
+    "camera_ready_experiment": true
+  },
+  "result": {
+    "run_name": "cr_drugbank_filtered-text-only_inductive_seed1",
+    "best_val_score": 0.4441220532212176,
+    "used_loss_fallback": false,
+    "wall_clock_sec": 832.1058633327484,
+    "epochs_run": 18,
+    "stopped_early": true,
+    "hit_epoch_cap": false,
+    "peak_gpu_mem_mb": 25.801216,
+    "trainable_params": 85846,
+    "history": [
+      {
+        "epoch": 0,
+        "train_loss": 1.8448027376962906,
+        "val_score": 0.2710486294416649,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 1,
+        "train_loss": 1.218085360189509,
+        "val_score": 0.35502693457923057,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 2,
+        "train_loss": 1.0096505892629635,
+        "val_score": 0.3867659047880548,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.9011410258451484,
+        "val_score": 0.4046326630189528,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.8292731060101105,
+        "val_score": 0.41496427413229864,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.7694524353228634,
+        "val_score": 0.411575980013978,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.7257062224731176,
+        "val_score": 0.4292820930480201,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.6945120547268842,
+        "val_score": 0.4299168840185186,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.6638900792199826,
+        "val_score": 0.435951827500278,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.640532555804136,
+        "val_score": 0.4333488834421388,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.6163628846215159,
+        "val_score": 0.43955250359531517,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.6043284987620865,
+        "val_score": 0.42666610890988454,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.5891192380909447,
+        "val_score": 0.4441220532212176,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 13,
+        "train_loss": 0.5771946581020625,
+        "val_score": 0.43376343825263974,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 14,
+        "train_loss": 0.5627667395304529,
+        "val_score": 0.44283689837103446,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 15,
+        "train_loss": 0.5581351939008656,
+        "val_score": 0.4235343812105439,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 16,
+        "train_loss": 0.546073467766763,
+        "val_score": 0.41520964066133376,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 17,
+        "train_loss": 0.5436165993661647,
+        "val_score": 0.4245110480212955,
+        "using_loss_fallback": false
+      }
+    ],
+    "metrics_by_split": {
+      "s1": {
+        "auroc": 0.9288354943024913,
+        "auprc": 0.4347088328737454,
+        "f1": 0.41824326687141705,
+        "accuracy": 0.37865072574859593,
+        "n_evaluable_classes_used": 62,
+        "n_evaluable_classes_skipped": 0
+      },
+      "s2": {
+        "auroc": 0.7895568076397169,
+        "auprc": 0.19191582072024,
+        "f1": 0.17448068588164048,
+        "accuracy": 0.16091326839767492,
+        "n_evaluable_classes_used": 28,
+        "n_evaluable_classes_skipped": 0
+      }
+    },
+    "checkpoint": "C:\\Users\\aaron\\Downloads\\Drug\u2013Drug Interaction Prediction\\ddi\\results\\checkpoints\\cr_drugbank_filtered-text-only_inductive_seed1.pt"
+  }
+}

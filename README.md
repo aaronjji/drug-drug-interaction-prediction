@@ -19,6 +19,22 @@ Key results (3-seed mean ± std):
 
 Metric: AUPRC (macro-averaged over evaluable interaction types, ≥10 examples in both train and eval split). S1 = one drug unseen; S2 = both drugs unseen. Fingerprint-MLP wins transductive on both datasets; Fusion wins all four cold-start columns and has the smallest transductive→cold-start gap on both datasets.
 
+## Camera-ready controls (AI4DD reviews)
+
+DrugBank cold-start AUPRC (S1 / S2), 3 seeds; full numbers in the paper and `results/camera_ready_summary.md`:
+
+| Model | S1 | S2 |
+|---|---|---|
+| Fusion (GIN+text) | 0.627 | 0.376 |
+| Graph-only (GIN) | 0.583 | 0.344 |
+| Fingerprint+text / Fingerprint-MLP | 0.599 / 0.558 | 0.335 / 0.296 |
+| GCN+text / GCN graph-only | 0.608 / 0.582 | 0.363 / 0.344 |
+| Fusion, gated / cross-attention | 0.605 / 0.576 | 0.346 / 0.337 |
+| Fusion, explicit interaction wording removed | 0.615 | 0.380 |
+| Fusion, every interaction-type term removed | 0.581 | 0.315 |
+
+Text helps every structure encoder at cold start, mostly for drugs without close structural analogues in training. But the gain depends on pharmacological-class vocabulary (e.g. "anticoagulant") that overlaps DrugBank's templated interaction labels: removing it erases the AUPRC advantage over graph-only.
+
 ## Repository Structure
 
 ```
@@ -45,6 +61,10 @@ scripts/
   09_per_type_drugbank_breakdown.py # Per-interaction-type fusion vs. graph-only analysis
   10_per_type_figures.py           # Per-type figures
   11_per_metric_tables.py          # Separate AUROC/F1/accuracy tables
+  12_text_leakage_screen.py        # Camera-ready: text-leakage screen, filtered descriptions, re-embedding
+  13_camera_ready_experiments.py   # Camera-ready: fp+text, GCN, gated/cross-attention, filtered-text runs
+  14_camera_ready_reanalysis.py    # Camera-ready: common class set, S1 partner, similarity strata (no training)
+  15_camera_ready_tables.py        # Camera-ready: tables + Figure 1 from saved results
 
 configs/
   model.yaml       # GIN depth/width, head dims, dropout
@@ -174,6 +194,7 @@ Per-interaction-type breakdown (DrugBank fusion vs. graph-only):
 
 ```bash
 python scripts/09_per_type_drugbank_breakdown.py  # ~30 min, reloads checkpoints
+python scripts/09_per_type_drugbank_breakdown.py --plot-only  # re-plot figures/per_type_delta.pdf from the saved CSV
 python scripts/10_per_type_figures.py
 python scripts/11_per_metric_tables.py            # AUROC/F1/accuracy sub-tables
 ```

@@ -10,6 +10,7 @@ import os
 
 import matplotlib
 matplotlib.use("Agg")
+matplotlib.rcParams["pdf.fonttype"] = 42  # embed TrueType, not Type 3
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -22,7 +23,7 @@ RESULTS_DIR = os.path.join(ROOT, "results")
 FIGURES_DIR = os.path.join(ROOT, "figures")
 
 MODEL_ORDER = ["fusion=concat", "graph-only", "text-only", "fingerprint-mlp"]
-MODEL_LABELS = {"fusion=concat": "Fusion (concat)", "graph-only": "Graph-only",
+MODEL_LABELS = {"fusion=concat": "Fusion (GIN+text)", "graph-only": "Graph-only (GIN)",
                 "text-only": "Text-only", "fingerprint-mlp": "Fingerprint-MLP"}
 ABLATION_ORDER = ["fusion=concat", "graph-only", "text-only"]
 METRICS = ["auroc", "auprc", "f1", "accuracy"]

@@ -343,27 +343,30 @@ def build_or_load_text_embeddings(text_cache: Dict[str, Optional[str]], model_na
 # Batch assembly (shared by model smoke tests and train.py)
 # ---------------------------------------------------------------------------
 
+def build_text_tensors(ids: List[str], text_emb_cache: Dict[str, np.ndarray], has_text: Dict[str, bool],
+                        lm_dim: int, device: str):
+    """(text_embedding, has_text) tensors for a list of drug ids. Missing-text
+    drugs get a zero placeholder here -- TextEncoder substitutes its learned
+    missing-token using the has_text flag, so the placeholder's value is inert."""
+    emb = torch.stack([
+        torch.tensor(text_emb_cache[i], dtype=torch.float) if has_text.get(i, False)
+        else torch.zeros(lm_dim, dtype=torch.float)
+        for i in ids
+    ]).to(device)
+    flags = torch.tensor([1.0 if has_text.get(i, False) else 0.0 for i in ids], device=device)
+    return emb, flags
+
+
 def build_pair_batch(pairs: List[Tuple[str, str]], graphs: Dict[str, Data],
                       text_emb_cache: Dict[str, np.ndarray], has_text: Dict[str, bool],
                       lm_dim: int, device: str):
     """pairs: list of (id_a, id_b). Returns the two graph batches and the two
-    (text_embedding, has_text) tensor pairs, aligned by position. Missing-text
-    drugs get a zero placeholder here -- TextEncoder substitutes its learned
-    missing-token using the has_text flag, so the placeholder's value is inert."""
+    (text_embedding, has_text) tensor pairs, aligned by position (see
+    build_text_tensors for the missing-text placeholder)."""
     data_a = [graphs[a] for a, _ in pairs]
     data_b = [graphs[b] for _, b in pairs]
     batch_a = Batch.from_data_list(data_a).to(device)
     batch_b = Batch.from_data_list(data_b).to(device)
-
-    def text_tensors(ids):
-        emb = torch.stack([
-            torch.tensor(text_emb_cache[i], dtype=torch.float) if has_text.get(i, False)
-            else torch.zeros(lm_dim, dtype=torch.float)
-            for i in ids
-        ]).to(device)
-        flags = torch.tensor([1.0 if has_text.get(i, False) else 0.0 for i in ids], device=device)
-        return emb, flags
-
-    text_a, ht_a = text_tensors([a for a, _ in pairs])
-    text_b, ht_b = text_tensors([b for _, b in pairs])
+    text_a, ht_a = build_text_tensors([a for a, _ in pairs], text_emb_cache, has_text, lm_dim, device)
+    text_b, ht_b = build_text_tensors([b for _, b in pairs], text_emb_cache, has_text, lm_dim, device)
     return batch_a, text_a, ht_a, batch_b, text_b, ht_b

@@ -1,0 +1,329 @@
+{
+  "n_drugs": 1706,
+  "n_with_description": 1501,
+  "n_sentences": 4607,
+  "docs_with_label_term": 778,
+  "docs_with_interaction_term": 71,
+  "sentences_with_label_term": 1102,
+  "sentences_with_interaction_term": 78,
+  "sentences_removed": 78,
+  "share_sentences_removed": 0.016930757542869546,
+  "words_before": 70415,
+  "words_after": 68505,
+  "share_words_removed": 0.027124902364553005,
+  "docs_changed": 71,
+  "docs_emptied": 0,
+  "n_with_description_after_filter": 1501,
+  "text_coverage_by_inductive_drug_group_full": {
+    "train": 0.8802345058626466,
+    "val": 0.8764705882352941,
+    "test": 0.8801169590643275
+  },
+  "text_coverage_by_inductive_drug_group_filtered": {
+    "train": 0.8802345058626466,
+    "val": 0.8764705882352941,
+    "test": 0.8801169590643275
+  },
+  "pair_lexical_match_full_text": {
+    "transductive_train": {
+      "n_pairs": 134264,
+      "share_types_with_terms": 1.0,
+      "share_drug2_desc_matches_own_type": 0.06616814633855687,
+      "share_either_desc_matches_own_type": 0.12880593457665496
+    },
+    "transductive_test": {
+      "n_pairs": 38366,
+      "share_types_with_terms": 1.0,
+      "share_drug2_desc_matches_own_type": 0.06604806338945941,
+      "share_either_desc_matches_own_type": 0.1299066882135224
+    },
+    "inductive_train": {
+      "n_pairs": 99372,
+      "share_types_with_terms": 1.0,
+      "share_drug2_desc_matches_own_type": 0.06858068671255485,
+      "share_either_desc_matches_own_type": 0.128698224852071
+    },
+    "s1": {
+      "n_pairs": 57792,
+      "share_types_with_terms": 1.0,
+      "share_drug2_desc_matches_own_type": 0.061254152823920265,
+      "share_either_desc_matches_own_type": 0.1264015780730897
+    },
+    "s2": {
+      "n_pairs": 6617,
+      "share_types_with_terms": 1.0,
+      "share_drug2_desc_matches_own_type": 0.05727671150068007,
+      "share_either_desc_matches_own_type": 0.13676892851745504
+    }
+  },
+  "pair_lexical_match_filtered_text": {
+    "transductive_train": {
+      "n_pairs": 134264,
+      "share_types_with_terms": 1.0,
+      "share_drug2_desc_matches_own_type": 0.06446999940415897,
+      "share_either_desc_matches_own_type": 0.12588631353154978
+    },
+    "transductive_test": {
+      "n_pairs": 38366,
+      "share_types_with_terms": 1.0,
+      "share_drug2_desc_matches_own_type": 0.06422353125162905,
+      "share_either_desc_matches_own_type": 0.12680498357921077
+    },
+    "inductive_train": {
+      "n_pairs": 99372,
+      "share_types_with_terms": 1.0,
+      "share_drug2_desc_matches_own_type": 0.06822847482188142,
+      "share_either_desc_matches_own_type": 0.12732963007688283
+    },
+    "s1": {
+      "n_pairs": 57792,
+      "share_types_with_terms": 1.0,
+      "share_drug2_desc_matches_own_type": 0.059766057585825025,
+      "share_either_desc_matches_own_type": 0.12439437984496124
+    },
+    "s2": {
+      "n_pairs": 6617,
+      "share_types_with_terms": 1.0,
+      "share_drug2_desc_matches_own_type": 0.05606770439776334,
+      "share_either_desc_matches_own_type": 0.1360132990781321
+    }
+  },
+  "docs_per_label_term": {
+    "depressant|depression|sedati|hypnotic|anxiolytic|an(?:a)?esthe|anticonvulsant|antiepilep|opioid|narcotic|barbiturat|benzodiazepin|gaba": 207,
+    "toxic|toxin": 139,
+    "analges|anti-inflammatory|nsaid": 128,
+    "hypersensitiv|allerg|anaphyla": 105,
+    "adrenergic": 94,
+    "hyperten|hypotens|blood pressure": 92,
+    "atrioventricular|\\bav block|arrhythm|bradycard|tachycard|\\bqtc?\\b|torsade|heart failure|channel blocker": 72,
+    "serotonin|serotonerg|\\b5-ht": 54,
+    "vasodilat": 47,
+    "cholinergic|muscarinic": 44,
+    "vasoconstrict|vasopressor|sympathomimetic": 37,
+    "antipsychotic|neuroleptic": 35,
+    "bronch": 28,
+    "neuromuscular|muscle relaxant": 27,
+    "anticoagul|vitamin k|thromb|fibrinoly": 24,
+    "diuretic": 22,
+    "glyc(?:a)?emi|insulin|diabet": 20,
+    "platelet": 19,
+    "diagnostic|contrast agent|radio-?opaque|imaging agent": 17,
+    "metaboli[sz](?:m|e|ed|es|ing)\\b|active metabolite": 16,
+    "immunosuppress|myelosuppress": 15,
+    "stimula|neuroexcit": 13,
+    "photosensiti": 11,
+    "dermatolog": 11,
+    "ulcer": 9,
+    "serum|plasma (?:concentration|level)": 7,
+    "bleed|h(?:a)?emorrh": 6,
+    "fluid retention|fluid retaining|\\bo?edema": 6,
+    "adverse|side[- ]effect": 6,
+    "absor[bp]": 3,
+    "calc(?:a)?emi": 2,
+    "constipat|laxative": 2,
+    "excret|eliminat|clearance|half-life": 2,
+    "respiratory depress": 1,
+    "natr(?:a)?emi": 1,
+    "bioavailab": 1,
+    "kal(?:a)?emi": 0,
+    "myopath|rhabdomyoly": 0,
+    "efficacy|effectiveness": 0,
+    "protein[- ]bin|protein[- ]bound": 0
+  },
+  "types_without_type_specific_term": [],
+  "lexicon": {
+    "label_terms": {
+      "photosensiti": [
+        0
+      ],
+      "cholinergic|muscarinic": [
+        1
+      ],
+      "vasoconstrict|vasopressor|sympathomimetic": [
+        4,
+        18,
+        83
+      ],
+      "anticoagul|vitamin k|thromb|fibrinoly": [
+        5,
+        11,
+        80
+      ],
+      "platelet": [
+        25,
+        52
+      ],
+      "bleed|h(?:a)?emorrh": [
+        65
+      ],
+      "toxic|toxin": [
+        6,
+        14,
+        34,
+        43,
+        56,
+        57,
+        79
+      ],
+      "glyc(?:a)?emi|insulin|diabet": [
+        8,
+        77
+      ],
+      "hyperten|hypotens|blood pressure": [
+        9,
+        29,
+        30,
+        36,
+        40,
+        55,
+        59,
+        70,
+        78
+      ],
+      "bronch": [
+        13,
+        45
+      ],
+      "depressant|depression|sedati|hypnotic|anxiolytic|an(?:a)?esthe|anticonvulsant|antiepilep|opioid|narcotic|barbiturat|benzodiazepin|gaba": [
+        15,
+        31,
+        39,
+        40,
+        75,
+        78
+      ],
+      "neuromuscular|muscle relaxant": [
+        16,
+        20,
+        21
+      ],
+      "stimula|neuroexcit": [
+        22,
+        26,
+        60
+      ],
+      "calc(?:a)?emi": [
+        23,
+        50
+      ],
+      "atrioventricular|\\bav block|arrhythm|bradycard|tachycard|\\bqtc?\\b|torsade|heart failure|channel blocker": [
+        19,
+        24,
+        32,
+        49,
+        53,
+        81,
+        84
+      ],
+      "dermatolog": [
+        27
+      ],
+      "diuretic": [
+        28
+      ],
+      "immunosuppress|myelosuppress": [
+        33,
+        62
+      ],
+      "antipsychotic|neuroleptic": [
+        35
+      ],
+      "vasodilat": [
+        37
+      ],
+      "constipat|laxative": [
+        38
+      ],
+      "respiratory depress": [
+        39
+      ],
+      "kal(?:a)?emi": [
+        41,
+        67,
+        82
+      ],
+      "natr(?:a)?emi": [
+        54
+      ],
+      "myopath|rhabdomyoly": [
+        47
+      ],
+      "analges|anti-inflammatory|nsaid": [
+        51,
+        68
+      ],
+      "ulcer": [
+        58
+      ],
+      "serotonin|serotonerg|\\b5-ht": [
+        63
+      ],
+      "fluid retention|fluid retaining|\\bo?edema": [
+        73
+      ],
+      "hypersensitiv|allerg|anaphyla": [
+        85
+      ],
+      "adrenergic": [
+        4,
+        9,
+        13,
+        18,
+        36,
+        53,
+        70,
+        84
+      ],
+      "diagnostic|contrast agent|radio-?opaque|imaging agent": [
+        44
+      ],
+      "adverse|side[- ]effect": [
+        17,
+        21,
+        27,
+        48
+      ],
+      "efficacy|effectiveness": [
+        7,
+        10,
+        44,
+        64,
+        66,
+        69
+      ],
+      "metaboli[sz](?:m|e|ed|es|ing)\\b|active metabolite": [
+        3,
+        10,
+        46,
+        76
+      ],
+      "bioavailab": [
+        2,
+        61
+      ],
+      "absor[bp]": [
+        12,
+        17,
+        66
+      ],
+      "serum|plasma (?:concentration|level)": [
+        10,
+        17,
+        64,
+        66,
+        71,
+        72,
+        74,
+        76
+      ],
+      "protein[- ]bin|protein[- ]bound": [
+        42
+      ],
+      "excret|eliminat|clearance|half-life": [
+        64,
+        71
+      ]
+    },
+    "interaction_terms": "interact|co-?administ|coadminist|concomitan|combination|combined with|in conjunction with|together with|contraindicat|potentiat|\\bcyp(?:\\d|\\b)|cytochrome|p450|p-?glycoprotein|\\bp-?gp\\b|enzyme induc|inducer"
+  }
+}

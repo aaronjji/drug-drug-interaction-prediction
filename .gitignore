@@ -5,3 +5,10 @@ external/
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+results/cr_queue/
+results/cr_logs/
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.fls
+paper/*.fdb_latexmk

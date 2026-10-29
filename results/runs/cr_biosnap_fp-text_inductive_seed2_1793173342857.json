@@ -1,0 +1,110 @@
+{
+  "config": {
+    "name": "fp-text",
+    "split_type": "inductive",
+    "dataset": "biosnap",
+    "seed": 2,
+    "scale": "full",
+    "camera_ready_experiment": true
+  },
+  "result": {
+    "run_name": "cr_biosnap_fp-text_inductive_seed2",
+    "best_val_score": 0.8048915672216895,
+    "used_loss_fallback": false,
+    "wall_clock_sec": 115.90759348869324,
+    "epochs_run": 12,
+    "stopped_early": true,
+    "hit_epoch_cap": false,
+    "peak_gpu_mem_mb": 25.137152,
+    "trainable_params": 169217,
+    "history": [
+      {
+        "epoch": 0,
+        "train_loss": 0.4752766671225569,
+        "val_score": 0.7775888782811662,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.3607053038748828,
+        "val_score": 0.7891003247333133,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.32282746669640733,
+        "val_score": 0.7926667851174042,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.2974422578247363,
+        "val_score": 0.7932213521477366,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.2772951705795844,
+        "val_score": 0.8007483704167273,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.2586857465367332,
+        "val_score": 0.8044061807115575,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.24321339590048716,
+        "val_score": 0.8048915672216895,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.23012432806357322,
+        "val_score": 0.80146986867067,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.21653334476450767,
+        "val_score": 0.79384325256908,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.20508594432594635,
+        "val_score": 0.8000591953745553,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.19180922221894547,
+        "val_score": 0.7986142858538399,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.18132039568267272,
+        "val_score": 0.797840884289996,
+        "using_loss_fallback": false
+      }
+    ],
+    "metrics_by_split": {
+      "s1": {
+        "auroc": 0.8201410020228735,
+        "auprc": 0.8184746974598898,
+        "f1": 0.674859241126071,
+        "accuracy": 0.7286286368094148
+      },
+      "s2": {
+        "auroc": 0.7038506112916958,
+        "auprc": 0.7041681645236725,
+        "f1": 0.43183984747378457,
+        "accuracy": 0.6060806345009914
+      }
+    },
+    "checkpoint": "C:\\Users\\aaron\\Downloads\\Drug\u2013Drug Interaction Prediction\\ddi\\results\\checkpoints\\cr_biosnap_fp-text_inductive_seed2.pt"
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "config": {
+    "name": "fp-text",
+    "split_type": "transductive",
+    "dataset": "biosnap",
+    "seed": 1,
+    "scale": "full",
+    "camera_ready_experiment": true
+  },
+  "result": {
+    "run_name": "cr_biosnap_fp-text_transductive_seed1",
+    "best_val_score": 0.9582389279372024,
+    "used_loss_fallback": false,
+    "wall_clock_sec": 357.24275040626526,
+    "epochs_run": 24,
+    "stopped_early": true,
+    "hit_epoch_cap": false,
+    "peak_gpu_mem_mb": 24.936448,
+    "trainable_params": 169217,
+    "history": [
+      {
+        "epoch": 0,
+        "train_loss": 0.4807770862761471,
+        "val_score": 0.8850243058689862,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.3663511367307769,
+        "val_score": 0.9035675814249037,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.3254829316779419,
+        "val_score": 0.919895492945083,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.29814795763404284,
+        "val_score": 0.9315692550924657,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.2683959976873464,
+        "val_score": 0.9380410560273138,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.25113496405107005,
+        "val_score": 0.9427493650884787,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.2345283849992686,
+        "val_score": 0.9465346780957806,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.22087531167737864,
+        "val_score": 0.9485871249204851,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.2112016131653002,
+        "val_score": 0.9515114171991228,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.20086635661276955,
+        "val_score": 0.9539021976065835,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.19164274296619827,
+        "val_score": 0.9536382968076307,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.18344056933980296,
+        "val_score": 0.9505012015138158,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.17446186814319203,
+        "val_score": 0.953217368743184,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 13,
+        "train_loss": 0.16791469452868182,
+        "val_score": 0.9556945972056141,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 14,
+        "train_loss": 0.1608391285666989,
+        "val_score": 0.9543268303276418,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 15,
+        "train_loss": 0.15332140821825574,
+        "val_score": 0.9560468303035473,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 16,
+        "train_loss": 0.1464743989399048,
+        "val_score": 0.955548902639218,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 17,
+        "train_loss": 0.1402841080152602,
+        "val_score": 0.9536074360950164,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 18,
+        "train_loss": 0.1355712569611906,
+        "val_score": 0.9582389279372024,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 19,
+        "train_loss": 0.12850248654097043,
+        "val_score": 0.9575379562368544,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 20,
+        "train_loss": 0.12083638718144761,
+        "val_score": 0.9568178568173377,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 21,
+        "train_loss": 0.11726483828560622,
+        "val_score": 0.9541538232787491,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 22,
+        "train_loss": 0.11367239846192577,
+        "val_score": 0.9551722593597711,
+        "using_loss_fallback": false
+      },
+      {
+        "epoch": 23,
+        "train_loss": 0.10745542678826799,
+        "val_score": 0.9547975910432305,
+        "using_loss_fallback": false
+      }
+    ],
+    "metrics_by_split": {
+      "test": {
+        "auroc": 0.9648060416141079,
+        "auprc": 0.95592683252385,
+        "f1": 0.9116267588249815,
+        "accuracy": 0.9093096896770108
+      }
+    },
+    "checkpoint": "C:\\Users\\aaron\\Downloads\\Drug\u2013Drug Interaction Prediction\\ddi\\results\\checkpoints\\cr_biosnap_fp-text_transductive_seed1.pt"
+  }
+}
