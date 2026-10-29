@@ -126,6 +126,46 @@ def plot_per_type_delta(final_df: pd.DataFrame, out_path: str) -> None:
     log.info(f"wrote {out_path}")
 
 
+def plot_per_type_delta_split(final_df: pd.DataFrame, split_name: str, out_path: str) -> None:
+    """One split per figure, drawn at print size (5.5in wide, 0.092in per type)
+    so the paper can show the type labels at a readable 6pt."""
+    sub = final_df[final_df["split"] == split_name].sort_values("delta_auprc_mean", ascending=True)
+    y = np.arange(len(sub))
+    fig, ax = plt.subplots(figsize=(5.5, 0.092 * len(sub) + 1.0))
+    colors = [BUCKET_COLORS[b] for b in sub["bucket"]]
+    bars = ax.barh(y, sub["delta_auprc_mean"], xerr=sub["delta_auprc_std"], color=colors, height=0.75,
+                   error_kw=dict(elinewidth=0.5, ecolor="black", capsize=1.0))
+    for bar, low in zip(bars, sub["low_support"]):
+        if low:
+            bar.set_hatch("///")
+            bar.set_edgecolor("dimgray")
+    ax.axvline(0, color="black", linewidth=0.6)
+    ax.set_yticks(y)
+    ax.set_yticklabels([_short_label(tid, lbl, max_len=64) for tid, lbl in zip(sub["type_id"], sub["label"])],
+                       fontsize=6)
+    ax.set_ylim(-0.7, len(sub) - 0.3)
+    ax.set_xlabel("Δ AUPRC, Fusion (GIN+text) − Graph-only (GIN), mean ± std over 3 seeds", fontsize=7)
+    ax.tick_params(axis="x", labelsize=6.5)
+    ax.tick_params(axis="y", length=1.5, pad=1.5)
+    ax.spines[["top", "right"]].set_visible(False)
+    handles = [plt.Rectangle((0, 0), 1, 1, color=c) for c in BUCKET_COLORS.values()]
+    handles.append(plt.Rectangle((0, 0), 1, 1, facecolor="white", edgecolor="dimgray", hatch="///"))
+    labels = list(BUCKET_COLORS.keys()) + [f"low test support (n<{LOW_SUPPORT_THRESHOLD})"]
+    fig.legend(handles, labels, loc="lower center", bbox_to_anchor=(0.5, 1.0), ncol=3, fontsize=6, frameon=False,
+               handlelength=1.2, columnspacing=1.0)
+    fig.tight_layout()
+    fig.savefig(out_path, bbox_inches="tight")
+    plt.close(fig)
+    log.info(f"wrote {out_path}")
+
+
+def plot_all_per_type_delta(final_df: pd.DataFrame) -> None:
+    plot_per_type_delta(final_df, os.path.join(FIGURES_DIR, "per_type_delta.pdf"))
+    for split_name in ("S1", "S2"):
+        plot_per_type_delta_split(final_df, split_name,
+                                  os.path.join(FIGURES_DIR, f"per_type_delta_{split_name.lower()}.pdf"))
+
+
 def write_summary_md(final_df: pd.DataFrame, merged_check: pd.DataFrame,
                       max_diff_auprc: float, max_diff_auroc: float, n_classes_match: bool,
                       out_path: str) -> None:
@@ -402,8 +442,7 @@ def main():
     final_df.to_csv(csv_path, index=False)
     log.info(f"wrote {csv_path} ({len(final_df)} rows)")
 
-    fig_path = os.path.join(FIGURES_DIR, "per_type_delta.pdf")
-    plot_per_type_delta(final_df, fig_path)
+    plot_all_per_type_delta(final_df)
 
     md_path = os.path.join(RESULTS_DIR, "per_type_summary.md")
     write_summary_md(final_df, merged_check, max_diff_auprc, max_diff_auroc, n_classes_match, md_path)
@@ -413,8 +452,7 @@ def main():
 
 if __name__ == "__main__":
     if "--plot-only" in sys.argv[1:]:
-        # re-plot figures/per_type_delta.pdf from the CSV main() saved; no checkpoint loading
-        plot_per_type_delta(pd.read_csv(os.path.join(RESULTS_DIR, "per_type_drugbank.csv")),
-                            os.path.join(FIGURES_DIR, "per_type_delta.pdf"))
+        # re-plot figures/per_type_delta*.pdf from the CSV main() saved; no checkpoint loading
+        plot_all_per_type_delta(pd.read_csv(os.path.join(RESULTS_DIR, "per_type_drugbank.csv")))
     else:
         main()

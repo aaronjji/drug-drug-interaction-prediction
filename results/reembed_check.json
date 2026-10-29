@@ -1,0 +1,7 @@
+{
+  "n_descriptions": 20,
+  "max_abs_diff": 1.33514404296875e-05,
+  "median_abs_diff": 3.814697265625e-06,
+  "model": "microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract",
+  "device": "cuda"
+}

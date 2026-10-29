@@ -169,19 +169,20 @@ def plot_inductive_gap(drugbank_summary, biosnap_summary, out_path):
 
 
 def plot_ablation(drugbank_summary, biosnap_summary, out_path):
-    fig, axes = plt.subplots(1, 2, figsize=(9, 3.3))
-    splits, split_labels = ["s1", "s2"], ["S1", "S2"]
-    for ax, name, summary in zip(axes, ["DrugBank", "BioSNAP"], [drugbank_summary, biosnap_summary]):
-        models_here = [m for m in ABLATION_ORDER if m in summary["model"].unique()]
-        _grouped_bar_panel(ax, summary, models_here, splits, split_labels)
-        ax.set_title(name)
-        ax.set_ylim(0, 1.0)
-    handles, labels = axes[0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, 1.05), ncol=3, fontsize=9, frameon=False)
-    fig.suptitle("Fusion vs. single-modality ablations: neither modality alone matches fusion cold-start", y=1.18, fontsize=11)
-    fig.tight_layout(rect=[0, 0, 1, 0.92])
-    fig.savefig(out_path, bbox_inches="tight")
-    plt.close(fig)
+    # drawn at print size (paper includes it at \linewidth = 5.5in); the caption carries the title
+    with plt.rc_context({"font.size": 7.5, "axes.titlesize": 8, "xtick.labelsize": 7, "ytick.labelsize": 7}):
+        fig, axes = plt.subplots(1, 2, figsize=(5.5, 1.9))
+        splits, split_labels = ["s1", "s2"], ["S1", "S2"]
+        for ax, name, summary in zip(axes, ["DrugBank", "BioSNAP"], [drugbank_summary, biosnap_summary]):
+            models_here = [m for m in ABLATION_ORDER if m in summary["model"].unique()]
+            _grouped_bar_panel(ax, summary, models_here, splits, split_labels)
+            ax.set_title(name)
+            ax.set_ylim(0, 1.0)
+        handles, labels = axes[0].get_legend_handles_labels()
+        fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, 1.08), ncol=3, fontsize=7, frameon=False)
+        fig.tight_layout(rect=[0, 0, 1, 0.92])
+        fig.savefig(out_path, bbox_inches="tight")
+        plt.close(fig)
     log.info(f"wrote {out_path}")
 
 

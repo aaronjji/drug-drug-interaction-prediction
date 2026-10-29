@@ -62,6 +62,7 @@ scripts/
   10_per_type_figures.py           # Per-type figures
   11_per_metric_tables.py          # Separate AUROC/F1/accuracy tables
   12_text_leakage_screen.py        # Camera-ready: text-leakage screen, filtered descriptions, re-embedding
+  12b_reembed_check.py             # Camera-ready: re-embedding reproducibility check (results/reembed_check.json)
   13_camera_ready_experiments.py   # Camera-ready: fp+text, GCN, gated/cross-attention, filtered-text runs
   14_camera_ready_reanalysis.py    # Camera-ready: common class set, S1 partner, similarity strata (no training)
   15_camera_ready_tables.py        # Camera-ready: tables + Figure 1 from saved results
@@ -194,7 +195,7 @@ Per-interaction-type breakdown (DrugBank fusion vs. graph-only):
 
 ```bash
 python scripts/09_per_type_drugbank_breakdown.py  # ~30 min, reloads checkpoints
-python scripts/09_per_type_drugbank_breakdown.py --plot-only  # re-plot figures/per_type_delta.pdf from the saved CSV
+python scripts/09_per_type_drugbank_breakdown.py --plot-only  # re-plot figures/per_type_delta{,_s1,_s2}.pdf from the saved CSV
 python scripts/10_per_type_figures.py
 python scripts/11_per_metric_tables.py            # AUROC/F1/accuracy sub-tables
 ```

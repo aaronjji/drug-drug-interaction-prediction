@@ -126,8 +126,9 @@ python scripts/07_ssiddi_faithfulness_check.py --max-epochs 30 --no-amp \
 
 We attempted to add SSI-DDI (Nyamabo et al. 2021) as a published-method
 comparison. Our faithful reproduction of their architecture/data/training
-setup plateaus at AUROC≈0.93–0.95 on their own evaluation, short of the
-(unverified) published range, and a time-boxed fidelity check found no
+setup reaches test AUROC 0.944 (100 epochs) and 0.933 (137 epochs) on their
+own evaluation, 4.0–5.1 points below the published AUROC of 0.9838 (read from
+the article's full text), and a time-boxed fidelity check found no
 implementation discrepancy. **This is not included in the final comparison
 tables** — see `results/results_summary.md` for the full account. These
 commands are included for transparency, not because they're needed to
@@ -151,6 +152,7 @@ original `results/*_stats.json` files are only read.
 ```
 python scripts/12_text_leakage_screen.py                 # ~3 min: screen descriptions, filter, re-embed
 python scripts/12_text_leakage_screen.py --level generic # milder filter: explicit interaction wording only
+python scripts/12b_reembed_check.py                      # re-embeds 20 unchanged descriptions -> results/reembed_check.json
 python scripts/13_camera_ready_experiments.py --smoke --exps fp-text,gcn,fusion-variants,filtered-text
 PYTHONHASHSEED=0 python scripts/13_camera_ready_experiments.py \
     --exps fp-text,gcn,fusion-variants,filtered-text,filtered-generic --worker 0   # start several workers to share the GPU

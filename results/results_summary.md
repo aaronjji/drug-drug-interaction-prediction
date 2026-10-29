@@ -131,6 +131,11 @@ truth, and make no claim about what SSI-DDI itself actually achieves — only
 that our reproduction attempt, under our compute budget, did not reach that
 range.
 
+*Update (Oct 2026):* the published figures were later read from the article's
+full text (DrugBank, transductive: accuracy 0.9447, AUROC 0.9838, AUPRC 0.9814).
+Our runs reached test AUROC 0.944 (100 epochs) and 0.933 (137 epochs), i.e.
+4.0–5.1 points below; see the paper's SSI-DDI appendix.
+
 ## What this means for the paper
 
 The core contribution — fusion vs. graph-only/text-only/fingerprint-MLP,

@@ -123,7 +123,10 @@ def plot_inductive_gap(df, out_path):
     models =[("Fusion (GIN+text)", "#0072B2"), ("Graph-only (GIN)", "#E69F00"), ("Text-only", "#009E73"),
               ("Fingerprint-MLP", "#D55E00"), ("Fingerprint+text", "#CC79A7")]
     splits = ["T", "S1", "S2"]
-    fig, axes = plt.subplots(1, 2, figsize=(9, 3.0))
+    plt.rcParams.update({"font.size": 7.5, "axes.titlesize": 8, "axes.labelsize": 7.5,
+                         "xtick.labelsize": 7, "ytick.labelsize": 7})
+    # drawn at print size (included at \linewidth = 5.5in), so fonts print at their nominal size
+    fig, axes = plt.subplots(1, 2, figsize=(5.5, 1.4))
     for ax, (dataset, title) in zip(axes, (("drugbank", "DrugBank"), ("biosnap", "BioSNAP"))):
         x = np.arange(len(splits))
         width = 0.8 / len(models)
@@ -131,8 +134,8 @@ def plot_inductive_gap(df, out_path):
             cells = [agg(df, dataset, m, s) for s in splits]
             means = [c["mean"] if c else np.nan for c in cells]
             stds = [c["std"] if c and not np.isnan(c["std"]) else 0 for c in cells]
-            ax.bar(x + i * width - 0.4 + width / 2, means, width, yerr=stds, capsize=2, label=m, color=color,
-                   edgecolor="white", linewidth=0.6, error_kw={"elinewidth": 0.8})
+            ax.bar(x + i * width - 0.4 + width / 2, means, width, yerr=stds, capsize=1.5, label=m, color=color,
+                   edgecolor="white", linewidth=0.4, error_kw={"elinewidth": 0.6})
         ax.set_xticks(x)
         ax.set_xticklabels(["Transductive", "S1", "S2"])
         ax.set_ylabel("AUPRC")
@@ -140,8 +143,9 @@ def plot_inductive_gap(df, out_path):
         ax.set_title(title)
         ax.spines[["top", "right"]].set_visible(False)
     handles, labels = axes[0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, 1.07), ncol=5, fontsize=9, frameon=False)
-    fig.tight_layout(rect=[0, 0, 1, 0.93])
+    fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, 1.08), ncol=5, fontsize=7, frameon=False,
+               handlelength=1.2, columnspacing=1.0)
+    fig.tight_layout(rect=[0, 0, 1, 0.92])
     fig.savefig(out_path, bbox_inches="tight")
     plt.close(fig)
 
