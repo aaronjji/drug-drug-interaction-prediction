@@ -2,7 +2,7 @@
 
 Code for: *"Language-Grounded Drug Representations for Cold-Start Drug–Drug Interaction Prediction"*
 
-Preprint: Research Square — https://doi.org/10.21203/rs.3.rs-10334947/v1 (outdated)
+NeurIPS AI4DD: https://neurips.cc/virtual/2026/loc/sydney/161194
 
 ## Overview
 
