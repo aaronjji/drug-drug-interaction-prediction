@@ -89,23 +89,17 @@ Fingerprint+text & 0.965$\pm$0.001 & 0.599$\pm$0.005 & 0.335$\pm$0.016 & 0.956$\
 ## gap
 
 ```latex
-\multirow{5}{*}{DrugBank} & Fusion (GIN+text) & \textbf{0.320$\pm$0.005} & \textbf{0.571$\pm$0.023} \\
- & Graph-only (GIN) & 0.367$\pm$0.008 & 0.606$\pm$0.018 \\
- & Text-only & 0.386$\pm$0.016 & 0.631$\pm$0.012 \\
- & Fingerprint-MLP & 0.416$\pm$0.009 & 0.677$\pm$0.015 \\
- & Fingerprint+text & 0.365$\pm$0.005 & 0.629$\pm$0.017 \\
-\cmidrule(lr){1-4}
-\multirow{5}{*}{BioSNAP} & Fusion (GIN+text) & \textbf{0.096$\pm$0.001} & \textbf{0.201$\pm$0.013} \\
- & Graph-only (GIN) & 0.147$\pm$0.040 & 0.244$\pm$0.033 \\
- & Text-only & 0.114$\pm$0.006 & 0.236$\pm$0.017 \\
- & Fingerprint-MLP & 0.150$\pm$0.011 & 0.286$\pm$0.012 \\
- & Fingerprint+text & 0.136$\pm$0.004 & 0.266$\pm$0.012 \\
+Fusion (GIN+text) & \textbf{0.320$\pm$0.005} & \textbf{0.571$\pm$0.023} & \textbf{0.096$\pm$0.001} & \textbf{0.201$\pm$0.013} \\
+Graph-only (GIN) & 0.367$\pm$0.008 & 0.606$\pm$0.018 & 0.147$\pm$0.040 & 0.244$\pm$0.033 \\
+Text-only & 0.386$\pm$0.016 & 0.631$\pm$0.012 & 0.114$\pm$0.006 & 0.236$\pm$0.017 \\
+Fingerprint-MLP & 0.416$\pm$0.009 & 0.677$\pm$0.015 & 0.150$\pm$0.011 & 0.286$\pm$0.012 \\
+Fingerprint+text & 0.365$\pm$0.005 & 0.629$\pm$0.017 & 0.136$\pm$0.004 & 0.266$\pm$0.012 \\
 ```
 
 ## controls
 
 ```latex
-\multicolumn{5}{l}{\emph{Reference (Table 1)}} \\
+\multicolumn{5}{l}{\emph{Reference (Tables 1, 8)}} \\
 \quad Fusion (GIN+text) & 0.627$\pm$0.008 & 0.376$\pm$0.025 & 0.953$\pm$0.003 & 0.866$\pm$0.003 \\
 \quad Graph-only (GIN) & 0.583$\pm$0.010 & 0.344$\pm$0.018 & 0.937$\pm$0.005 & 0.838$\pm$0.013 \\
 \multicolumn{5}{l}{\emph{Text-leakage control}} \\

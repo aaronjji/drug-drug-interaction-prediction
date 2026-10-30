@@ -144,7 +144,8 @@ def plot_per_type_delta_split(final_df: pd.DataFrame, split_name: str, out_path:
     ax.set_yticklabels([_short_label(tid, lbl, max_len=64) for tid, lbl in zip(sub["type_id"], sub["label"])],
                        fontsize=6)
     ax.set_ylim(-0.7, len(sub) - 0.3)
-    ax.set_xlabel("Δ AUPRC, Fusion (GIN+text) − Graph-only (GIN), mean ± std over 3 seeds", fontsize=7)
+    # right-aligned: the long type labels leave a narrow axis, and a centred label overruns the page edge
+    ax.set_xlabel("Δ AUPRC, Fusion (GIN+text) − Graph-only (GIN)", fontsize=7, loc="right")
     ax.tick_params(axis="x", labelsize=6.5)
     ax.tick_params(axis="y", length=1.5, pad=1.5)
     ax.spines[["top", "right"]].set_visible(False)

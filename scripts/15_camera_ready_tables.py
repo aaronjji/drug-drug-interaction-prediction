@@ -163,21 +163,14 @@ def main():
     masks = bold_mask(table)
     blocks["main_auprc"] = [latex_row(m, c, b) for m, c, b in zip(main_models, table, masks)]
 
-    # --- Table 2: gap, both datasets ---
-    gap_lines = []
-    for k, (dataset, label) in enumerate((("drugbank", "DrugBank"), ("biosnap", "BioSNAP"))):
-        rows = [[gap(df, dataset, m, "S1"), gap(df, dataset, m, "S2")] for m in main_models]
-        masks = bold_mask(rows, higher_is_better=False)
-        if k:
-            gap_lines.append("\\cmidrule(lr){1-4}")
-        for i, (m, c, b) in enumerate(zip(main_models, rows, masks)):
-            first = f"\\multirow{{{len(main_models)}}}{{*}}{{{label}}}" if i == 0 else ""
-            gap_lines.append(latex_row(f"{first} & {m}", c, b))
-    blocks["gap"] = gap_lines
+    # --- Table 2: gap, both datasets side by side (DrugBank S1, S2, BioSNAP S1, S2) ---
+    rows = [[gap(df, d, m, s) for d in ("drugbank", "biosnap") for s in ("S1", "S2")] for m in main_models]
+    masks = bold_mask(rows, higher_is_better=False)  # per column
+    blocks["gap"] = [latex_row(m, c, b) for m, c, b in zip(main_models, rows, masks)]
 
     # --- controls table: DrugBank S1/S2 AUPRC (+ AUROC) ---
     groups = [
-        ("Reference (Table 1)", ["Fusion (GIN+text)", "Graph-only (GIN)"]),
+        ("Reference (Tables 1, 8)", ["Fusion (GIN+text)", "Graph-only (GIN)"]),
         ("Text-leakage control", ["Fusion, interaction wording removed", "Text-only, interaction wording removed",
                                   "Fusion, filtered text", "Text-only, filtered text"]),
         ("Structure encoder", ["Fingerprint+text", "Fingerprint-MLP", "GCN fusion (GCN+text)", "GCN graph-only"]),
